@@ -1082,6 +1082,61 @@ footer{
   .how-cmp-vs{flex-direction:row;}
   .how-mode-grid{grid-template-columns:1fr;}
 }
+/* ── DIAGNOSTIC TECH ─────────────────────── */
+.dtech-block{margin-bottom:0;padding:48px 0}
+.dtech-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:16px}
+.dtech-layout{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.dtech-layout-rev{direction:rtl}.dtech-layout-rev>*{direction:ltr}
+.dtech-title{font-size:28px;font-weight:700;color:var(--ink);margin:0 0 16px}
+.dtech-desc{font-size:15px;line-height:1.7;color:var(--muted);margin-bottom:28px}
+.dtech-props{display:flex;flex-direction:column;gap:16px}
+.dtech-prop{border-left:3px solid var(--blue);padding-left:16px}
+.dtech-prop-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:4px}
+.dtech-prop-val{font-size:14px;color:var(--ink);line-height:1.5}
+.dtech-sep{height:1px;background:var(--border);margin:0}
+.dtech-mockup{background:#0d1b3e;border-radius:12px;overflow:hidden;font-family:'Open Sans',sans-serif}
+.dtm-header{background:#162550;padding:10px 16px;font-size:10px;font-weight:700;letter-spacing:.12em;color:#8899bb;text-transform:uppercase}
+.dtm-footer{padding:10px 16px;font-size:10px;color:#556688;border-top:1px solid #1e2f55}
+.dtm-table{padding:8px 0}
+.dtm-row{display:grid;grid-template-columns:2fr 1.2fr 1.2fr 1fr;gap:4px;padding:7px 16px;font-size:12px;border-bottom:1px solid #1a2848}
+.dtm-head{font-size:10px;font-weight:700;color:#556688;text-transform:uppercase;letter-spacing:.08em}
+.dtm-code{color:#a0b4d0;font-family:monospace;font-size:11px}
+.dtm-ev{font-size:10px;font-weight:700;letter-spacing:.06em;padding:2px 6px;border-radius:3px}
+.ev-in{background:#1a3a5c;color:#5bc8f5}
+.ev-out{background:#1a3a2a;color:#5bf5a0}
+.dtm-dwell{font-weight:700;font-size:12px}
+.dtm-dwell.ok{color:#5bf5a0}
+.dtm-dwell.warn{color:#f5a05b}
+/* Barcode mockup */
+.bc-mockup{}
+.bc-scan-area{padding:16px;display:flex;gap:16px;align-items:center}
+.bc-item{flex-shrink:0;text-align:center}
+.bc-bars{width:80px;height:50px;background:repeating-linear-gradient(90deg,#fff 0,#fff 3px,#0d1b3e 3px,#0d1b3e 5px,#fff 5px,#fff 6px,#0d1b3e 6px,#0d1b3e 9px,#fff 9px,#fff 11px,#0d1b3e 11px,#0d1b3e 12px);border-radius:2px;margin-bottom:6px}
+.bc-code{font-size:9px;color:#8899bb;font-family:monospace}
+.bc-result{flex:1;display:flex;flex-direction:column;gap:6px}
+.bc-res-row{display:flex;justify-content:space-between;font-size:12px;padding:4px 0;border-bottom:1px solid #1a2848}
+.bc-lbl{color:#556688;font-size:11px}
+.bc-val{color:#a0b4d0;font-weight:600}
+.bc-val.bc-ok{color:#5bf5a0}
+.bc-agent-bar{padding:8px 16px;background:#162550;display:flex;justify-content:space-between;font-size:10px;color:#556688}
+/* DO Integration mockup */
+.do-api-grid{padding:16px;display:flex;flex-direction:column;gap:12px}
+.do-api-card{display:flex;align-items:center;justify-content:center;gap:12px;padding:10px;background:#162550;border-radius:6px}
+.do-api-src{font-size:11px;font-weight:700;color:#5bc8f5;letter-spacing:.06em}
+.do-api-arrow{font-size:18px;color:#556688}
+.do-sync-table{display:flex;flex-direction:column;gap:0}
+.do-sync-row{display:grid;grid-template-columns:2fr 1fr 1fr;padding:6px 0;font-size:12px;border-bottom:1px solid #1a2848}
+.do-sync-head{font-size:10px;font-weight:700;color:#556688;text-transform:uppercase;letter-spacing:.08em}
+.do-st{font-size:10px;font-weight:700;padding:2px 6px;border-radius:3px}
+.do-st.ok{background:#1a3a2a;color:#5bf5a0}
+.do-st.warn{background:#3a2a1a;color:#f5a05b}
+.do-xval{background:#162550;border-radius:6px;padding:12px;margin-top:4px}
+.do-xval-title{font-size:10px;font-weight:700;color:#556688;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.do-xval-row{display:flex;justify-content:space-between;font-size:12px;padding:4px 0;border-bottom:1px solid #1a2848}
+.do-xval-row:last-child{border:none}
+.do-xv-ok{color:#5bf5a0;font-weight:700}
+.do-xv-warn{color:#f5a05b;font-weight:700}
+@media(max-width:768px){.dtech-layout,.dtech-layout-rev{grid-template-columns:1fr;direction:ltr}}
 </style>
 </head>
 <body>
@@ -1567,9 +1622,198 @@ footer{
 </section>
 
 <div class="divider"></div>
-
 <!-- ═══════════════════════════════════════════════════════════════ -->
-<!-- PLATFORM 6: MOBILE AGENT APP -->
+<!-- DIAGNOSTIC DATA CAPTURE TECHNOLOGIES -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section class="sec bg-off" id="diag-tech">
+<div class="wrap">
+  <div class="reveal" style="text-align:center;margin-bottom:56px">
+    <div class="eye" style="justify-content:center">Diagnostic Data Capture</div>
+    <h2 class="sh" style="text-align:center">Three technologies.<br>One unified diagnostic layer.</h2>
+    <p class="sd" style="margin:0 auto;text-align:center;max-width:680px">Network Diagnostic analysis requires data captured at every node of the postal network — sorting centres, transport links, and delivery offices. ONE MS integrates three complementary capture technologies, giving regulators a complete and independent view of internal network performance.</p>
+  </div>
+
+  <!-- TECHNOLOGY 1: RFID -->
+  <div class="dtech-block reveal">
+    <div class="dtech-label">Technology 01</div>
+    <div class="dtech-layout">
+      <div class="dtech-content">
+        <h3 class="dtech-title">RFID Tracking</h3>
+        <p class="dtech-desc">Radio Frequency Identification tags are attached to test items at injection. As items pass through each facility — sorting centres, transport hubs, delivery offices — fixed RFID readers capture the timestamp automatically, without any human intervention.</p>
+        <div class="dtech-props">
+          <div class="dtech-prop">
+            <div class="dtech-prop-label">Capture method</div>
+            <div class="dtech-prop-val">Passive UHF RFID tags read by fixed antenna arrays at facility entry/exit points</div>
+          </div>
+          <div class="dtech-prop">
+            <div class="dtech-prop-label">Data captured</div>
+            <div class="dtech-prop-val">Arrival and departure timestamps per facility, dwell time, processing sequence</div>
+          </div>
+          <div class="dtech-prop">
+            <div class="dtech-prop-label">Diagnostic value</div>
+            <div class="dtech-prop-val">Pinpoints exactly where time is lost within the network — isolating process gaps from resource gaps at each sorting centre</div>
+          </div>
+          <div class="dtech-prop">
+            <div class="dtech-prop-label">Reports enabled</div>
+            <div class="dtech-prop-val">Postal Centre Diagnostic · Transport Reliability Analysis · Network Black Spots &amp; Green Lanes</div>
+          </div>
+        </div>
+      </div>
+      <div class="dtech-visual">
+        <div class="dtech-mockup rfid-mockup">
+          <div class="dtm-header">RFID EVENT LOG — Sorting Centre SC-04</div>
+          <div class="dtm-table">
+            <div class="dtm-row dtm-head">
+              <span>Tag ID</span><span>Event</span><span>Timestamp</span><span>Dwell</span>
+            </div>
+            <div class="dtm-row">
+              <span class="dtm-code">ONE-2026-04471</span><span class="dtm-ev ev-in">ARRIVAL</span><span>09:14:32</span><span>—</span>
+            </div>
+            <div class="dtm-row">
+              <span class="dtm-code">ONE-2026-04471</span><span class="dtm-ev ev-out">DEPARTURE</span><span>09:47:18</span><span class="dtm-dwell ok">32m 46s</span>
+            </div>
+            <div class="dtm-row">
+              <span class="dtm-code">ONE-2026-04892</span><span class="dtm-ev ev-in">ARRIVAL</span><span>09:16:05</span><span>—</span>
+            </div>
+            <div class="dtm-row">
+              <span class="dtm-code">ONE-2026-04892</span><span class="dtm-ev ev-out">DEPARTURE</span><span>11:52:41</span><span class="dtm-dwell warn">2h 36m</span>
+            </div>
+            <div class="dtm-row">
+              <span class="dtm-code">ONE-2026-05103</span><span class="dtm-ev ev-in">ARRIVAL</span><span>09:31:22</span><span>—</span>
+            </div>
+            <div class="dtm-row">
+              <span class="dtm-code">ONE-2026-05103</span><span class="dtm-ev ev-out">DEPARTURE</span><span>09:58:09</span><span class="dtm-dwell ok">26m 47s</span>
+            </div>
+          </div>
+          <div class="dtm-footer">6 events captured · 1 anomaly flagged · Auto-sync to ONE MS at 12:00 UTC</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dtech-sep"></div>
+
+  <!-- TECHNOLOGY 2: BARCODE -->
+  <div class="dtech-block reveal">
+    <div class="dtech-label">Technology 02</div>
+    <div class="dtech-layout dtech-layout-rev">
+      <div class="dtech-visual">
+        <div class="dtech-mockup bc-mockup">
+          <div class="dtm-header">BARCODE SCAN — Agent App · Route CAP-N</div>
+          <div class="bc-scan-area">
+            <div class="bc-item">
+              <div class="bc-bars"></div>
+              <div class="bc-code">ONE-2026-04471</div>
+            </div>
+            <div class="bc-result">
+              <div class="bc-res-row"><span class="bc-lbl">Status</span><span class="bc-val bc-ok">DELIVERY CONFIRMED</span></div>
+              <div class="bc-res-row"><span class="bc-lbl">T delivery</span><span class="bc-val">14 Feb 2026 · 11:23 UTC</span></div>
+              <div class="bc-res-row"><span class="bc-lbl">Route</span><span class="bc-val">Capital → North · Priority Letter</span></div>
+              <div class="bc-res-row"><span class="bc-lbl">J+K result</span><span class="bc-val bc-ok">2.8 days · COMPLIANT</span></div>
+            </div>
+          </div>
+          <div class="bc-agent-bar">
+            <span>Panelist: AGT-0047</span><span>GPS: 48.8566°N 2.3522°E</span><span>Telegram confirmed</span>
+          </div>
+        </div>
+      </div>
+      <div class="dtech-content">
+        <h3 class="dtech-title">Barcode Scanning</h3>
+        <p class="dtech-desc">Independent panelists use the ONE Agent App — integrated with Telegram — to scan the barcode of each test item at injection and delivery. The AI assistant validates each scan in real time, captures GPS coordinates, and records the precise timestamp, eliminating manual data entry errors.</p>
+        <div class="dtech-props">
+          <div class="dtech-prop">
+            <div class="dtech-prop-label">Capture method</div>
+            <div class="dtech-prop-val">Mobile barcode scan via Telegram bot — no dedicated hardware required</div>
+          </div>
+          <div class="dtech-prop">
+            <div class="dtech-prop-label">Data captured</div>
+            <div class="dtech-prop-val">Injection timestamp (T inject), delivery timestamp (T delivery), GPS location, panelist ID</div>
+          </div>
+          <div class="dtech-prop">
+            <div class="dtech-prop-label">Diagnostic value</div>
+            <div class="dtech-prop-val">Provides the E2E transit time baseline — the primary evidence layer for J+K compliance and regulatory reporting</div>
+          </div>
+          <div class="dtech-prop">
+            <div class="dtech-prop-label">Reports enabled</div>
+            <div class="dtech-prop-val">E2E Dashboard · J+K Performance Report · Regulatory Compliance Report · Territory Equity Report</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dtech-sep"></div>
+
+  <!-- TECHNOLOGY 3: DO INTEGRATION -->
+  <div class="dtech-block reveal">
+    <div class="dtech-label">Technology 03</div>
+    <div class="dtech-layout">
+      <div class="dtech-content">
+        <h3 class="dtech-title">Designated Operator Database Integration</h3>
+        <p class="dtech-desc">ONE MS connects directly to the Designated Operator's internal tracking and operational databases via a secure API gateway. This integration enriches the independent measurement data with the operator's own records — enabling cross-validation, anomaly detection, and a complete end-to-end audit trail that neither party can manipulate unilaterally.</p>
+        <div class="dtech-props">
+          <div class="dtech-prop">
+            <div class="dtech-prop-label">Integration method</div>
+            <div class="dtech-prop-val">Secure REST API gateway — read-only access to operational tracking events and facility data</div>
+          </div>
+          <div class="dtech-prop">
+            <div class="dtech-prop-label">Data captured</div>
+            <div class="dtech-prop-val">Operator scan events, facility processing records, transport manifests, delivery confirmations</div>
+          </div>
+          <div class="dtech-prop">
+            <div class="dtech-prop-label">Diagnostic value</div>
+            <div class="dtech-prop-val">Cross-validates independent measurements against operator data — identifying discrepancies that indicate process failures or data quality issues</div>
+          </div>
+          <div class="dtech-prop">
+            <div class="dtech-prop-label">Reports enabled</div>
+            <div class="dtech-prop-val">Centre Efficiency Ranking · Transport Reliability Analysis · Network Black Spots &amp; Green Lanes · Regulatory Compliance Report</div>
+          </div>
+        </div>
+      </div>
+      <div class="dtech-visual">
+        <div class="dtech-mockup do-mockup">
+          <div class="dtm-header">DO API INTEGRATION — Data Sync Status</div>
+          <div class="do-api-grid">
+            <div class="do-api-card">
+              <div class="do-api-src">ONE MS</div>
+              <div class="do-api-arrow">⇄</div>
+              <div class="do-api-src">DO Tracking DB</div>
+            </div>
+            <div class="do-sync-table">
+              <div class="do-sync-row do-sync-head">
+                <span>Data stream</span><span>Status</span><span>Last sync</span>
+              </div>
+              <div class="do-sync-row">
+                <span>Scan events</span><span class="do-st ok">LIVE</span><span>2m ago</span>
+              </div>
+              <div class="do-sync-row">
+                <span>Facility records</span><span class="do-st ok">LIVE</span><span>2m ago</span>
+              </div>
+              <div class="do-sync-row">
+                <span>Transport manifests</span><span class="do-st ok">LIVE</span><span>5m ago</span>
+              </div>
+              <div class="do-sync-row">
+                <span>Delivery confirmations</span><span class="do-st warn">DELAYED</span><span>18m ago</span>
+              </div>
+            </div>
+            <div class="do-xval">
+              <div class="do-xval-title">Cross-validation result — Last 24h</div>
+              <div class="do-xval-row"><span>Items matched</span><span class="do-xv-ok">1,847 / 1,851</span></div>
+              <div class="do-xval-row"><span>Discrepancies flagged</span><span class="do-xv-warn">4 items</span></div>
+              <div class="do-xval-row"><span>Data integrity score</span><span class="do-xv-ok">99.8%</span></div>
+            </div>
+          </div>
+          <div class="dtm-footer">Read-only access · TLS 1.3 encrypted · Audit log retained 7 years</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+<div class="divider"></div>
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- PLATFORM 6: MOBILE AGENT APP -->>
 <!-- ═══════════════════════════════════════════════════════════════ -->
 <section class="sec" id="plat-app">
 <div class="wrap">
@@ -2025,31 +2269,6 @@ html>
   </div>
 </div>
 </section>
-
-<div class="divider"></div>
-
-<!-- REPORTS -->
-<section class="sec bg-off" id="reports">
-<div class="wrap">
-  <div class="reveal" style="text-align:center">
-    <div class="eye" style="justify-content:center">Reporting Suite</div>
-    <h2 class="sh" style="text-align:center">Intelligence built for regulatory action</h2>
-    <p class="sd" style="margin:0 auto;text-align:center">Eight reports. Each designed for a specific regulatory decision.</p>
-  </div>
-  <div class="reports reveal">
-    <div class="report"><div class="rep-ico ico-e">📊</div><div><div class="rep-t">E2E Dashboard</div><div class="rep-d">Unified operational view with real-time alerts and KPIs across all carriers, routes, and products.</div><span class="rep-tag tag-e">E2E</span></div></div>
-    <div class="report"><div class="rep-ico ico-e">⏱</div><div><div class="rep-t">J+K Performance Report</div><div class="rep-d">Transit time analysis and delivery performance by route, city, region, and carrier/product combination.</div><span class="rep-tag tag-e">E2E</span></div></div>
-    <div class="report"><div class="rep-ico ico-e">⚖️</div><div><div class="rep-t">Regulatory Compliance Report</div><div class="rep-d">Compliance by Carrier → Product → Route. Evidence base for corrective action, penalties, and licence decisions.</div><span class="rep-tag tag-e">E2E</span></div></div>
-    <div class="report"><div class="rep-ico ico-e">🗺</div><div><div class="rep-t">Territory Equity Report</div><div class="rep-d">Service fairness across cities and regions. Supports consumer protection and universal service obligations.</div><span class="rep-tag tag-e">E2E</span></div></div>
-    <div class="report"><div class="rep-ico ico-d">🏭</div><div><div class="rep-t">Postal Centre Diagnostic</div><div class="rep-d">Isolate process gaps vs. resource gaps at each sorting facility. Pinpoint where time is lost.</div><span class="rep-tag tag-d">Diagnostic</span></div></div>
-    <div class="report"><div class="rep-ico ico-d">🏆</div><div><div class="rep-t">Centre Efficiency Ranking</div><div class="rep-d">Benchmark all centres. Identify leaders and laggards. Creates evidence-based accountability.</div><span class="rep-tag tag-d">Diagnostic</span></div></div>
-    <div class="report"><div class="rep-ico ico-d">🚛</div><div><div class="rep-t">Transport Reliability Analysis</div><div class="rep-d">Measure transit speed and consistency between facilities. Identifies unreliable links.</div><span class="rep-tag tag-d">Diagnostic</span></div></div>
-    <div class="report"><div class="rep-ico ico-d">⚠️</div><div><div class="rep-t">Network Black Spots &amp; Green Lanes</div><div class="rep-d">Flag critical systemic delays for intervention. Identify best-practice corridors to replicate.</div><span class="rep-tag tag-d">Diagnostic</span></div></div>
-  </div>
-</div>
-</section>
-
-<div class="divider"></div>
 
 <!-- PLANS -->
 <section class="sec" id="plans">
