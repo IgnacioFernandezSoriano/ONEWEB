@@ -779,6 +779,129 @@ footer{
   padding:3px 9px;border-radius:3px;width:fit-content;
 }
 
+/* ── PLATFORM SECTIONS ─────────────────── */
+.plat-num{
+  font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--text3);margin-bottom:10px;
+}
+.plat-pill{
+  display:inline-flex;align-items:center;
+  padding:8px 16px;border-radius:20px;
+  background:var(--blue-tint);border:1px solid rgba(0,48,135,.14);
+  font-size:12px;font-weight:600;color:var(--blue);
+  transition:all .2s;
+}
+.plat-pill:hover{background:var(--blue);color:white;border-color:var(--blue)}
+.plat-points{display:flex;flex-direction:column;gap:14px;margin-top:22px}
+.plat-pt{
+  display:flex;gap:12px;align-items:flex-start;
+  font-size:14px;color:var(--text2);line-height:1.65;
+}
+.plat-ck{
+  flex-shrink:0;width:20px;height:20px;border-radius:50%;
+  background:var(--blue);color:white;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;margin-top:2px;
+}
+.plat-box{
+  background:white;border:1px solid var(--border);
+  border-radius:var(--r2);padding:22px 24px;
+  box-shadow:0 4px 24px rgba(0,48,135,.07);
+}
+.plat-box-lbl{
+  font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--text3);margin-bottom:10px;
+}
+.plat-box-note{
+  font-size:11.5px;color:var(--text3);line-height:1.6;
+  padding-top:10px;border-top:1px solid var(--border);margin-top:10px;
+}
+.plat-table{width:100%;border-collapse:collapse;font-size:12.5px}
+.plat-table th{
+  background:var(--blue-tint);color:var(--text2);font-weight:600;
+  padding:7px 10px;text-align:left;font-size:11px;letter-spacing:.04em;
+}
+.plat-table td{padding:7px 10px;border-bottom:1px solid var(--border);color:var(--text2)}
+.plat-table tr:last-child td{border-bottom:none}
+.tc{text-align:center!important;font-weight:700}
+.tc.ok{color:#15803d}
+.tc.na{color:var(--text3)}
+.plat-stat-mini{
+  background:var(--blue-tint);border:1px solid rgba(0,48,135,.1);
+  border-radius:var(--r);padding:10px 12px;
+}
+.plat-stat-mini.dark{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.1)}
+.plat-stat-v{font-family:'Libre Baskerville',serif;font-size:22px;font-weight:700;color:var(--blue);line-height:1}
+.plat-stat-l{font-size:11px;color:var(--text3);margin-top:3px;line-height:1.4}
+/* SLA section */
+.sla-row{display:grid;grid-template-columns:1fr auto auto auto;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)}
+.sla-row:last-child{border-bottom:none}
+.sla-carrier{font-size:12.5px;font-weight:600;color:var(--text)}
+.sla-target{font-size:11px;color:var(--text3);white-space:nowrap}
+.sla-bar-wrap{width:80px;height:6px;background:var(--off2);border-radius:3px;overflow:hidden}
+.sla-bar{height:100%;border-radius:3px;transition:width .6s var(--ease)}
+.sla-val{font-size:12px;font-weight:700;white-space:nowrap}
+.ok-txt{color:#15803d}
+.warn-txt{color:#d97706}
+.fail-txt{color:var(--red)}
+/* Allocation section */
+.alloc-cell{
+  padding:6px 8px;font-size:12px;color:var(--text2);
+  background:var(--off);border-radius:var(--r);
+}
+.alloc-cell.hd{background:var(--blue-tint);font-weight:700;font-size:11px;color:var(--text2)}
+.alloc-health{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:12.5px;color:var(--text2);padding:5px 0;
+  border-bottom:1px solid var(--border);
+}
+.alloc-health:last-child{border-bottom:none}
+.alloc-ok{font-weight:700;color:#15803d}
+/* Stock section */
+.stock-row{
+  display:flex;gap:10px;align-items:center;
+  padding:8px 0;border-bottom:1px solid var(--border);
+}
+.stock-row:last-child{border-bottom:none}
+.stock-ico{font-size:18px;flex-shrink:0;width:28px;text-align:center}
+.stock-name{font-size:12px;font-weight:600;color:var(--text);margin-bottom:4px}
+.stock-bar-wrap{height:5px;background:var(--off2);border-radius:3px;overflow:hidden}
+.stock-bar{height:100%;background:var(--blue);border-radius:3px}
+.stock-qty{font-size:11px;color:var(--text3);white-space:nowrap;flex-shrink:0}
+.ok-pill{font-size:10px;font-weight:700;color:#15803d;background:#dcfce7;padding:2px 7px;border-radius:10px;white-space:nowrap}
+.warn-pill{font-size:10px;font-weight:700;color:#d97706;background:#fef9c3;padding:2px 7px;border-radius:10px;white-space:nowrap}
+.fail-pill{font-size:10px;font-weight:700;color:var(--red);background:rgba(200,16,46,.08);padding:2px 7px;border-radius:10px;white-space:nowrap}
+.trace-row{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--text2);padding:4px 0}
+.trace-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+/* Reports section */
+.plat-report-card{
+  background:white;border:1px solid var(--border);
+  border-radius:var(--r2);padding:22px 22px 18px;
+  display:flex;flex-direction:column;gap:8px;
+  transition:box-shadow .2s,transform .2s;
+}
+.plat-report-card:hover{box-shadow:0 8px 28px rgba(0,48,135,.1);transform:translateY(-3px)}
+.e2e-card{border-top:3px solid var(--blue)}
+.diag-card{border-top:3px solid var(--red)}
+.prc-tag{
+  font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--blue);background:var(--blue-tint);
+  border:1px solid rgba(0,48,135,.12);padding:2px 8px;border-radius:3px;width:fit-content;
+}
+.prc-tag-d{color:var(--red);background:rgba(200,16,46,.06);border-color:rgba(200,16,46,.15)}
+.prc-icon{font-size:22px}
+.prc-title{font-family:'Libre Baskerville',serif;font-size:15px;font-weight:700;color:var(--text);line-height:1.25}
+.prc-desc{font-size:13px;color:var(--text3);line-height:1.65;flex:1}
+.prc-use{font-size:11px;font-weight:600;color:var(--blue);margin-top:4px}
+/* Telegram chat section */
+.tg-chat{display:flex;flex-direction:column;gap:10px;margin-top:12px;max-height:320px;overflow-y:auto;padding-right:4px}
+.tg-msg{display:flex}
+.tg-msg.bot{justify-content:flex-start}
+.tg-msg.user{justify-content:flex-end}
+.tg-bubble{max-width:85%;padding:10px 13px;border-radius:12px;font-size:12.5px;line-height:1.55}
+.bot-bubble{background:rgba(255,255,255,.1);color:rgba(255,255,255,.85);border-radius:4px 12px 12px 12px}
+.user-bubble{background:#2481cc;color:white;border-radius:12px 12px 4px 12px}
+
 /* ── RESPONSIVE ────────────────────────── */
 @media(max-width:920px){
   .hero-inner,.mission-grid,.rc.on,.hp.on,.contact-layout,.plans-grid,.roadmap,.pillars,.plans-intro,.mc-grid,.plat-grid,.plat-features-grid{grid-template-columns:1fr}
@@ -813,15 +936,13 @@ footer{
 <!-- NAV -->
 <nav class="nav" id="nav">
   <a href="#" class="nav-brand">
-    <div class="nav-wordmark">UPU</div>
-    <div class="nav-product">
-      <span class="nav-ptitle">ONE for Regulators</span>
-      <span class="nav-psub">Domestic Quality Measurement</span>
-    </div>
+    <img src="assets/upu-logo.png" alt="Universal Postal Union" style="height:32px;filter:brightness(0) invert(1);margin-right:14px;padding-right:14px;border-right:1.5px solid rgba(255,255,255,.18)">
+    <img src="assets/one-for-regulators-dark.png" alt="ONE for Regulators" style="height:28px">
   </a>
   <div class="nav-links">
     <a href="#mission">Mission</a>
     <a href="#challenges">Challenges</a>
+    <a href="#platform">Platform</a>
     <a href="#how">How It Works</a>
     <a href="#reports">Reports</a>
     <a href="#plans">Plans</a>
@@ -836,6 +957,11 @@ footer{
   <div class="hero-grid-lines"></div>
   <div class="hero-inner">
     <div>
+      <div style="display:flex;align-items:center;gap:20px;margin-bottom:28px;flex-wrap:wrap">
+        <img src="assets/upu-logo.png" alt="Universal Postal Union" style="height:38px;filter:brightness(0) invert(1);opacity:.9">
+        <div style="width:1px;height:36px;background:rgba(255,255,255,.2)"></div>
+        <img src="assets/one-for-regulators-dark.png" alt="ONE for Regulators" style="height:34px">
+      </div>
       <div class="hero-kicker"><div class="kicker-dot"></div>UPU Domestic Measurement Service · 2026</div>
       <h1 class="hero-h">Regulatory oversight<br>powered by <em>objective,<br>independent data</em></h1>
       <p class="hero-sub"><strong>ONE for Regulators</strong> is the Universal Postal Union's domestic postal quality measurement service — giving regulators verified data to enforce standards, manage licences, and protect consumers.</p>
@@ -959,58 +1085,373 @@ footer{
 
 <div class="divider"></div>
 
-<!-- PLATFORM FEATURES -->
-<section class="plat-features-section" id="platform">
+<!-- PLATFORM: INTRO ANCHOR -->
+<section class="sec" id="platform" style="padding-bottom:0">
 <div class="wrap">
   <div class="reveal" style="text-align:center">
     <div class="eye" style="justify-content:center">Platform Capabilities</div>
-    <h2 class="sh" style="text-align:center">Everything a regulator needs.<br>In one integrated platform.</h2>
-    <p class="sd" style="margin:0 auto;text-align:center">ONE is built around six core capabilities — each addressing a specific operational need of the modern postal regulator.</p>
+    <h2 class="sh" style="text-align:center">Six capabilities.<br>One integrated platform.</h2>
+    <p class="sd" style="margin:0 auto;text-align:center">ONE is built around six core modules — each addressing a specific operational need of the modern postal regulator. Together, they form a complete, end-to-end measurement and oversight system.</p>
   </div>
-  <div class="plat-features-grid reveal">
+  <!-- Platform nav pills -->
+  <div class="reveal" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:40px;padding-bottom:52px">
+    <a href="#plat-mc" class="plat-pill">Multi-Carrier &amp; Multi-Product</a>
+    <a href="#plat-sla" class="plat-pill">SLA &amp; Real-Time Monitoring</a>
+    <a href="#plat-alloc" class="plat-pill">Allocation Plan Management</a>
+    <a href="#plat-stock" class="plat-pill">Materials &amp; Stock Management</a>
+    <a href="#plat-reports" class="plat-pill">Automated Reports</a>
+    <a href="#plat-app" class="plat-pill">Mobile Agent App</a>
+  </div>
+</div>
+</section>
 
-    <div class="pf-card">
-      <div class="pf-card-icon">🔄</div>
-      <div class="pf-card-title">Multi-carrier and multi-product solution</div>
-      <p class="pf-card-desc">Measure all operators and all product types — letters, parcels, express, registered mail — under a single, consistent methodology. No custom frameworks, no exceptions. Every carrier on a level playing field.</p>
-      <span class="pf-card-tag">Core Platform</span>
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- PLATFORM 1: MULTI-CARRIER & MULTI-PRODUCT -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section class="sec bg-off" id="plat-mc">
+<div class="wrap">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center" class="reveal mc-grid">
+    <div>
+      <div class="plat-num">01 / 06</div>
+      <div class="eye">Core Platform</div>
+      <h2 class="sh">Multi-carrier and<br>multi-product solution</h2>
+      <p class="sd">ONE measures all postal operators and all product types under a single, consistent UPU-endorsed methodology. No custom frameworks, no exceptions — every carrier on a level playing field.</p>
+      <div class="plat-points">
+        <div class="plat-pt"><span class="plat-ck">✓</span><div><strong>All carriers measured identically</strong> — designated operators and private entrants under the same rules, eliminating methodological disputes before they arise.</div></div>
+        <div class="plat-pt"><span class="plat-ck">✓</span><div><strong>All product types covered</strong> — letters, parcels, express, registered mail and priority products in a single measurement cycle.</div></div>
+        <div class="plat-pt"><span class="plat-ck">✓</span><div><strong>Directly comparable results</strong> — every metric calculated the same way, enabling fair benchmarking across operators, regions and time periods.</div></div>
+        <div class="plat-pt"><span class="plat-ck">✓</span><div><strong>Legally defensible data</strong> — a UN-endorsed methodology accepted by governments, operators and consumers worldwide.</div></div>
+      </div>
     </div>
-
-    <div class="pf-card">
-      <div class="pf-card-icon">📋</div>
-      <div class="pf-card-title">SLA definition and real-time monitoring</div>
-      <p class="pf-card-desc">Define delivery standards (J+K targets) per carrier, product, and route. Monitor compliance in real time against those SLAs — with automated alerts when thresholds are breached.</p>
-      <span class="pf-card-tag">Compliance</span>
+    <div class="reveal reveal-d1">
+      <div class="plat-box">
+        <div class="plat-box-lbl">Carrier &amp; Product Coverage Matrix</div>
+        <table class="plat-table">
+          <thead><tr><th>Carrier Type</th><th>Letters</th><th>Parcels</th><th>Express</th><th>Registered</th></tr></thead>
+          <tbody>
+            <tr><td>Designated Operator</td><td class="tc ok">✓</td><td class="tc ok">✓</td><td class="tc ok">✓</td><td class="tc ok">✓</td></tr>
+            <tr><td>Private Carrier A</td><td class="tc ok">✓</td><td class="tc ok">✓</td><td class="tc ok">✓</td><td class="tc na">—</td></tr>
+            <tr><td>Private Carrier B</td><td class="tc na">—</td><td class="tc ok">✓</td><td class="tc ok">✓</td><td class="tc na">—</td></tr>
+            <tr><td>Regional Operator</td><td class="tc ok">✓</td><td class="tc ok">✓</td><td class="tc na">—</td><td class="tc ok">✓</td></tr>
+          </tbody>
+        </table>
+        <div class="plat-box-note">Same methodology applied to all — results are directly comparable regardless of operator type.</div>
+        <div style="margin-top:20px">
+          <div class="plat-box-lbl">Measurement Scope</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
+            <div class="plat-stat-mini"><div class="plat-stat-v">4+</div><div class="plat-stat-l">Product categories per carrier</div></div>
+            <div class="plat-stat-mini"><div class="plat-stat-v">1</div><div class="plat-stat-l">Unified methodology for all</div></div>
+            <div class="plat-stat-mini"><div class="plat-stat-v">100%</div><div class="plat-stat-l">Comparable results across operators</div></div>
+            <div class="plat-stat-mini"><div class="plat-stat-v">0</div><div class="plat-stat-l">Methodological disputes</div></div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+</div>
+</section>
 
-    <div class="pf-card">
-      <div class="pf-card-icon">🗂️</div>
-      <div class="pf-card-title">Intelligent allocation plan management</div>
-      <p class="pf-card-desc">Dynamically generate and manage sampling plans that ensure statistical validity across all routes and carriers. Automatically adapt to network changes, seasonal variations, and regulatory priorities.</p>
-      <span class="pf-card-tag">Operations</span>
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- PLATFORM 2: SLA DEFINITION & REAL-TIME MONITORING -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section class="sec" id="plat-sla">
+<div class="wrap">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center" class="reveal mc-grid">
+    <div class="reveal reveal-d1">
+      <div class="plat-box">
+        <div class="plat-box-lbl">Live SLA Compliance Dashboard</div>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:4px">
+          <div class="sla-row">
+            <div class="sla-carrier">Carrier A · Priority Letter</div>
+            <div class="sla-target">J+3 target: 85%</div>
+            <div class="sla-bar-wrap"><div class="sla-bar" style="width:94%;background:#15803d"></div></div>
+            <div class="sla-val ok-txt">94.2% ✓</div>
+          </div>
+          <div class="sla-row">
+            <div class="sla-carrier">Carrier A · Parcel</div>
+            <div class="sla-target">J+5 target: 80%</div>
+            <div class="sla-bar-wrap"><div class="sla-bar" style="width:88%;background:#15803d"></div></div>
+            <div class="sla-val ok-txt">88.1% ✓</div>
+          </div>
+          <div class="sla-row">
+            <div class="sla-carrier">Carrier B · Priority Letter</div>
+            <div class="sla-target">J+3 target: 85%</div>
+            <div class="sla-bar-wrap"><div class="sla-bar" style="width:78%;background:#d97706"></div></div>
+            <div class="sla-val warn-txt">78.1% !</div>
+          </div>
+          <div class="sla-row">
+            <div class="sla-carrier">Carrier C · Priority Letter</div>
+            <div class="sla-target">J+3 target: 85%</div>
+            <div class="sla-bar-wrap"><div class="sla-bar" style="width:61%;background:#C8102E"></div></div>
+            <div class="sla-val fail-txt">61.3% ✗</div>
+          </div>
+          <div class="sla-row">
+            <div class="sla-carrier">Carrier B · Express</div>
+            <div class="sla-target">J+1 target: 90%</div>
+            <div class="sla-bar-wrap"><div class="sla-bar" style="width:91%;background:#15803d"></div></div>
+            <div class="sla-val ok-txt">91.4% ✓</div>
+          </div>
+        </div>
+        <div class="plat-box-note" style="margin-top:16px">Automated alert triggered when compliance falls below SLA threshold. Regulator notified in real time.</div>
+        <div style="margin-top:16px;padding:12px 14px;background:rgba(200,16,46,.06);border:1px solid rgba(200,16,46,.15);border-left:3px solid var(--red);border-radius:0 var(--r) var(--r) 0">
+          <div style="font-size:10px;font-weight:700;color:var(--red);margin-bottom:3px">ALERT — SLA BREACH DETECTED</div>
+          <div style="font-size:12px;color:var(--text2);line-height:1.6">Carrier C · Priority Letter · Capital Region: 61.3% vs 85% target. Corrective action required within 30 days per licence conditions.</div>
+        </div>
+      </div>
     </div>
-
-    <div class="pf-card">
-      <div class="pf-card-icon">📦</div>
-      <div class="pf-card-title">Panelist materials and stock management</div>
-      <p class="pf-card-desc">Track and manage all physical measurement materials — test items, barcodes, RFID tags — across the entire panelist network. Full traceability from production to deployment to return.</p>
-      <span class="pf-card-tag">Logistics</span>
+    <div>
+      <div class="plat-num">02 / 06</div>
+      <div class="eye">Compliance Engine</div>
+      <h2 class="sh">SLA definition and<br>real-time monitoring</h2>
+      <p class="sd">Define delivery standards per carrier, product and route. ONE monitors compliance continuously and triggers automated alerts the moment a threshold is breached — giving regulators the evidence to act.</p>
+      <div class="plat-points">
+        <div class="plat-pt"><span class="plat-ck">✓</span><div><strong>Configurable J+K targets</strong> — set different delivery standards per carrier, product type, route and geographic zone.</div></div>
+        <div class="plat-pt"><span class="plat-ck">✓</span><div><strong>Real-time breach detection</strong> — automated alerts when compliance drops below the defined threshold, with full audit trail.</div></div>
+        <div class="plat-pt"><span class="plat-ck">✓</span><div><strong>Historical trend analysis</strong> — track performance over time to identify systemic issues versus isolated incidents.</div></div>
+        <div class="plat-pt"><span class="plat-ck">✓</span><div><strong>Regulator-ready evidence</strong> — every data point timestamped and independently verified, ready for regulatory proceedings.</div></div>
+      </div>
     </div>
+  </div>
+</div>
+</section>
 
-    <div class="pf-card">
-      <div class="pf-card-icon">📊</div>
-      <div class="pf-card-title">Automated E2E and diagnostic reports</div>
-      <p class="pf-card-desc">Eight report types generated automatically — from the E2E compliance dashboard to network black spot analysis. Each report is designed for a specific regulatory decision, ready to share with stakeholders.</p>
-      <span class="pf-card-tag">Reporting</span>
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- PLATFORM 3: INTELLIGENT ALLOCATION PLAN MANAGEMENT -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section class="sec bg-off" id="plat-alloc">
+<div class="wrap">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center" class="reveal mc-grid">
+    <div>
+      <div class="plat-num">03 / 06</div>
+      <div class="eye">Operations</div>
+      <h2 class="sh">Intelligent allocation<br>plan management</h2>
+      <p class="sd">ONE automatically generates and manages statistically valid sampling plans across all routes, carriers and products. Plans adapt dynamically to network changes, seasonal demand and evolving regulatory priorities.</p>
+      <div class="plat-points">
+        <div class="plat-pt"><span class="plat-ck">✓</span><div><strong>Statistically valid sampling</strong> — plans calculated to ensure confidence intervals meet regulatory requirements for every route and product.</div></div>
+        <div class="plat-pt"><span class="plat-ck">✓</span><div><strong>Dynamic adaptation</strong> — automatically adjusts when routes change, operators are added, or measurement priorities shift.</div></div>
+        <div class="plat-pt"><span class="plat-ck">✓</span><div><strong>Seasonal campaign support</strong> — intensified measurement during peak periods (Q4, public holidays) to capture performance under stress.</div></div>
+        <div class="plat-pt"><span class="plat-ck">✓</span><div><strong>Panelist workload balancing</strong> — distributes measurement tasks equitably across the panelist network to maximise coverage and minimise fatigue.</div></div>
+      </div>
     </div>
-
-    <div class="pf-card">
-      <div class="pf-card-icon">📱</div>
-      <div class="pf-card-title">Mobile agent app (AI-assisted via Telegram)</div>
-      <p class="pf-card-desc">Independent panelists operate through a purpose-built mobile app integrated with Telegram. AI assistance guides agents through each measurement task — reducing errors and ensuring data quality at the point of capture.</p>
-      <span class="pf-card-tag">Field Operations</span>
+    <div class="reveal reveal-d1">
+      <div class="plat-box">
+        <div class="plat-box-lbl">Allocation Plan — Current Quarter</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:8px">
+          <div class="alloc-cell hd">Route</div>
+          <div class="alloc-cell hd">Items/month</div>
+          <div class="alloc-cell hd">Panelists</div>
+          <div class="alloc-cell">Capital → North</div><div class="alloc-cell">120</div><div class="alloc-cell">4</div>
+          <div class="alloc-cell">Capital → South</div><div class="alloc-cell">120</div><div class="alloc-cell">4</div>
+          <div class="alloc-cell">Capital → East</div><div class="alloc-cell">80</div><div class="alloc-cell">3</div>
+          <div class="alloc-cell">North → South</div><div class="alloc-cell">60</div><div class="alloc-cell">2</div>
+          <div class="alloc-cell">Rural zones</div><div class="alloc-cell">40</div><div class="alloc-cell">6</div>
+        </div>
+        <div style="margin-top:18px;display:flex;flex-direction:column;gap:8px">
+          <div class="plat-box-lbl">Plan Health</div>
+          <div class="alloc-health"><span>Statistical confidence</span><span class="alloc-ok">95% ✓</span></div>
+          <div class="alloc-health"><span>Routes covered</span><span class="alloc-ok">100% ✓</span></div>
+          <div class="alloc-health"><span>Seasonal adjustment</span><span style="color:#d97706;font-weight:700">Q4 +30% ↑</span></div>
+          <div class="alloc-health"><span>Panelist utilisation</span><span class="alloc-ok">87% ✓</span></div>
+        </div>
+        <div class="plat-box-note" style="margin-top:14px">Plan auto-generated by ONE MS. Manual override available for regulator-defined priority routes.</div>
+      </div>
     </div>
+  </div>
+</div>
+</section>
 
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- PLATFORM 4: PANELIST MATERIALS & STOCK MANAGEMENT -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section class="sec" id="plat-stock">
+<div class="wrap">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center" class="reveal mc-grid">
+    <div class="reveal reveal-d1">
+      <div class="plat-box">
+        <div class="plat-box-lbl">Materials &amp; Stock Overview</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:8px">
+          <div class="stock-row">
+            <div class="stock-ico">✉️</div>
+            <div style="flex:1">
+              <div class="stock-name">Test letters (Priority)</div>
+              <div class="stock-bar-wrap"><div class="stock-bar" style="width:72%"></div></div>
+            </div>
+            <div class="stock-qty">720 / 1000</div>
+            <div class="stock-status ok-pill">OK</div>
+          </div>
+          <div class="stock-row">
+            <div class="stock-ico">📦</div>
+            <div style="flex:1">
+              <div class="stock-name">Test parcels (Standard)</div>
+              <div class="stock-bar-wrap"><div class="stock-bar" style="width:45%"></div></div>
+            </div>
+            <div class="stock-qty">225 / 500</div>
+            <div class="stock-status warn-pill">LOW</div>
+          </div>
+          <div class="stock-row">
+            <div class="stock-ico">🏷️</div>
+            <div style="flex:1">
+              <div class="stock-name">RFID tags (Diagnostic)</div>
+              <div class="stock-bar-wrap"><div class="stock-bar" style="width:88%"></div></div>
+            </div>
+            <div class="stock-qty">4400 / 5000</div>
+            <div class="stock-status ok-pill">OK</div>
+          </div>
+          <div class="stock-row">
+            <div class="stock-ico">📍</div>
+            <div style="flex:1">
+              <div class="stock-name">Barcoded labels</div>
+              <div class="stock-bar-wrap"><div class="stock-bar" style="width:18%;background:var(--red)"></div></div>
+            </div>
+            <div class="stock-qty">180 / 1000</div>
+            <div class="stock-status fail-pill">REORDER</div>
+          </div>
+        </div>
+        <div style="margin-top:18px">
+          <div class="plat-box-lbl">Traceability Log — Last 24h</div>
+          <div style="display:flex;flex-direction:column;gap:6px;margin-top:8px">
+            <div class="trace-row"><span class="trace-dot" style="background:#15803d"></span><span>48 items dispatched to Panelist Group North</span></div>
+            <div class="trace-row"><span class="trace-dot" style="background:#003087"></span><span>12 items returned &amp; logged — City A</span></div>
+            <div class="trace-row"><span class="trace-dot" style="background:#d97706"></span><span>Auto-alert: Barcoded labels below 20% threshold</span></div>
+            <div class="trace-row"><span class="trace-dot" style="background:#15803d"></span><span>RFID batch #447 activated — Centre B</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="plat-num">04 / 06</div>
+      <div class="eye">Logistics</div>
+      <h2 class="sh">Panelist materials and<br>stock management</h2>
+      <p class="sd">Track and manage all physical measurement materials — test items, barcodes, RFID tags — across the entire panelist network. Full traceability from production to deployment to return.</p>
+      <div class="plat-points">
+        <div class="plat-pt"><span class="plat-ck">✓</span><div><strong>Full lifecycle tracking</strong> — every test item traced from production through dispatch, use and return, with complete audit trail.</div></div>
+        <div class="plat-pt"><span class="plat-ck">✓</span><div><strong>Automated stock alerts</strong> — real-time notifications when any material category falls below the minimum threshold for uninterrupted measurement.</div></div>
+        <div class="plat-pt"><span class="plat-ck">✓</span><div><strong>RFID tag management</strong> — batch activation, assignment to measurement points and decommissioning all managed within ONE MS.</div></div>
+        <div class="plat-pt"><span class="plat-ck">✓</span><div><strong>Panelist kit management</strong> — each panelist’s material allocation, dispatch history and return status visible in real time.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- PLATFORM 5: AUTOMATED E2E & DIAGNOSTIC REPORTS -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section class="sec bg-off" id="plat-reports">
+<div class="wrap">
+  <div class="reveal" style="text-align:center;margin-bottom:52px">
+    <div class="plat-num" style="text-align:center">05 / 06</div>
+    <div class="eye" style="justify-content:center">Reporting Engine</div>
+    <h2 class="sh" style="text-align:center">Automated E2E and<br>diagnostic reports</h2>
+    <p class="sd" style="margin:0 auto;text-align:center">Eight report types generated automatically — each designed for a specific regulatory decision. From the live compliance dashboard to network black spot analysis, every report is ready to share with stakeholders the moment data is captured.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px" class="reveal">
+    <div class="plat-report-card e2e-card">
+      <div class="prc-tag">E2E</div>
+      <div class="prc-icon">📊</div>
+      <div class="prc-title">E2E Dashboard</div>
+      <div class="prc-desc">Unified operational view with real-time KPIs and alerts across all carriers, routes and products. The primary tool for day-to-day regulatory oversight.</div>
+      <div class="prc-use">Use for: Daily monitoring · Executive briefings</div>
+    </div>
+    <div class="plat-report-card e2e-card">
+      <div class="prc-tag">E2E</div>
+      <div class="prc-icon">⏱</div>
+      <div class="prc-title">J+K Performance Report</div>
+      <div class="prc-desc">Transit time analysis and delivery performance by route, city, region and carrier/product combination. Identifies where and when standards are met or missed.</div>
+      <div class="prc-use">Use for: Compliance review · Tariff decisions</div>
+    </div>
+    <div class="plat-report-card e2e-card">
+      <div class="prc-tag">E2E</div>
+      <div class="prc-icon">⚖️</div>
+      <div class="prc-title">Regulatory Compliance Report</div>
+      <div class="prc-desc">Compliance by Carrier → Product → Route. The primary evidence base for corrective action, penalties and licence decisions. Legally defensible and independently verified.</div>
+      <div class="prc-use">Use for: Enforcement · Licence management</div>
+    </div>
+    <div class="plat-report-card e2e-card">
+      <div class="prc-tag">E2E</div>
+      <div class="prc-icon">🗺</div>
+      <div class="prc-title">Territory Equity Report</div>
+      <div class="prc-desc">Service fairness across cities and regions. Supports consumer protection mandates and universal service obligations. Identifies underserved areas.</div>
+      <div class="prc-use">Use for: Consumer protection · USO monitoring</div>
+    </div>
+    <div class="plat-report-card diag-card">
+      <div class="prc-tag prc-tag-d">Diagnostic</div>
+      <div class="prc-icon">🏭</div>
+      <div class="prc-title">Postal Centre Diagnostic</div>
+      <div class="prc-desc">Isolates process gaps versus resource gaps at each sorting facility. Pinpoints exactly where time is lost within the network — enabling targeted corrective action.</div>
+      <div class="prc-use">Use for: Network improvement · Operator dialogue</div>
+    </div>
+    <div class="plat-report-card diag-card">
+      <div class="prc-tag prc-tag-d">Diagnostic</div>
+      <div class="prc-icon">🏆</div>
+      <div class="prc-title">Centre Efficiency Ranking</div>
+      <div class="prc-desc">Benchmarks all sorting centres. Identifies leaders and laggards. Creates evidence-based accountability and supports performance improvement incentives.</div>
+      <div class="prc-use">Use for: Benchmarking · Accountability</div>
+    </div>
+    <div class="plat-report-card diag-card">
+      <div class="prc-tag prc-tag-d">Diagnostic</div>
+      <div class="prc-icon">🚛</div>
+      <div class="prc-title">Transport Reliability Analysis</div>
+      <div class="prc-desc">Measures transit speed and consistency between facilities. Identifies unreliable transport links and quantifies their impact on overall network performance.</div>
+      <div class="prc-use">Use for: Transport contracts · Network planning</div>
+    </div>
+    <div class="plat-report-card diag-card">
+      <div class="prc-tag prc-tag-d">Diagnostic</div>
+      <div class="prc-icon">⚠️</div>
+      <div class="prc-title">Network Black Spots &amp; Green Lanes</div>
+      <div class="prc-desc">Flags critical systemic delays for urgent intervention. Identifies best-practice corridors to replicate across the network. Turns data into actionable priorities.</div>
+      <div class="prc-use">Use for: Priority intervention · Best practice</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- PLATFORM 6: MOBILE AGENT APP -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section class="sec" id="plat-app">
+<div class="wrap">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center" class="reveal mc-grid">
+    <div>
+      <div class="plat-num">06 / 06</div>
+      <div class="eye">Field Operations</div>
+      <h2 class="sh">Mobile agent app<br><em>AI-assisted via Telegram</em></h2>
+      <p class="sd">Independent panelists operate through a purpose-built mobile interface integrated with Telegram. AI assistance guides agents through each measurement task — reducing errors and ensuring data quality at the point of capture.</p>
+      <div class="plat-points">
+        <div class="plat-pt"><span class="plat-ck">✓</span><div><strong>Zero-friction onboarding</strong> — panelists operate via Telegram, an app they already use. No dedicated hardware or complex software installation required.</div></div>
+        <div class="plat-pt"><span class="plat-ck">✓</span><div><strong>AI-guided task execution</strong> — the assistant walks panelists through each step, validates inputs in real time and flags anomalies before they become data errors.</div></div>
+        <div class="plat-pt"><span class="plat-ck">✓</span><div><strong>Automatic timestamp capture</strong> — injection and delivery times recorded with precision at the point of event, eliminating manual data entry errors.</div></div>
+        <div class="plat-pt"><span class="plat-ck">✓</span><div><strong>Offline capability</strong> — works in low-connectivity environments. Data syncs automatically when connection is restored, ensuring no measurement is lost.</div></div>
+        <div class="plat-pt"><span class="plat-ck">✓</span><div><strong>Multilingual support</strong> — available in the panelist’s local language, enabling deployment in any UPU member country without translation barriers.</div></div>
+      </div>
+    </div>
+    <div class="reveal reveal-d1">
+      <div class="plat-box" style="background:var(--blue-dark);border-color:rgba(255,255,255,.1)">
+        <div class="plat-box-lbl" style="color:rgba(255,255,255,.45)">ONE Agent App — Telegram Interface</div>
+        <div class="tg-chat">
+          <div class="tg-msg bot"><div class="tg-bubble bot-bubble">📦 <strong>New task assigned</strong><br>Route: Capital → North<br>Product: Priority Letter<br>Inject by: Today 14:00<br><br>Please confirm receipt of your test item.</div></div>
+          <div class="tg-msg user"><div class="tg-bubble user-bubble">✅ Item received. Ready to dispatch.</div></div>
+          <div class="tg-msg bot"><div class="tg-bubble bot-bubble">📍 <strong>Dispatch confirmed</strong><br>T inject: 13:47 UTC<br>Barcode: ONE-2026-04471<br><br>Your item is now in transit. You will be notified when delivery confirmation is required.</div></div>
+          <div class="tg-msg bot"><div class="tg-bubble bot-bubble">🔔 <strong>Delivery expected</strong><br>Panelist North: Please confirm receipt of item ONE-2026-04471.</div></div>
+          <div class="tg-msg user"><div class="tg-bubble user-bubble">✅ Delivered. Condition: Good.</div></div>
+          <div class="tg-msg bot"><div class="tg-bubble bot-bubble">✅ <strong>E2E recorded</strong><br>Transit time: 2d 4h 13m<br>J+3 target: <span style="color:#4ade80">COMPLIANT</span><br>Data uploaded to ONE MS.</div></div>
+        </div>
+        <div style="margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div class="plat-stat-mini dark"><div class="plat-stat-v" style="color:white">100%</div><div class="plat-stat-l" style="color:rgba(255,255,255,.45)">Data capture accuracy</div></div>
+          <div class="plat-stat-mini dark"><div class="plat-stat-v" style="color:white">0</div><div class="plat-stat-l" style="color:rgba(255,255,255,.45)">Manual entry errors</div></div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 </section>
