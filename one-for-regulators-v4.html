@@ -1,0 +1,1699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ONE for Regulators — Universal Postal Union</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ── RESET ───────────────────────────── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Noto Sans',sans-serif;background:#fff;color:#1a2535;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+
+/* ── TOKENS ──────────────────────────── */
+:root{
+  --blue:      #003087;
+  --blue-dark: #00205b;
+  --blue-mid:  #004aad;
+  --blue-tint: #e8eef7;
+  --red:       #C8102E;
+  --red-dk:    #a50d26;
+  --white:     #ffffff;
+  --off:       #F5F7F9;
+  --off2:      #EEF2F7;
+  --border:    #D4DCE8;
+  --text:      #1a2535;
+  --text2:     #3d5068;
+  --text3:     #6b7f96;
+  --max:       1200px;
+  --gutter:    clamp(20px,5vw,80px);
+  --ease:      cubic-bezier(.4,0,.2,1);
+  --r:         4px;
+  --r2:        8px;
+}
+
+/* ── HELPERS ─────────────────────────── */
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.divider{height:1px;background:var(--border)}
+.sec{padding:88px 0}
+.sec-sm{padding:64px 0}
+.bg-off{background:var(--off)}
+
+/* Eyebrow */
+.eye{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:14px}
+.eye::before{content:'';width:24px;height:2px;background:var(--red);flex-shrink:0}
+
+/* Section headings */
+.sh{font-family:'Libre Baskerville',serif;font-size:clamp(26px,2.8vw,40px);font-weight:700;line-height:1.12;color:var(--text);margin-bottom:16px;letter-spacing:-.01em}
+.sh em{font-style:italic;color:var(--blue)}
+.sd{font-size:15px;color:var(--text3);line-height:1.8;max-width:580px}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
+.reveal.vis{opacity:1;transform:none}
+.reveal-d1{transition-delay:.1s}
+.reveal-d2{transition-delay:.2s}
+.reveal-d3{transition-delay:.3s}
+
+/* ── TOPBAR ───────────────────────────── */
+.topbar{
+  background:var(--blue-dark);
+  height:30px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 var(--gutter);
+  font-size:11px;letter-spacing:.04em;
+}
+.tb-l{color:rgba(255,255,255,.5);display:flex;align-items:center;gap:16px}
+.tb-sep{width:1px;height:11px;background:rgba(255,255,255,.15)}
+.tb-r{color:rgba(255,255,255,.3)}
+
+/* ── NAV ──────────────────────────────── */
+.nav{
+  position:sticky;top:0;z-index:200;
+  background:var(--blue);
+  height:58px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 var(--gutter);
+  box-shadow:0 1px 0 rgba(255,255,255,.08);
+  transition:box-shadow .3s;
+}
+.nav.up{box-shadow:0 4px 20px rgba(0,0,0,.22)}
+.nav-brand{display:flex;align-items:center;gap:0}
+.nav-wordmark{
+  font-family:'Libre Baskerville',serif;
+  font-size:22px;font-weight:700;color:white;letter-spacing:.04em;
+  padding-right:16px;margin-right:16px;
+  border-right:1.5px solid rgba(255,255,255,.18);
+}
+.nav-product{display:flex;flex-direction:column;gap:1px}
+.nav-ptitle{font-size:13px;font-weight:600;color:white}
+.nav-psub{font-size:9px;color:rgba(255,255,255,.42);letter-spacing:.1em;text-transform:uppercase}
+.nav-links{display:flex;gap:1px}
+.nav-links a{
+  font-size:12.5px;font-weight:500;color:rgba(255,255,255,.72);
+  padding:8px 13px;border-radius:var(--r);
+  transition:all .2s;
+}
+.nav-links a:hover{color:white;background:rgba(255,255,255,.1)}
+.nav-cta{
+  background:var(--red);color:white;
+  font-size:12.5px;font-weight:700;letter-spacing:.03em;
+  padding:9px 20px;border-radius:var(--r);
+  border:none;cursor:pointer;
+  transition:background .2s,transform .15s;
+}
+.nav-cta:hover{background:var(--red-dk);transform:translateY(-1px)}
+
+/* ── HERO ─────────────────────────────── */
+.hero{background:var(--blue);position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--red);z-index:3}
+.hero-geo{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 80% at 80% 50%, rgba(0,74,173,.45) 0%, transparent 65%),
+    linear-gradient(175deg, var(--blue-dark) 0%, var(--blue) 100%);
+}
+.hero-grid-lines{
+  position:absolute;inset:0;opacity:.04;
+  background-image:
+    repeating-linear-gradient(0deg,transparent,transparent 55px,rgba(255,255,255,1) 55px,rgba(255,255,255,1) 56px),
+    repeating-linear-gradient(90deg,transparent,transparent 55px,rgba(255,255,255,1) 55px,rgba(255,255,255,1) 56px);
+}
+.hero-inner{
+  position:relative;z-index:1;
+  max-width:var(--max);margin:0 auto;
+  padding:80px var(--gutter) 76px;
+  display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;
+}
+
+/* Left */
+.hero-kicker{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.15);
+  border-radius:3px;padding:5px 14px;
+  font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.8);margin-bottom:22px;
+}
+.kicker-dot{width:6px;height:6px;border-radius:50%;background:#60b8f8;animation:blink 2.2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+h1.hero-h{
+  font-family:'Libre Baskerville',serif;
+  font-size:clamp(34px,3.8vw,54px);
+  font-weight:700;line-height:1.08;color:white;
+  letter-spacing:-.02em;margin-bottom:10px;
+}
+h1.hero-h em{font-style:italic;color:rgba(255,255,255,.7);font-weight:400}
+.hero-sub{
+  font-size:clamp(15px,1.5vw,18px);color:rgba(255,255,255,.62);
+  line-height:1.7;max-width:500px;margin-bottom:34px;font-weight:300;
+}
+.hero-sub strong{color:rgba(255,255,255,.9);font-weight:500}
+.hero-btns{display:flex;gap:11px;flex-wrap:wrap;margin-bottom:42px}
+.btn-red{
+  background:var(--red);color:white;
+  font-size:13.5px;font-weight:700;letter-spacing:.04em;
+  padding:12px 26px;border-radius:var(--r);border:none;cursor:pointer;
+  display:inline-block;transition:background .2s,box-shadow .2s,transform .15s;
+}
+.btn-red:hover{background:var(--red-dk);box-shadow:0 8px 22px rgba(200,16,46,.32);transform:translateY(-1px)}
+.btn-outline{
+  color:white;font-size:13.5px;font-weight:500;
+  padding:11px 20px;border-radius:var(--r);
+  border:1.5px solid rgba(255,255,255,.26);
+  display:inline-flex;align-items:center;gap:8px;
+  transition:all .2s;
+}
+.btn-outline:hover{border-color:rgba(255,255,255,.55);background:rgba(255,255,255,.07)}
+.hero-trust{
+  display:inline-flex;align-items:center;gap:12px;
+  padding:11px 16px;
+  border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);
+  border-radius:var(--r);
+}
+.trust-txt{font-size:12px;color:rgba(255,255,255,.55);line-height:1.55}
+.trust-txt strong{color:rgba(255,255,255,.88);font-weight:600}
+
+/* Dashboard mock */
+.dash{
+  background:white;border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 28px 70px rgba(0,0,0,.32),0 0 0 1px rgba(255,255,255,.06);
+}
+.dash-chrome{
+  background:#111f35;padding:9px 14px;
+  display:flex;align-items:center;gap:6px;
+}
+.dc-dot{width:10px;height:10px;border-radius:50%}
+.dc-label{
+  flex:1;text-align:center;
+  font-size:10px;letter-spacing:.07em;text-transform:uppercase;
+  color:rgba(255,255,255,.25);
+}
+.dash-body{padding:14px;background:#f8fafb}
+.dash-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px;padding-bottom:10px;border-bottom:1px solid #e4ecf3}
+.dash-hd-t{font-size:11px;font-weight:700;color:var(--blue)}
+.dash-badge{font-size:9px;background:#eaf0f6;color:var(--text3);padding:3px 9px;border-radius:20px;font-weight:600}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:10px}
+.kpi{background:white;border:1px solid #e2ecf5;border-radius:6px;padding:9px 10px}
+.kpi-l{font-size:8px;letter-spacing:.07em;text-transform:uppercase;color:var(--text3);margin-bottom:3px}
+.kpi-v{font-size:18px;font-weight:700;line-height:1;color:var(--blue)}
+.kpi-v.g{color:#15803d}.kpi-v.r{color:var(--red)}
+.kpi-s{font-size:8px;color:var(--text3);margin-top:2px}
+.dchart{background:white;border:1px solid #e2ecf5;border-radius:6px;padding:11px;margin-bottom:9px}
+.dchart-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}
+.dchart-t{font-size:10px;font-weight:600;color:var(--text)}
+.dchart-tag{font-size:8px;background:rgba(0,48,135,.07);color:var(--blue);padding:2px 7px;border-radius:3px;font-weight:700}
+.bars{display:flex;gap:5px;align-items:flex-end;height:46px}
+.bar{flex:1;border-radius:2px 2px 0 0}
+.dtable{background:white;border:1px solid #e2ecf5;border-radius:6px;overflow:hidden}
+.dth{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;background:#eaf0f6;padding:6px 11px;font-size:8px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text3)}
+.dtr{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:6px 11px;font-size:9.5px;color:var(--text2);border-top:1px solid #f0f4f8}
+.ds{font-size:8px;font-weight:700;padding:2px 6px;border-radius:3px}
+.ok{background:rgba(21,128,61,.1);color:#15803d}
+.warn{background:rgba(161,109,0,.1);color:#a16d00}
+.fail{background:rgba(200,16,46,.09);color:var(--red)}
+
+/* ── STATS BAR ─────────────────────────── */
+.stats-bar{
+  border-top:3px solid var(--red);
+  border-bottom:1px solid var(--border);
+  background:var(--white);
+}
+.stats-inner{
+  max-width:var(--max);margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  padding:0 var(--gutter);
+}
+.stat{
+  padding:36px 20px;text-align:center;
+  border-right:1px solid var(--border);
+  transition:background .2s;
+}
+.stat:last-child{border-right:none}
+.stat:hover{background:var(--off)}
+.stat-n{
+  font-family:'Libre Baskerville',serif;
+  font-size:clamp(40px,4.2vw,56px);font-weight:700;
+  color:var(--blue);line-height:1;margin-bottom:6px;
+}
+.stat-n span{color:var(--red)}
+.stat-l{font-size:13px;color:var(--text3);line-height:1.45}
+
+/* ── MISSION ───────────────────────────── */
+.mission-grid{display:grid;grid-template-columns:2fr 3fr;gap:80px;align-items:start;margin-top:56px}
+.callout{
+  margin-top:24px;background:var(--blue);border-radius:var(--r);
+  padding:22px 24px;
+}
+.callout p{font-size:14px;line-height:1.75;color:rgba(255,255,255,.8)}
+.callout p strong{color:white}
+.objectives{display:flex;flex-direction:column}
+.obj{
+  display:grid;grid-template-columns:36px 1fr;
+  gap:16px;padding:18px 20px;
+  border:1px solid var(--border);border-top:none;
+  background:white;cursor:default;
+  transition:all .2s var(--ease);
+}
+.obj:first-child{border-top:1px solid var(--border);border-radius:var(--r2) var(--r2) 0 0}
+.obj:last-child{border-radius:0 0 var(--r2) var(--r2)}
+.obj:hover{background:var(--blue-tint);border-color:var(--blue-mid);transform:translateX(3px);z-index:1;box-shadow:0 2px 12px rgba(0,48,135,.08)}
+.obj-n{font-family:'Libre Baskerville',serif;font-size:14px;font-weight:700;color:var(--red);margin-top:2px}
+.obj-t{font-size:14px;font-weight:600;color:var(--text);margin-bottom:3px}
+.obj-d{font-size:13px;color:var(--text3);line-height:1.6}
+
+/* ── PILLARS ───────────────────────────── */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px}
+.pillar{
+  background:white;border:1px solid var(--border);border-radius:var(--r2);
+  padding:34px 28px;position:relative;overflow:hidden;
+  transition:all .25s var(--ease);
+}
+.pillar::before{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:var(--blue);transform:scaleX(0);transform-origin:left;
+  transition:transform .3s var(--ease);
+}
+.pillar:hover{box-shadow:0 10px 36px rgba(0,48,135,.1);transform:translateY(-4px)}
+.pillar:hover::before{transform:scaleX(1)}
+.p-num{font-family:'Libre Baskerville',serif;font-size:44px;font-weight:700;color:var(--off2);line-height:1;margin-bottom:16px}
+.p-ch{font-size:12.5px;font-style:italic;color:var(--text3);line-height:1.7;margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.p-icon{width:44px;height:44px;border-radius:8px;background:var(--blue-tint);display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.p-title{font-family:'Libre Baskerville',serif;font-size:18px;font-weight:700;color:var(--text);margin-bottom:9px;line-height:1.25}
+.p-body{font-size:13px;color:var(--text3);line-height:1.75}
+
+/* ── REGIONAL ──────────────────────────── */
+.regional{padding:88px 0;background:var(--blue)}
+.reg-inner{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.r-eye{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px}
+.r-eye::before{content:'';width:24px;height:2px;background:rgba(255,255,255,.3);flex-shrink:0}
+.r-sh{font-family:'Libre Baskerville',serif;font-size:clamp(26px,2.8vw,40px);font-weight:700;line-height:1.12;color:white;margin-bottom:12px;letter-spacing:-.01em}
+.r-sd{font-size:15px;color:rgba(255,255,255,.58);max-width:600px;margin:0 auto;line-height:1.8;font-weight:300}
+
+.rtabs{
+  display:flex;width:fit-content;margin:44px auto 40px;
+  border:1px solid rgba(255,255,255,.16);border-radius:var(--r);overflow:hidden;
+}
+.rtab{
+  padding:11px 28px;font-size:13px;font-weight:600;
+  background:transparent;border:none;border-right:1px solid rgba(255,255,255,.12);
+  color:rgba(255,255,255,.5);cursor:pointer;
+  transition:all .22s var(--ease);
+  display:flex;align-items:center;gap:7px;
+}
+.rtab:last-child{border-right:none}
+.rtab.on{background:rgba(255,255,255,.13);color:white}
+.rtab:hover:not(.on){background:rgba(255,255,255,.06);color:rgba(255,255,255,.85)}
+
+.rc{display:none}
+.rc.on{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.rc-l{display:flex;flex-direction:column;gap:16px}
+.rstats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.rstat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:var(--r2);padding:20px}
+.rstat-v{font-family:'Libre Baskerville',serif;font-size:38px;font-weight:700;color:white;line-height:1;margin-bottom:5px}
+.rstat-v.danger{color:#f87171}
+.rstat-v.caution{color:#fbbf24}
+.rstat-l{font-size:12px;color:rgba(255,255,255,.48);line-height:1.55}
+.rchalls{display:flex;flex-direction:column;gap:10px}
+.rch{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:var(--r2);padding:17px 19px}
+.rch-t{font-size:13px;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:5px;display:flex;align-items:center;gap:8px}
+.rch-d{font-size:12.5px;color:rgba(255,255,255,.48);line-height:1.65}
+.rc-r{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--r2);padding:28px}
+.rc-r-lbl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:20px}
+.rsols{display:flex;flex-direction:column;gap:16px}
+.rsol{display:flex;gap:12px;align-items:flex-start}
+.rsol-ck{color:#60b8f8;font-size:15px;flex-shrink:0;margin-top:1px;font-weight:700}
+.rsol-txt{font-size:13px;color:rgba(255,255,255,.7);line-height:1.65}
+.rsol-txt strong{color:rgba(255,255,255,.95);font-weight:600}
+.rsrc{margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.1);font-size:11px;color:rgba(255,255,255,.28);font-style:italic;line-height:1.55}
+
+/* ── HOW IT WORKS ──────────────────────── */
+.htabs{
+  display:flex;width:fit-content;
+  border:1px solid var(--border);border-radius:var(--r);overflow:hidden;
+  margin-top:44px;
+}
+.htab{
+  padding:10px 24px;font-size:13px;font-weight:600;
+  background:white;border:none;border-right:1px solid var(--border);
+  color:var(--text3);cursor:pointer;transition:all .2s;
+}
+.htab:last-child{border-right:none}
+.htab.on{background:var(--blue);color:white}
+.htab:hover:not(.on){background:var(--off2);color:var(--text)}
+.hpanels{margin-top:32px}
+.hp{display:none}
+.hp.on{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+.hp-title{font-family:'Libre Baskerville',serif;font-size:26px;font-weight:700;color:var(--text);margin-bottom:12px;line-height:1.2}
+.hp-desc{font-size:14px;color:var(--text3);line-height:1.8;margin-bottom:24px}
+.hp-row{margin-bottom:16px}
+.hp-rl{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:5px}
+.hp-rv{font-size:13.5px;color:var(--text2);line-height:1.65}
+.rms-box{margin-top:18px;padding:14px 16px;background:var(--blue-tint);border:1px solid rgba(0,48,135,.14);border-left:3px solid var(--blue);border-radius:0 var(--r) var(--r) 0}
+.rms-t{font-size:11px;font-weight:700;color:var(--blue);margin-bottom:4px}
+.rms-d{font-size:12.5px;color:var(--text3);line-height:1.65}
+.hp-box{background:var(--off);border:1px solid var(--border);border-radius:var(--r2);padding:26px}
+.hp-box-lbl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:16px}
+.journey{display:flex;align-items:center;overflow-x:auto;padding:6px 0;gap:0}
+.jstop{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;min-width:50px}
+.jicon{width:34px;height:34px;border-radius:7px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:13px}
+.jlbl{font-size:8px;text-align:center;color:var(--text3);line-height:1.35}
+.jtag{font-size:7px;font-weight:700;background:var(--blue-tint);border:1px solid rgba(0,48,135,.14);color:var(--blue);padding:2px 5px;border-radius:3px}
+.jarr{color:#c4cdd8;font-size:14px;flex-shrink:0;margin-bottom:18px}
+.mods{display:flex;flex-direction:column;gap:7px;margin-top:18px}
+.mod{display:flex;gap:9px;font-size:12.5px;color:var(--text2);line-height:1.4;align-items:flex-start}
+.mod-ck{color:var(--blue);flex-shrink:0;font-size:13px;margin-top:1px}
+
+/* ── REPORTS ───────────────────────────── */
+.reports{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:48px}
+.report{
+  display:flex;gap:15px;align-items:flex-start;
+  padding:20px 22px;background:white;
+  border:1px solid var(--border);border-radius:var(--r2);
+  transition:all .22s var(--ease);
+}
+.report:hover{border-color:var(--blue-mid);box-shadow:0 6px 22px rgba(0,48,135,.09);transform:translateY(-2px)}
+.rep-ico{width:38px;height:38px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.ico-e{background:var(--blue-tint)}
+.ico-d{background:rgba(200,16,46,.07)}
+.rep-t{font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px}
+.rep-d{font-size:12.5px;color:var(--text3);line-height:1.55}
+.rep-tag{display:inline-block;margin-top:7px;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:3px}
+.tag-e{background:var(--blue-tint);color:var(--blue)}
+.tag-d{background:rgba(200,16,46,.08);color:var(--red)}
+
+/* ── PLANS ─────────────────────────────── */
+.plans-intro{display:grid;grid-template-columns:1fr 2fr;gap:56px;align-items:start;margin-bottom:44px}
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.plan{
+  background:white;border:1px solid var(--border);border-radius:var(--r2);
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:all .25s var(--ease);
+}
+.plan:hover{box-shadow:0 14px 44px rgba(0,48,135,.12);transform:translateY(-4px)}
+.plan.feat{border-color:var(--blue);box-shadow:0 4px 20px rgba(0,48,135,.1)}
+.plan-hd{padding:26px 24px;border-bottom:1px solid var(--border);position:relative}
+.plan-hd.blue{background:var(--blue)}
+.p-badge{position:absolute;top:12px;right:12px;background:var(--red);color:white;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:3px}
+.p-tier{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:3px}
+.pt-d{color:var(--red)}.pt-l{color:rgba(255,255,255,.55)}
+.p-name{font-family:'Libre Baskerville',serif;font-size:28px;font-weight:700;margin-bottom:4px}
+.pn-d{color:var(--text)}.pn-w{color:white}
+.p-sub{font-size:12px;line-height:1.4}
+.ps-d{color:var(--text3)}.ps-l{color:rgba(255,255,255,.5)}
+.plan-body{padding:22px 24px;flex:1;display:flex;flex-direction:column}
+.p-ideal{font-size:13px;color:var(--text3);line-height:1.7;margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.p-fl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:10px}
+.p-feats{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.pf{display:flex;gap:9px;align-items:flex-start;font-size:13px;color:var(--text2);line-height:1.4}
+.pf-c{color:var(--blue);flex-shrink:0;margin-top:1px}
+.p-adds{font-size:11px;color:var(--text3);line-height:1.7;margin-top:auto;padding-top:12px;border-top:1px solid var(--border)}
+.p-cta{
+  display:block;text-align:center;font-size:13px;font-weight:700;letter-spacing:.04em;
+  padding:12px;border-radius:var(--r);margin-top:16px;
+  border:none;cursor:pointer;font-family:'Noto Sans',sans-serif;
+  transition:all .2s var(--ease);
+}
+.cta-o{background:transparent;border:1.5px solid var(--blue);color:var(--blue)}
+.cta-o:hover{background:var(--blue);color:white}
+.cta-f{background:var(--red);color:white}
+.cta-f:hover{background:var(--red-dk)}
+
+/* ── ROADMAP ───────────────────────────── */
+.roadmap{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:56px;position:relative}
+.roadmap::before{
+  content:'';position:absolute;
+  top:29px;left:calc(16.67% + 29px);right:calc(16.67% + 29px);
+  height:2px;background:linear-gradient(90deg,var(--blue),rgba(0,48,135,.2));
+}
+.rs{text-align:center;padding:0 20px}
+.rs-dot{
+  width:58px;height:58px;border-radius:50%;
+  margin:0 auto 20px;display:flex;align-items:center;justify-content:center;
+  font-family:'Libre Baskerville',serif;font-size:22px;font-weight:700;
+  position:relative;z-index:2;
+}
+.rd1{background:var(--off);border:2px solid var(--blue);color:var(--blue)}
+.rd2{background:var(--blue);color:white}
+.rd3{background:var(--red);color:white}
+.rs-t{font-size:16px;font-weight:700;color:var(--text);margin-bottom:8px}
+.rs-d{font-size:13px;color:var(--text3);line-height:1.7}
+
+/* ── CONTACT ───────────────────────────── */
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;margin-top:52px}
+.form-wrap{background:var(--off);border:1px solid var(--border);border-radius:var(--r2);padding:38px}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.ff{display:flex;flex-direction:column;gap:5px}
+.ff.full{grid-column:1/-1}
+.fl{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text3)}
+.fi{
+  background:white;border:1.5px solid var(--border);border-radius:var(--r);
+  padding:11px 13px;font-family:'Noto Sans',sans-serif;
+  font-size:14px;color:var(--text);outline:none;width:100%;
+  transition:border-color .2s,box-shadow .2s;
+}
+.fi::placeholder{color:#b0bec5}
+.fi:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,48,135,.08)}
+select.fi{appearance:none;cursor:pointer}
+.f-submit{
+  background:var(--red);color:white;
+  font-family:'Noto Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:.04em;
+  padding:13px;border-radius:var(--r);border:none;cursor:pointer;width:100%;
+  margin-top:4px;transition:background .2s,box-shadow .2s;
+}
+.f-submit:hover{background:var(--red-dk);box-shadow:0 8px 22px rgba(200,16,46,.28)}
+.f-note{font-size:11px;color:var(--text3);margin-top:10px;line-height:1.6;text-align:center}
+.success-state{display:none;text-align:center;padding:44px 20px}
+.ss-icon{width:64px;height:64px;border-radius:50%;background:var(--blue-tint);border:2px solid var(--blue);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:24px;color:var(--blue)}
+.ss-t{font-family:'Libre Baskerville',serif;font-size:24px;color:var(--text);margin-bottom:8px}
+.ss-d{font-size:14px;color:var(--text3);line-height:1.75}
+
+.team-intro{font-size:15px;color:var(--text3);line-height:1.8;margin-bottom:28px;font-weight:300}
+.person{display:flex;gap:18px;align-items:flex-start;padding:22px 0;border-bottom:1px solid var(--border)}
+.person:first-of-type{border-top:1px solid var(--border)}
+.person-photo{width:80px;height:80px;border-radius:var(--r2);object-fit:cover;object-position:top;flex-shrink:0;border:1px solid var(--border)}
+.person-name{font-family:'Libre Baskerville',serif;font-size:18px;font-weight:700;color:var(--text);margin-bottom:2px}
+.person-role{font-size:13px;color:var(--text3);margin-bottom:11px}
+.plinks{display:flex;flex-direction:column;gap:7px}
+.plink{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--blue);transition:color .2s}
+.plink:hover{color:var(--red)}
+.pteams{
+  display:inline-flex;align-items:center;gap:7px;
+  background:var(--blue-tint);border:1px solid rgba(0,48,135,.16);
+  border-radius:var(--r);padding:7px 13px;
+  font-size:12px;font-weight:600;color:var(--blue);
+  transition:all .2s;margin-top:4px;width:fit-content;
+}
+.pteams:hover{background:var(--blue);color:white;border-color:var(--blue)}
+
+/* ── FOOTER ────────────────────────────── */
+footer{
+  background:var(--blue-dark);
+  padding:26px var(--gutter);
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;
+}
+.ft-brand{font-family:'Libre Baskerville',serif;font-size:15px;font-weight:700;color:white}
+.ft-sub{font-size:11px;color:rgba(255,255,255,.33);margin-top:3px}
+.ft-copy{font-size:10px;color:rgba(255,255,255,.22);letter-spacing:.06em;text-transform:uppercase}
+
+/* ── MULTI-CARRIER CHAIN ───────────────── */
+.mc-chain{display:flex;flex-direction:column;gap:0}
+.mc-step{
+  display:flex;gap:16px;align-items:flex-start;
+  padding:16px 20px;background:white;border:1px solid var(--border);
+  border-top:none;transition:all .2s var(--ease);
+}
+.mc-step:first-child{border-top:1px solid var(--border);border-radius:var(--r2) var(--r2) 0 0}
+.mc-step:hover{background:var(--blue-tint);border-color:var(--blue-mid);z-index:1}
+.mc-ico{
+  width:36px;height:36px;border-radius:7px;flex-shrink:0;
+  background:rgba(0,150,136,.08);border:1px solid rgba(0,150,136,.2);
+  display:flex;align-items:center;justify-content:center;margin-top:2px;
+}
+.mc-step-t{font-size:14px;font-weight:600;color:var(--text);margin-bottom:3px}
+.mc-step-d{font-size:12.5px;color:var(--text3);line-height:1.55}
+.mc-arr{
+  text-align:center;color:rgba(0,150,136,.5);font-size:18px;
+  line-height:1;padding:4px 0;
+}
+.mc-result{
+  background:var(--blue);border-radius:0 0 var(--r2) var(--r2);
+  padding:18px 22px;text-align:center;
+  border:1px solid var(--blue);border-top:none;
+}
+.mc-result-t{font-family:'Libre Baskerville',serif;font-size:20px;font-weight:700;color:white;margin-bottom:4px}
+.mc-result-d{font-size:12px;color:rgba(255,255,255,.65)}
+
+/* ── PLATFORM MOCK ─────────────────────── */
+.plat-feats{display:flex;flex-direction:column;gap:10px}
+.plat-feat{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--text2);line-height:1.4}
+.plat-ck{color:var(--blue);flex-shrink:0;font-size:14px;font-weight:700}
+.plat-mock{
+  background:white;border-radius:10px;overflow:hidden;
+  box-shadow:0 16px 48px rgba(0,48,135,.14),0 0 0 1px var(--border);
+}
+.pm-bar{
+  background:#111f35;padding:9px 13px;
+  display:flex;align-items:center;gap:6px;
+}
+.pm-dot{width:9px;height:9px;border-radius:50%}
+.pm-title{flex:1;text-align:center;font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.25)}
+.pm-badge{font-size:8px;font-weight:700;background:rgba(22,163,74,.2);color:#22c55e;padding:2px 7px;border-radius:10px;letter-spacing:.06em}
+.pm-body{display:flex;background:#f0f4f8}
+.pm-sidebar{
+  width:36px;background:#1a2b45;
+  display:flex;flex-direction:column;align-items:center;
+  padding:10px 0;gap:14px;
+}
+.pm-sitem{width:22px;height:22px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:11px;cursor:pointer;transition:background .2s}
+.pm-sitem.active{background:rgba(255,255,255,.15)}
+.pm-main{flex:1;padding:10px;display:flex;flex-direction:column;gap:8px}
+.pm-row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pm-card{background:white;border:1px solid #e2ecf5;border-radius:6px;padding:10px}
+.pm-card-t{font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text3);margin-bottom:8px}
+.pm-alerts{display:flex;flex-direction:column;gap:4px}
+.pm-alert{font-size:9px;padding:4px 8px;border-radius:3px;font-weight:500}
+.pm-alert.warn{background:rgba(251,191,36,.1);color:#92400e}
+.pm-alert.ok{background:rgba(21,128,61,.08);color:#15803d}
+.pm-bars2{display:flex;flex-direction:column;gap:5px}
+.pm-brow{display:flex;align-items:center;gap:5px;font-size:8px;color:var(--text3)}
+.pm-btrack{flex:1;height:6px;background:#e8f0f8;border-radius:3px;overflow:hidden}
+.pm-bfill{height:100%;border-radius:3px}
+.pm-pstats{display:flex;gap:12px;justify-content:center;padding:8px 0}
+.pm-pstat{display:flex;flex-direction:column;align-items:center;gap:2px}
+.pm-ps-n{font-size:20px;font-weight:700;line-height:1;font-family:'Libre Baskerville',serif}
+.pm-ps-n.g{color:#15803d}.pm-ps-n.w{color:var(--text3)}.pm-ps-n.r{color:var(--red)}
+.pm-ps-l{font-size:8px;color:var(--text3)}
+.pm-donut-wrap{display:flex;align-items:center;gap:10px;padding:4px 0}
+.pm-legend{display:flex;flex-direction:column;gap:4px}
+.pm-leg-item{display:flex;align-items:center;gap:5px;font-size:8.5px;color:var(--text3)}
+.pm-leg-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0}
+
+/* ── E2E CITY-TO-CITY MAP ──────────────── */
+.e2e-map{
+  display:grid;grid-template-columns:120px 1fr 120px;
+  gap:0;align-items:center;padding:20px 0 10px;
+}
+.e2e-city{
+  display:flex;flex-direction:column;align-items:center;gap:5px;
+  padding:14px 10px;border-radius:var(--r2);
+  border:2px solid var(--border);background:white;
+  cursor:pointer;transition:all .22s var(--ease);
+  text-align:center;
+}
+.e2e-city:hover,.e2e-city.active{border-color:var(--blue);background:var(--blue-tint);transform:translateY(-2px)}
+.e2e-city-icon{font-size:26px;line-height:1}
+.e2e-city-name{font-size:14px;font-weight:700;color:var(--text)}
+.e2e-city-role{font-size:10px;color:var(--text3);letter-spacing:.06em;text-transform:uppercase}
+.e2e-panelist{
+  margin-top:4px;font-size:11px;font-weight:600;
+  background:rgba(0,48,135,.08);color:var(--blue);
+  padding:3px 8px;border-radius:3px;
+}
+.e2e-middle{display:flex;flex-direction:column;gap:10px;padding:0 16px}
+.e2e-line{position:relative;height:24px;display:flex;align-items:center}
+.e2e-line-track{
+  width:100%;height:3px;background:var(--border);
+  border-radius:2px;position:relative;overflow:visible;
+}
+.e2e-line-fill{
+  position:absolute;left:0;top:0;height:100%;
+  width:0%;background:var(--blue);border-radius:2px;
+  transition:width 1.2s var(--ease);
+}
+.e2e-envelope{
+  position:absolute;top:50%;transform:translate(-50%,-50%);
+  font-size:14px;transition:left 1.2s var(--ease);
+  left:0%;filter:drop-shadow(0 1px 3px rgba(0,0,0,.2));
+}
+.e2e-blackbox{
+  border:1.5px dashed var(--border);border-radius:var(--r2);
+  padding:10px 14px;text-align:center;cursor:pointer;
+  background:var(--off);transition:all .22s;
+}
+.e2e-blackbox:hover,.e2e-blackbox.active{border-color:var(--text3);background:white}
+.e2e-bb-label{font-size:11px;font-weight:700;color:var(--text2);margin-bottom:2px}
+.e2e-bb-sub{font-size:10px;color:var(--text3);margin-bottom:4px}
+.e2e-bb-note{font-size:9px;font-style:italic;color:var(--text3)}
+.e2e-timer-bar{
+  display:flex;align-items:center;gap:10px;
+  margin:10px 0 0;padding:10px 14px;
+  background:rgba(0,48,135,.04);border:1px solid rgba(0,48,135,.1);
+  border-radius:var(--r);
+}
+.e2e-t-label{font-size:10px;font-weight:700;color:var(--blue);white-space:nowrap}
+.e2e-t-track{
+  flex:1;height:6px;background:var(--border);border-radius:3px;
+  position:relative;overflow:visible;
+}
+.e2e-t-fill{
+  height:100%;width:0%;background:var(--blue);border-radius:3px;
+  transition:width 1.2s var(--ease);
+}
+.e2e-t-badge{
+  position:absolute;top:-20px;left:50%;transform:translateX(-50%);
+  font-size:8px;font-weight:700;color:var(--blue);
+  background:white;border:1px solid rgba(0,48,135,.2);
+  padding:1px 6px;border-radius:3px;white-space:nowrap;
+}
+
+/* ── DIAGNOSTIC SEGMENTS ───────────────── */
+.diag-route-header{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 0 14px;border-bottom:1px solid var(--border);margin-bottom:16px;
+}
+.diag-route-lbl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3)}
+.diag-route-pill{
+  font-size:12px;font-weight:700;color:white;
+  background:var(--blue);padding:4px 12px;border-radius:20px;
+}
+.diag-route-sub{font-size:11px;color:var(--text3)}
+.diag-segments{
+  display:flex;align-items:center;
+  padding:8px 0 16px;gap:0;
+}
+.diag-seg{
+  display:flex;flex-direction:column;align-items:center;gap:5px;
+  flex:0 0 auto;cursor:pointer;transition:transform .2s;
+}
+.diag-seg:hover{transform:translateY(-3px)}
+.diag-seg-node{
+  width:56px;height:56px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:2px;
+  border:2.5px solid transparent;
+  transition:all .22s var(--ease);
+  background:var(--blue);
+  box-shadow:0 2px 8px rgba(0,48,135,.18);
+}
+.diag-seg.active .diag-seg-node{
+  background:white;border-color:var(--blue);
+  box-shadow:0 0 0 4px rgba(0,48,135,.12),0 4px 16px rgba(0,48,135,.2);
+}
+.diag-seg-icon{font-size:20px;line-height:1}
+.diag-seg-badge{
+  font-size:7px;font-weight:700;letter-spacing:.05em;
+  padding:1px 5px;border-radius:2px;
+}
+.centre-badge{background:rgba(255,255,255,.25);color:white}
+.diag-seg.active .centre-badge{background:rgba(0,48,135,.1);color:var(--blue)}
+.diag-seg-lbl{font-size:9px;font-weight:600;color:var(--text2);text-align:center;line-height:1.3;max-width:70px}
+.diag-seg-time{
+  font-size:11px;font-weight:700;color:var(--blue);
+  background:var(--blue-tint);border:1px solid rgba(0,48,135,.14);
+  padding:2px 8px;border-radius:3px;min-width:40px;text-align:center;
+}
+.diag-connector{
+  flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;
+  cursor:pointer;padding:0 4px;position:relative;
+  transition:transform .2s;
+}
+.diag-connector:hover{transform:translateY(-2px)}
+.diag-connector::before{
+  content:'';position:absolute;top:24px;left:0;right:0;height:2px;
+  background:var(--border);z-index:0;
+}
+.diag-connector.active::before{background:rgba(0,150,136,.4)}
+.diag-truck{font-size:18px;position:relative;z-index:1;transition:transform .2s}
+.diag-connector:hover .diag-truck{transform:translateX(4px)}
+.diag-conn-lbl{font-size:9px;font-weight:600;color:var(--text3);text-align:center}
+.diag-conn-time{
+  font-size:10px;font-weight:700;color:#007A6B;
+  background:rgba(0,122,107,.08);border:1px solid rgba(0,122,107,.2);
+  padding:2px 7px;border-radius:3px;min-width:36px;text-align:center;
+}
+/* Centre drill-down bars */
+.diag-centre-detail{
+  margin:12px 0;padding:14px 16px;
+  background:white;border:1px solid var(--border);border-radius:var(--r2);
+  animation:fadePanel .25s ease;
+}
+.dco-title{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
+.dco-ops{display:flex;flex-direction:column;gap:8px}
+.dco-op{display:grid;grid-template-columns:90px 1fr 40px;gap:8px;align-items:center}
+.dco-op-lbl{font-size:11px;color:var(--text2);font-weight:500}
+.dco-op-bar{height:8px;background:var(--off2);border-radius:4px;overflow:hidden}
+.dco-bar-fill{height:100%;border-radius:4px;width:0%;transition:width .6s var(--ease)}
+.entry{background:var(--blue)}
+.proc{background:#009688}
+.exit-bar{background:#5c7da8}
+.dco-op-val{font-size:10px;font-weight:700;color:var(--text3);text-align:right}
+
+/* Shared detail panel */
+.ij-detail{
+  background:var(--blue-tint);border:1px solid rgba(0,48,135,.14);
+  border-left:3px solid var(--blue);
+  border-radius:0 var(--r) var(--r) 0;
+  padding:13px 16px;
+}
+.ij-panel{display:none;font-size:12.5px;color:var(--text2);line-height:1.7;animation:fadePanel .25s ease}
+.ij-panel.active{display:block}
+.ij-panel strong{color:var(--blue);font-weight:700}
+.ij-panel em{color:var(--text);font-style:italic}
+.ij-mod-ref{display:block;margin-top:6px;font-size:11px;color:var(--text3);font-style:italic}
+@keyframes fadePanel{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.mod{transition:background .18s,color .18s;border-radius:var(--r);padding:3px 6px;margin:-3px -6px}
+.mod.highlight{background:rgba(0,48,135,.07);color:var(--blue)}
+.mod.highlight .mod-ck{color:var(--blue)}
+
+/* ── RESPONSIVE ────────────────────────── */
+@media(max-width:920px){
+  .hero-inner,.mission-grid,.rc.on,.hp.on,.contact-layout,.plans-grid,.roadmap,.pillars,.plans-intro,.mc-grid,.plat-grid{grid-template-columns:1fr}
+  .stats-inner,.rstats,.reports{grid-template-columns:1fr 1fr}
+  .roadmap::before{display:none}
+  .topbar,.nav,footer,.hero-inner,.reg-inner{padding-left:20px;padding-right:20px}
+  .wrap{padding-left:20px;padding-right:20px}
+  .hero-inner{padding:52px 20px}
+  .fgrid{grid-template-columns:1fr}
+  .rtabs{flex-wrap:wrap;width:100%;border-radius:var(--r)}
+  .rtab{flex:1;justify-content:center;border-right:none;border-bottom:1px solid rgba(255,255,255,.12)}
+  .form-wrap{padding:24px}
+}
+@media(max-width:560px){
+  .stats-inner,.reports{grid-template-columns:1fr}
+  .hero-right{order:-1}
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="tb-l">
+    <span>Universal Postal Union · ONE Solutions</span>
+    <div class="tb-sep"></div>
+    <span>A United Nations Specialised Agency</span>
+  </div>
+  <div class="tb-r">Berne, Switzerland</div>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-brand">
+    <div class="nav-wordmark">UPU</div>
+    <div class="nav-product">
+      <span class="nav-ptitle">ONE for Regulators</span>
+      <span class="nav-psub">Domestic Quality Measurement</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#mission">Mission</a>
+    <a href="#challenges">Challenges</a>
+    <a href="#how">How It Works</a>
+    <a href="#reports">Reports</a>
+    <a href="#plans">Plans</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Schedule a Meeting</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-geo"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-kicker"><div class="kicker-dot"></div>UPU Domestic Measurement Service · 2026</div>
+      <h1 class="hero-h">Regulatory oversight<br>powered by <em>objective,<br>independent data</em></h1>
+      <p class="hero-sub"><strong>ONE for Regulators</strong> is the Universal Postal Union's domestic postal quality measurement service — giving regulators verified data to enforce standards, manage licences, and protect consumers.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-red">Schedule a Demonstration →</a>
+        <a href="#challenges" class="btn-outline">See the challenge <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="hero-trust">
+        <svg width="26" height="26" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/><path d="M14 2C14 2 9 8 9 14s5 12 5 12 5-6 5-12S14 2 14 2z" stroke="rgba(255,255,255,.3)" stroke-width="1.2" fill="none"/><line x1="2" y1="14" x2="26" y2="14" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/><line x1="4" y1="9" x2="24" y2="9" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/><line x1="4" y1="19" x2="24" y2="19" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/></svg>
+        <span class="trust-txt">Methodology accepted by <strong>governments, operators and consumers worldwide</strong><br>Independent · UN-endorsed · 15+ years of measurement experience</span>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="dash">
+        <div class="dash-chrome">
+          <div class="dc-dot" style="background:#ff5f57"></div>
+          <div class="dc-dot" style="background:#ffbd2e"></div>
+          <div class="dc-dot" style="background:#28c840"></div>
+          <div class="dc-label">ONE Management System · Performance Dashboard</div>
+        </div>
+        <div class="dash-body">
+          <div class="dash-hd"><span class="dash-hd-t">Compliance Overview — All Carriers</span><span class="dash-badge">Current Month</span></div>
+          <div class="kpis">
+            <div class="kpi"><div class="kpi-l">E2E Compliance</div><div class="kpi-v g">87.4%</div><div class="kpi-s">↑ 2.1% vs prior</div></div>
+            <div class="kpi"><div class="kpi-l">Avg Transit</div><div class="kpi-v">3.2d</div><div class="kpi-s">Target: J+3</div></div>
+            <div class="kpi"><div class="kpi-l">Flagged</div><div class="kpi-v r">26</div><div class="kpi-s">Items delayed</div></div>
+            <div class="kpi"><div class="kpi-l">Panelists</div><div class="kpi-v">10</div><div class="kpi-s">100% active</div></div>
+          </div>
+          <div class="dchart">
+            <div class="dchart-h"><span class="dchart-t">J+K Performance by Carrier</span><span class="dchart-tag">E2E</span></div>
+            <div class="bars">
+              <div class="bar" style="height:75%;background:rgba(0,48,135,.45)"></div>
+              <div class="bar" style="height:54%;background:rgba(0,48,135,.35)"></div>
+              <div class="bar" style="height:92%;background:rgba(0,48,135,.6)"></div>
+              <div class="bar" style="height:38%;background:rgba(200,16,46,.42)"></div>
+              <div class="bar" style="height:80%;background:rgba(0,48,135,.5)"></div>
+              <div class="bar" style="height:65%;background:rgba(0,48,135,.4)"></div>
+              <div class="bar" style="height:87%;background:rgba(21,128,61,.45)"></div>
+            </div>
+          </div>
+          <div class="dtable">
+            <div class="dth"><span>Carrier / Route</span><span>E2E Rate</span><span>Avg Days</span><span>Status</span></div>
+            <div class="dtr"><span>Carrier A · Capital</span><span>94.2%</span><span>2.8d</span><span><span class="ds ok">COMPLIANT</span></span></div>
+            <div class="dtr"><span>Carrier B · North</span><span>78.1%</span><span>4.1d</span><span><span class="ds warn">REVIEW</span></span></div>
+            <div class="dtr"><span>Carrier C · East</span><span>61.3%</span><span>5.6d</span><span><span class="ds fail">BREACH</span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat reveal"><div class="stat-n"><span>+</span>80</div><div class="stat-l">Countries with UPU measurement experience</div></div>
+    <div class="stat reveal reveal-d1"><div class="stat-n"><span>+</span>2000</div><div class="stat-l">Data capture points deployed globally</div></div>
+    <div class="stat reveal reveal-d2"><div class="stat-n">15<span>+</span></div><div class="stat-l">Years measuring postal quality</div></div>
+    <div class="stat reveal reveal-d3"><div class="stat-n"><span>1</span></div><div class="stat-l">UN-endorsed global methodology</div></div>
+  </div>
+</div>
+
+<!-- MISSION -->
+<section class="sec" id="mission">
+<div class="wrap">
+  <div class="mission-grid">
+    <div class="reveal">
+      <div class="eye">Your Regulatory Mission</div>
+      <h2 class="sh">Five objectives.<br>One foundation.</h2>
+      <p class="sd">Every postal regulator shares the same mandate. Meeting it requires one thing: <em>objective, independent, credible data</em> that every stakeholder accepts without dispute.</p>
+      <div class="callout">
+        <p>A single foundation underpins all five objectives: <strong>objective, independent, and credible data</strong> — a methodology accepted by governments, operators, and consumers worldwide.</p>
+      </div>
+    </div>
+    <div class="objectives reveal reveal-d1">
+      <div class="obj"><div class="obj-n">01</div><div><div class="obj-t">Quality of Service Control</div><div class="obj-d">Verify operator compliance with service standards and take corrective action when they fall short.</div></div></div>
+      <div class="obj"><div class="obj-n">02</div><div><div class="obj-t">Tariff Regulation</div><div class="obj-d">Make informed pricing decisions based on verified performance data — with clear incentives and penalties.</div></div></div>
+      <div class="obj"><div class="obj-n">03</div><div><div class="obj-t">Licence Management</div><div class="obj-d">Evaluate operators objectively for licence renewals and set clear, enforceable operating conditions.</div></div></div>
+      <div class="obj"><div class="obj-n">04</div><div><div class="obj-t">Consumer Protection</div><div class="obj-d">Resolve complaints with credible evidence. Ensure transparent public reporting and nationwide coverage.</div></div></div>
+      <div class="obj"><div class="obj-n">05</div><div><div class="obj-t">System Quality Improvement</div><div class="obj-d">Support Designated Operators in identifying performance gaps and driving improvements across the system.</div></div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PILLARS -->
+<section class="sec bg-off">
+<div class="wrap">
+  <div class="reveal" style="text-align:center">
+    <div class="eye" style="justify-content:center">How ONE Addresses the Challenges</div>
+    <h2 class="sh" style="text-align:center">Three challenges.<br>Three structural solutions.</h2>
+    <p class="sd" style="margin:0 auto;text-align:center">One UN-endorsed platform purpose-built for regulatory independence.</p>
+  </div>
+  <div class="pillars reveal">
+    <div class="pillar">
+      <div class="p-num">01</div>
+      <div class="p-ch">Regulators need a real-time view of network performance — not just historical reports — to act proactively.</div>
+      <div class="p-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" fill="rgba(0,48,135,.4)"/><circle cx="12" cy="12" r="9" stroke="#003087" stroke-width="1.3" fill="none" stroke-dasharray="3 2"/><line x1="12" y1="3" x2="12" y2="6" stroke="#003087" stroke-width="1.3"/><line x1="12" y1="18" x2="12" y2="21" stroke="#003087" stroke-width="1.3"/><line x1="3" y1="12" x2="6" y2="12" stroke="#003087" stroke-width="1.3"/><line x1="18" y1="12" x2="21" y2="12" stroke="#003087" stroke-width="1.3"/></svg></div>
+      <div class="p-title">End-to-End &amp; Network Visibility</div>
+      <p class="p-body">Through sampling or real postal events, ONE provides a near real-time view of the entire postal journey — from pick-up to final delivery.</p>
+    </div>
+    <div class="pillar">
+      <div class="p-num">02</div>
+      <div class="p-ch">Relying on a single data source — often the operator itself — undermines the independence regulators need.</div>
+      <div class="p-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2l9 4.5V13c0 4.8-3.8 9.3-9 10.5C6.8 22.3 3 17.8 3 13V6.5L12 2z" stroke="#003087" stroke-width="1.3" fill="none"/><path d="M8.5 12l2.5 2.5 4.5-4.5" stroke="#003087" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="p-title">Independent &amp; Verifiable Data</div>
+      <p class="p-body">An independent panel of senders with automatic EDI and RFID capture generates data that is unbiased, verifiable, and accepted by all parties.</p>
+    </div>
+    <div class="pillar">
+      <div class="p-num">03</div>
+      <div class="p-ch">Without a common framework, comparing operators or benchmarking over time is unreliable — and legally contestable.</div>
+      <div class="p-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2L21 7v10l-9 5-9-5V7l9-5z" stroke="#003087" stroke-width="1.3" fill="none"/><path d="M12 7l5.5 3v6L12 19l-5.5-3V10L12 7z" fill="rgba(0,48,135,.1)" stroke="#003087" stroke-width=".8"/></svg></div>
+      <div class="p-title">A UPU-Endorsed Global Standard</div>
+      <p class="p-body">The UPU provides a single, consistent methodology recognised by governments, operators, and consumers — built on 15+ years of measurement experience.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- MULTI-CARRIER (slide 4) -->
+<section class="sec bg-off" id="multicarrier">
+<div class="wrap">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center" class="reveal mc-grid">
+    <div>
+      <div class="eye">Multi-Carrier · Multi-Product</div>
+      <h2 class="sh">A fair comparison<br>for every operator</h2>
+      <p class="sd">ONE provides a complete view at every level: by carrier, by product, by route. A consistent methodology applied to all operators guarantees directly comparable results — eliminating methodological disputes before they arise.</p>
+    </div>
+    <div class="mc-chain reveal reveal-d1">
+      <div class="mc-step">
+        <div class="mc-ico">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="1" y="2" width="16" height="14" rx="2" stroke="#009688" stroke-width="1.4"/><line x1="1" y1="6" x2="17" y2="6" stroke="#009688" stroke-width="1.4"/><line x1="5" y1="10" x2="10" y2="10" stroke="#009688" stroke-width="1.4" stroke-linecap="round"/><circle cx="13.5" cy="10" r="1.5" fill="#009688"/></svg>
+        </div>
+        <div class="mc-step-body">
+          <div class="mc-step-t">Objective Methodology</div>
+          <div class="mc-step-d">Consistent across all operators — no custom frameworks, no exceptions</div>
+        </div>
+      </div>
+      <div class="mc-arr">↓</div>
+      <div class="mc-step">
+        <div class="mc-ico">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><ellipse cx="6" cy="9" rx="3" ry="5" stroke="#009688" stroke-width="1.4"/><ellipse cx="12" cy="9" rx="3" ry="5" stroke="#009688" stroke-width="1.4"/><line x1="9" y1="4" x2="9" y2="14" stroke="#009688" stroke-width="1" stroke-dasharray="2 1.5"/></svg>
+        </div>
+        <div class="mc-step-body">
+          <div class="mc-step-t">Comparable Data</div>
+          <div class="mc-step-d">Eliminates methodological disputes — every metric is calculated the same way</div>
+        </div>
+      </div>
+      <div class="mc-arr">↓</div>
+      <div class="mc-step">
+        <div class="mc-ico">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2l7 3.5V10c0 3.8-3 7.3-7 8.2C6 17.3 3 13.8 3 10V5.5L9 2z" stroke="#009688" stroke-width="1.4" fill="none"/></svg>
+        </div>
+        <div class="mc-step-body">
+          <div class="mc-step-t">Level Playing Field</div>
+          <div class="mc-step-d">Balanced market for all operators — private entrants and designated operators measured identically</div>
+        </div>
+      </div>
+      <div class="mc-arr">↓</div>
+      <div class="mc-step">
+        <div class="mc-ico">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M3 5h8M3 13h10" stroke="#009688" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </div>
+        <div class="mc-step-body">
+          <div class="mc-step-t">Evidence-Based Dialogue</div>
+          <div class="mc-step-d">Regulatory discussions grounded in reliable data — decisions that hold under scrutiny</div>
+        </div>
+      </div>
+      <div class="mc-result">
+        <div class="mc-result-t">Fair Comparison</div>
+        <div class="mc-result-d">The only foundation a credible regulatory decision can rest on</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- REGIONAL -->
+<section class="regional" id="challenges">
+<div class="reg-inner">
+  <div class="reveal" style="text-align:center">
+    <div class="r-eye">The Regulatory Reality · By Region</div>
+    <h2 class="r-sh">Most regulators are flying blind.<br><em style="font-style:italic;color:rgba(255,255,255,.65)">ONE is the instrument panel.</em></h2>
+    <p class="r-sd">UPU analysis identifies a consistent gap across three regions: regulators lack the independent, objective data to fulfil their mandate.</p>
+  </div>
+
+  <div class="rtabs reveal">
+    <button class="rtab on" onclick="switchR('la',this)">🌎 Latin America</button>
+    <button class="rtab" onclick="switchR('af',this)">🌍 Africa</button>
+    <button class="rtab" onclick="switchR('as',this)">🌏 Asia-Pacific</button>
+  </div>
+
+  <div class="rc on" id="r-la">
+    <div class="rc-l">
+      <div class="rstats">
+        <div class="rstat"><div class="rstat-v danger">12/19</div><div class="rstat-l">Countries with no independent regulatory body — regulator and operator share the same ministry</div></div>
+        <div class="rstat"><div class="rstat-v caution">7</div><div class="rstat-l">Countries with a full Universal Service definition in national legislation — making compliance monitoring legally ambiguous</div></div>
+      </div>
+      <div class="rchalls">
+        <div class="rch"><div class="rch-t">📊 No performance data — no regulatory action</div><div class="rch-d">The UPU Regional Development Plan confirms most regulators lack resources for market studies or performance reports. Without independent measurement, verifying compliance or applying penalties is impossible.</div></div>
+        <div class="rch"><div class="rch-t">📦 E-commerce boom without measurement tools</div><div class="rch-d">International parcel volumes grew 664% between 2018–2020. Regulators have no objective data on how operators handle this growth — making quality control and consumer protection impossible for the fastest-growing segment.</div></div>
+      </div>
+    </div>
+    <div class="rc-r">
+      <div class="rc-r-lbl">What ONE solves in this context</div>
+      <div class="rsols">
+        <div class="rsol"><span class="rsol-ck">✓</span><span class="rsol-txt"><strong>Provides the independent measurement layer</strong> that replaces absent internal capacity — enabling performance reports and compliance evidence without building a full internal system.</span></div>
+        <div class="rsol"><span class="rsol-ck">✓</span><span class="rsol-txt"><strong>Multi-carrier, multi-product coverage</strong> (letters, parcels, express) gives full market visibility — including the e-commerce segment that existing frameworks cannot measure.</span></div>
+        <div class="rsol"><span class="rsol-ck">✓</span><span class="rsol-txt">The <strong>Basic plan</strong> is an affordable entry point to establish a quality baseline for the first time.</span></div>
+      </div>
+      <div class="rsrc">Source: UPU Regional Development Plan for Latin America 2022–2025</div>
+    </div>
+  </div>
+
+  <div class="rc" id="r-af">
+    <div class="rc-l">
+      <div class="rstats">
+        <div class="rstat"><div class="rstat-v danger">−85%</div><div class="rstat-l">Drop in inbound postal traffic from Europe (2019–2023) — traditional USO revenue has collapsed</div></div>
+        <div class="rstat"><div class="rstat-v caution">Most</div><div class="rstat-l">African DPOs have no cost-accounting to separate USO from commercial services — evidence-based decisions are impossible</div></div>
+      </div>
+      <div class="rchalls">
+        <div class="rch"><div class="rch-t">⚖️ No tools to defend USO decisions</div><div class="rch-d">Without transparent performance data, regulators cannot verify USO compliance, quantify the cost of universal service, or justify compensatory mechanisms — the entire funding model lacks an evidence base.</div></div>
+        <div class="rch"><div class="rch-t">🤝 Regional harmonisation requires shared data</div><div class="rch-d">SADC, EAC, WAPCO, and AfCFTA all require comparable, cross-border performance data. Without a common methodology, regulators cannot participate in regional harmonisation.</div></div>
+      </div>
+    </div>
+    <div class="rc-r">
+      <div class="rc-r-lbl">What ONE solves in this context</div>
+      <div class="rsols">
+        <div class="rsol"><span class="rsol-ck">✓</span><span class="rsol-txt"><strong>Independent, verifiable data</strong> lets regulators defend USO compliance decisions without relying on operator-provided figures — closing the credibility gap with governments and consumers.</span></div>
+        <div class="rsol"><span class="rsol-ck">✓</span><span class="rsol-txt">The <strong>Regulatory Compliance and Territory Equity Reports</strong> directly provide the USO monitoring evidence most African regulators currently lack entirely.</span></div>
+        <div class="rsol"><span class="rsol-ck">✓</span><span class="rsol-txt">A single <strong>UPU-endorsed methodology</strong> creates the comparable baseline required for SADC, EAC, WAPCO, and AfCFTA harmonisation.</span></div>
+      </div>
+      <div class="rsrc">Sources: UPU Postal Sector Regulatory Framework: Africa Region (2024) · UPU Financing the Postal Sector in Africa (2025)</div>
+    </div>
+  </div>
+
+  <div class="rc" id="r-as">
+    <div class="rc-l">
+      <div class="rstats">
+        <div class="rstat"><div class="rstat-v danger">60%</div><div class="rstat-l">APPU members whose legal frameworks do not cover digital postal solutions or e-commerce services</div></div>
+        <div class="rstat"><div class="rstat-v caution">85%</div><div class="rstat-l">APPU members identifying new entrants (Cainiao, JD Logistics) as a primary regulatory challenge with no objective data to oversee them</div></div>
+      </div>
+      <div class="rchalls">
+        <div class="rch"><div class="rch-t">🛒 New entrants — no objective comparison data</div><div class="rch-d">Without performance data covering both designated operators and private entrants, regulators cannot identify cherry-picking, assess market fairness, or apply proportionate oversight.</div></div>
+        <div class="rch"><div class="rch-t">🏝️ Geographic complexity creates USO blind spots</div><div class="rch-d">From Indonesia's 18,000 islands to Pacific nation-states, measuring last-mile delivery without a technology-enabled approach leaves regulators unable to verify USO compliance where it matters most.</div></div>
+      </div>
+    </div>
+    <div class="rc-r">
+      <div class="rc-r-lbl">What ONE solves in this context</div>
+      <div class="rsols">
+        <div class="rsol"><span class="rsol-ck">✓</span><span class="rsol-txt"><strong>Multi-carrier measurement on a common methodology</strong> lets regulators compare designated operators and private entrants on the same objective basis — closing the asymmetric information gap.</span></div>
+        <div class="rsol"><span class="rsol-ck">✓</span><span class="rsol-txt">The <strong>Territory Equity Report</strong> provides USO compliance evidence for complex geographies — islands, remote regions — where blind spots are most damaging.</span></div>
+        <div class="rsol"><span class="rsol-ck">✓</span><span class="rsol-txt">The <strong>Rotating Measurement Scheme (RMS)</strong> makes cost-effective coverage of dispersed locations viable — removing the infrastructure barrier for island nations.</span></div>
+      </div>
+      <div class="rsrc">Sources: APPU Regulatory Frameworks in the Asia-Pacific Postal Sector (2025) · UPU Regional Development Plan for Asia-Pacific 2022–2025</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- HOW -->
+<section class="sec" id="how">
+<div class="wrap">
+  <div class="reveal">
+    <div class="eye">Two Measurement Modes</div>
+    <h2 class="sh">From opacity to transparency<br>through independent measurement</h2>
+    <p class="sd">Choose based on your regulatory objectives, budget, and network complexity.</p>
+  </div>
+  <div class="htabs reveal">
+    <button class="htab on" onclick="switchH('e2e',this)">End-to-End (E2E)</button>
+    <button class="htab" onclick="switchH('diag',this)">Network Diagnostic</button>
+  </div>
+  <div class="hpanels">
+    <div class="hp on" id="h-e2e">
+      <div>
+        <h3 class="hp-title">End-to-End Measurement</h3>
+        <p class="hp-desc">Measures total transit time between two cities for a specific carrier and product — the core layer of regulatory oversight and the foundation for compliance reporting.</p>
+        <div class="hp-row"><div class="hp-rl">Definition</div><div class="hp-rv">Total transit time between two cities for a specific carrier and product.</div></div>
+        <div class="hp-row"><div class="hp-rl">Method</div><div class="hp-rv">Independent panelists or barcode scanning register dispatch and receipt times. Multi-carrier, multi-product: letters, parcels, express, registered mail.</div></div>
+        <div class="hp-row"><div class="hp-rl">Outcome</div><div class="hp-rv">Verified compliance with delivery standards. Evidence base for regulatory action, tariff decisions, and licence management.</div></div>
+      </div>
+      <div class="hp-box" id="e2e-box">
+        <div class="hp-box-lbl">End-to-End: City-to-City Measurement <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--text3);font-size:10px;margin-left:6px">Click to explore</span></div>
+
+        <!-- E2E: two cities, panelists at each end, interior is a black box -->
+        <div class="e2e-map">
+          <div class="e2e-city origin" id="e2e-city-a" onclick="selectE2E('a')">
+            <div class="e2e-city-icon">🏙️</div>
+            <div class="e2e-city-name">City A</div>
+            <div class="e2e-city-role">Origin</div>
+            <div class="e2e-panelist">👤 Panelist</div>
+          </div>
+
+          <div class="e2e-middle">
+            <div class="e2e-line">
+              <div class="e2e-line-track">
+                <div class="e2e-line-fill" id="e2e-fill"></div>
+                <div class="e2e-envelope" id="e2e-envelope">✉️</div>
+              </div>
+            </div>
+            <div class="e2e-blackbox" id="e2e-blackbox" onclick="selectE2E('box')">
+              <div class="e2e-bb-label">Postal Network</div>
+              <div class="e2e-bb-sub">Sorting · Transport · Delivery offices</div>
+              <div class="e2e-bb-note">E2E measures total time — not what happens inside</div>
+            </div>
+          </div>
+
+          <div class="e2e-city dest" id="e2e-city-b" onclick="selectE2E('b')">
+            <div class="e2e-city-icon">🏙️</div>
+            <div class="e2e-city-name">City B</div>
+            <div class="e2e-city-role">Destination</div>
+            <div class="e2e-panelist">👤 Panelist</div>
+          </div>
+        </div>
+
+        <div class="e2e-timer-bar">
+          <div class="e2e-t-label">T inject</div>
+          <div class="e2e-t-track"><div class="e2e-t-fill" id="e2e-timer-fill"></div><span class="e2e-t-badge" id="e2e-t-badge">J+3 target</span></div>
+          <div class="e2e-t-label">T delivery</div>
+        </div>
+
+        <div class="ij-detail" id="e2e-detail" style="margin-top:12px">
+          <div class="ij-panel active" id="e2e-panel-a"><strong>Origin panelist — City A</strong><br>An independent panelist dispatches a real test item (letter, parcel, or registered mail) from City A using the operator's normal service. The injection timestamp (T inject) is recorded automatically via the ONE Agent App. The panelist is fully independent — not affiliated with the operator. <span class="ij-mod-ref">→ Panelist Management · Agent App · Allocation Plan</span></div>
+          <div class="ij-panel" id="e2e-panel-box"><strong>The postal network — a measured black box</strong><br>E2E does not instrument the internal network. The sorting centres, transport legs, and delivery offices between City A and City B are not individually tracked. What matters is the total transit time. If performance fails, <em>Network Diagnostic</em> opens this box to find exactly where. <span class="ij-mod-ref">→ E2E Events DB · Compliance Report · Territory Equity Report</span></div>
+          <div class="ij-panel" id="e2e-panel-b"><strong>Destination panelist — City B</strong><br>A second independent panelist in City B receives the item and confirms delivery via the app. The delivery timestamp (T delivery) is recorded. The system calculates: <strong>T delivery − T inject = E2E transit time</strong>. This is compared against the J+K target to determine compliance. <span class="ij-mod-ref">→ J+K Performance Report · Regulatory Compliance Report</span></div>
+        </div>
+
+        <div class="hp-box-lbl" style="margin-top:20px">ONE MS Modules included</div>
+        <div class="mods">
+          <div class="mod"><span class="mod-ck">✓</span>Country Topology, Carriers &amp; Products</div>
+          <div class="mod"><span class="mod-ck">✓</span>Panelist Management with SLA &amp; delivery standards</div>
+          <div class="mod"><span class="mod-ck">✓</span>Dynamic Allocation Plan Management</div>
+          <div class="mod"><span class="mod-ck">✓</span>Panelist Materials Management</div>
+          <div class="mod"><span class="mod-ck">✓</span>E2E Events Database &amp; API</div>
+          <div class="mod"><span class="mod-ck">✓</span>Panelist Agent App (AI-assisted via Telegram)</div>
+        </div>
+      </div>
+    </div>
+    <div class="hp" id="h-diag">
+      <div>
+        <h3 class="hp-title">Network Diagnostic Measurement</h3>
+        <p class="hp-desc">Extends E2E by measuring intermediate points throughout the postal network. Identifies <em>where</em> delays occur — not just that they occur.</p>
+        <div class="hp-row"><div class="hp-rl">Definition</div><div class="hp-rv">Extends E2E by measuring intermediate points — sorting centres, transport legs, and post offices.</div></div>
+        <div class="hp-row"><div class="hp-rl">Method</div><div class="hp-rv">RFID tags and antennas at facility entry/exit gates. Hundreds of reads per second. Fully automated and unassisted.</div></div>
+        <div class="hp-row"><div class="hp-rl">Outcome</div><div class="hp-rv">Identification of bottlenecks, network black spots, best practices, and efficiency leaders across the entire postal network.</div></div>
+        <div class="rms-box"><div class="rms-t">Cost-Optimisation: Rotating Measurement Scheme (RMS)</div><div class="rms-d">A single RFID reader rotates across multiple facility locations on a scheduled cycle — capturing representative network data while significantly reducing capital expenditure.</div></div>
+      </div>
+      <div class="hp-box" id="diag-box">
+        <div class="hp-box-lbl">Network Diagnostic: Routes, Segments &amp; Centre Operations <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--text3);font-size:10px;margin-left:6px">Click a segment to explore</span></div>
+
+        <!-- Route selector -->
+        <div class="diag-route-header">
+          <span class="diag-route-lbl">Route</span>
+          <div class="diag-route-pill">City A → City B</div>
+          <span class="diag-route-sub">3 centres · 2 transport legs · 5 measurable segments</span>
+        </div>
+
+        <!-- Segment nodes with connectors -->
+        <div class="diag-segments">
+
+          <div class="diag-seg" id="dseg-0" onclick="selectSeg(0)">
+            <div class="diag-seg-node centre">
+              <div class="diag-seg-icon">🏭</div>
+              <div class="diag-seg-badge centre-badge">Centre</div>
+            </div>
+            <div class="diag-seg-lbl">Origin<br>Sorting Centre</div>
+            <div class="diag-seg-time" id="dseg-time-0">— h</div>
+          </div>
+
+          <div class="diag-connector" id="dconn-0" onclick="selectSeg('t0')">
+            <div class="diag-truck">🚛</div>
+            <div class="diag-conn-lbl">Transport 1</div>
+            <div class="diag-conn-time" id="dconn-time-0">— h</div>
+          </div>
+
+          <div class="diag-seg" id="dseg-1" onclick="selectSeg(1)">
+            <div class="diag-seg-node centre">
+              <div class="diag-seg-icon">🏭</div>
+              <div class="diag-seg-badge centre-badge">Centre</div>
+            </div>
+            <div class="diag-seg-lbl">Intermediate<br>Sorting Centre</div>
+            <div class="diag-seg-time" id="dseg-time-1">— h</div>
+          </div>
+
+          <div class="diag-connector" id="dconn-1" onclick="selectSeg('t1')">
+            <div class="diag-truck">🚛</div>
+            <div class="diag-conn-lbl">Transport 2</div>
+            <div class="diag-conn-time" id="dconn-time-1">— h</div>
+          </div>
+
+          <div class="diag-seg" id="dseg-2" onclick="selectSeg(2)">
+            <div class="diag-seg-node centre">
+              <div class="diag-seg-icon">🏭</div>
+              <div class="diag-seg-badge centre-badge">Centre</div>
+            </div>
+            <div class="diag-seg-lbl">Destination<br>Sorting Centre</div>
+            <div class="diag-seg-time" id="dseg-time-2">— h</div>
+          </div>
+
+        </div>
+
+        <!-- Centre operations drill-down (appears when a centre is selected) -->
+        <div class="diag-centre-detail" id="diag-centre-ops" style="display:none">
+          <div class="dco-title" id="dco-title">Centre Operations</div>
+          <div class="dco-ops">
+            <div class="dco-op">
+              <div class="dco-op-lbl">📥 Entry</div>
+              <div class="dco-op-bar"><div class="dco-bar-fill entry" id="dco-entry"></div></div>
+              <div class="dco-op-val" id="dco-entry-val">–</div>
+            </div>
+            <div class="dco-op">
+              <div class="dco-op-lbl">⚙️ Processing</div>
+              <div class="dco-op-bar"><div class="dco-bar-fill proc" id="dco-proc"></div></div>
+              <div class="dco-op-val" id="dco-proc-val">–</div>
+            </div>
+            <div class="dco-op">
+              <div class="dco-op-lbl">📤 Exit</div>
+              <div class="dco-op-bar"><div class="dco-bar-fill exit-bar" id="dco-exit"></div></div>
+              <div class="dco-op-val" id="dco-exit-val">–</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ij-detail" id="diag-detail" style="margin-top:12px">
+          <div class="ij-panel active" id="diag-panel-default"><strong>Select a centre or transport segment</strong> above to see what Diagnostic measurement captures at each point along the route. Each segment contributes to the total E2E time — Diagnostic pinpoints exactly where delays occur. <span class="ij-mod-ref">→ Click any node above to explore</span></div>
+          <div class="ij-panel" id="diag-panel-0"><strong>Origin Sorting Centre</strong> — RFID readers at entry and exit gates capture the exact time each item spends inside this facility. The system measures: time from arrival → processing → departure. Compared across all routes and centres to identify operational outliers. <span class="ij-mod-ref">→ Postal Centre Diagnostic · Centre Efficiency Ranking</span></div>
+          <div class="ij-panel" id="diag-panel-1"><strong>Intermediate Sorting Centre</strong> — Same automated RFID capture. Intermediate centres are often hidden bottlenecks — items may arrive on time but accumulate delays here before onward transport. The Diagnostic isolates this invisible delay. <span class="ij-mod-ref">→ Network Black Spots Report · Centre Efficiency Ranking</span></div>
+          <div class="ij-panel" id="diag-panel-2"><strong>Destination Sorting Centre</strong> — Final sorting before last-mile delivery. Delays here directly cause consumer-facing failures. The Diagnostic identifies whether the issue is the centre's own processing or the transport arriving late. <span class="ij-mod-ref">→ Postal Centre Diagnostic · Territory Equity Report</span></div>
+          <div class="ij-panel" id="diag-panel-t0"><strong>Transport Leg 1</strong> — The time between departure from the Origin Centre and arrival at the Intermediate Centre. RFID captures the exact loading/unloading timestamps. Unreliable transport is the most common cause of E2E failures — and the hardest to detect without Diagnostic. <span class="ij-mod-ref">→ Transport Reliability Analysis · Network Black Spots</span></div>
+          <div class="ij-panel" id="diag-panel-t1"><strong>Transport Leg 2</strong> — Same capture between Intermediate and Destination centres. The system builds a reliability profile for every transport link: on-time rate, average delay, variance. Green Lanes (best performers) and Black Spots (worst) are ranked automatically. <span class="ij-mod-ref">→ Transport Reliability Analysis · Green Lanes Report</span></div>
+        </div>
+
+        <div class="hp-box-lbl" style="margin-top:20px">ONE MS Modules included</div>
+        <div class="mods">
+          <div class="mod"><span class="mod-ck">✓</span>Carrier Network Topology &amp; Facility Standards (SLA)</div>
+          <div class="mod"><span class="mod-ck">✓</span>Facility Allocation Plan Generator</div>
+          <div class="mod"><span class="mod-ck">✓</span>RFID / Barcode API Integration with carrier</div>
+          <div class="mod"><span class="mod-ck">✓</span>Diagnosis Database &amp; API</div>
+          <div class="mod"><span class="mod-ck">✓</span>Network Diagnostic Reporting Suite</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PLATFORM DEMO (slide 7) -->
+<section class="sec bg-off" id="platform">
+<div class="wrap">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center" class="reveal plat-grid">
+    <div>
+      <div class="eye">The ONE Platform</div>
+      <h2 class="sh">One dashboard.<br>Complete oversight.</h2>
+      <p class="sd" style="margin-bottom:28px">A single, unified management system to run your entire quality measurement programme — from panelist coordination to automated compliance reports.</p>
+      <div class="plat-feats">
+        <div class="plat-feat"><span class="plat-ck">✓</span><span>Multi-carrier and multi-product solution</span></div>
+        <div class="plat-feat"><span class="plat-ck">✓</span><span>SLA definition and real-time monitoring</span></div>
+        <div class="plat-feat"><span class="plat-ck">✓</span><span>Intelligent allocation plan management</span></div>
+        <div class="plat-feat"><span class="plat-ck">✓</span><span>Panelist materials and stock management</span></div>
+        <div class="plat-feat"><span class="plat-ck">✓</span><span>Automated E2E and diagnostic reports</span></div>
+        <div class="plat-feat"><span class="plat-ck">✓</span><span>Mobile agent app (AI-assisted via Telegram)</span></div>
+      </div>
+    </div>
+    <div class="reveal reveal-d1">
+      <!-- Dashboard illustration matching slide 7 -->
+      <div class="plat-mock">
+        <div class="pm-bar">
+          <div class="pm-dot" style="background:#ff5f57"></div>
+          <div class="pm-dot" style="background:#ffbd2e"></div>
+          <div class="pm-dot" style="background:#28c840"></div>
+          <div class="pm-title">ONE Management System</div>
+          <div class="pm-badge">LIVE</div>
+        </div>
+        <div class="pm-body">
+          <div class="pm-sidebar">
+            <div class="pm-sitem active">📊</div>
+            <div class="pm-sitem">👥</div>
+            <div class="pm-sitem">📦</div>
+            <div class="pm-sitem">⚙️</div>
+          </div>
+          <div class="pm-main">
+            <div class="pm-row2">
+              <div class="pm-card">
+                <div class="pm-card-t">Critical Alerts</div>
+                <div class="pm-alerts">
+                  <div class="pm-alert warn">⚠ Hub Paris — Delay &gt;24h</div>
+                  <div class="pm-alert warn">⚠ Hub Lyon — System issue</div>
+                  <div class="pm-alert ok">✓ Hub Bordeaux — On track</div>
+                </div>
+              </div>
+              <div class="pm-card">
+                <div class="pm-card-t">Allocation Plans</div>
+                <div class="pm-bars2">
+                  <div class="pm-brow"><span>Carrier A</span><div class="pm-btrack"><div class="pm-bfill" style="width:40%;background:var(--blue)"></div></div><span>40%</span></div>
+                  <div class="pm-brow"><span>Carrier B</span><div class="pm-btrack"><div class="pm-bfill" style="width:30%;background:#009688"></div></div><span>30%</span></div>
+                  <div class="pm-brow"><span>Carrier C</span><div class="pm-btrack"><div class="pm-bfill" style="width:30%;background:#5c7da8"></div></div><span>30%</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="pm-row2">
+              <div class="pm-card">
+                <div class="pm-card-t">Panelist Status</div>
+                <div class="pm-pstats">
+                  <div class="pm-pstat"><span class="pm-ps-n g">120</span><span class="pm-ps-l">Active</span></div>
+                  <div class="pm-pstat"><span class="pm-ps-n w">5</span><span class="pm-ps-l">Inactive</span></div>
+                  <div class="pm-pstat"><span class="pm-ps-n r">10</span><span class="pm-ps-l">On hold</span></div>
+                </div>
+              </div>
+              <div class="pm-card">
+                <div class="pm-card-t">Issues &amp; Delays</div>
+                <div class="pm-donut-wrap">
+                  <div class="pm-donut">
+                    <svg viewBox="0 0 44 44" width="52" height="52">
+                      <circle cx="22" cy="22" r="16" fill="none" stroke="#e2ecf5" stroke-width="8"/>
+                      <circle cx="22" cy="22" r="16" fill="none" stroke="var(--blue)" stroke-width="8" stroke-dasharray="85 15" stroke-dashoffset="25" transform="rotate(-90 22 22)"/>
+                      <circle cx="22" cy="22" r="16" fill="none" stroke="#C8102E" stroke-width="8" stroke-dasharray="10 90" stroke-dashoffset="-60" transform="rotate(-90 22 22)"/>
+                    </svg>
+                  </div>
+                  <div class="pm-legend">
+                    <div class="pm-leg-item"><span class="pm-leg-dot" style="background:var(--blue)"></span>Delay 85%</div>
+                    <div class="pm-leg-item"><span class="pm-leg-dot" style="background:#C8102E"></span>Loss 10%</div>
+                    <div class="pm-leg-item"><span class="pm-leg-dot" style="background:#e2ecf5"></span>Damage 5%</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- REPORTS -->
+<section class="sec bg-off" id="reports">
+<div class="wrap">
+  <div class="reveal" style="text-align:center">
+    <div class="eye" style="justify-content:center">Reporting Suite</div>
+    <h2 class="sh" style="text-align:center">Intelligence built for regulatory action</h2>
+    <p class="sd" style="margin:0 auto;text-align:center">Eight reports. Each designed for a specific regulatory decision.</p>
+  </div>
+  <div class="reports reveal">
+    <div class="report"><div class="rep-ico ico-e">📊</div><div><div class="rep-t">E2E Dashboard</div><div class="rep-d">Unified operational view with real-time alerts and KPIs across all carriers, routes, and products.</div><span class="rep-tag tag-e">E2E</span></div></div>
+    <div class="report"><div class="rep-ico ico-e">⏱</div><div><div class="rep-t">J+K Performance Report</div><div class="rep-d">Transit time analysis and delivery performance by route, city, region, and carrier/product combination.</div><span class="rep-tag tag-e">E2E</span></div></div>
+    <div class="report"><div class="rep-ico ico-e">⚖️</div><div><div class="rep-t">Regulatory Compliance Report</div><div class="rep-d">Compliance by Carrier → Product → Route. Evidence base for corrective action, penalties, and licence decisions.</div><span class="rep-tag tag-e">E2E</span></div></div>
+    <div class="report"><div class="rep-ico ico-e">🗺</div><div><div class="rep-t">Territory Equity Report</div><div class="rep-d">Service fairness across cities and regions. Supports consumer protection and universal service obligations.</div><span class="rep-tag tag-e">E2E</span></div></div>
+    <div class="report"><div class="rep-ico ico-d">🏭</div><div><div class="rep-t">Postal Centre Diagnostic</div><div class="rep-d">Isolate process gaps vs. resource gaps at each sorting facility. Pinpoint where time is lost.</div><span class="rep-tag tag-d">Diagnostic</span></div></div>
+    <div class="report"><div class="rep-ico ico-d">🏆</div><div><div class="rep-t">Centre Efficiency Ranking</div><div class="rep-d">Benchmark all centres. Identify leaders and laggards. Creates evidence-based accountability.</div><span class="rep-tag tag-d">Diagnostic</span></div></div>
+    <div class="report"><div class="rep-ico ico-d">🚛</div><div><div class="rep-t">Transport Reliability Analysis</div><div class="rep-d">Measure transit speed and consistency between facilities. Identifies unreliable links.</div><span class="rep-tag tag-d">Diagnostic</span></div></div>
+    <div class="report"><div class="rep-ico ico-d">⚠️</div><div><div class="rep-t">Network Black Spots &amp; Green Lanes</div><div class="rep-d">Flag critical systemic delays for intervention. Identify best-practice corridors to replicate.</div><span class="rep-tag tag-d">Diagnostic</span></div></div>
+  </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PLANS -->
+<section class="sec" id="plans">
+<div class="wrap">
+  <div class="plans-intro reveal">
+    <div>
+      <div class="eye">Plan Options</div>
+      <h2 class="sh">Choose the scope that fits your mandate</h2>
+    </div>
+    <div style="padding-top:6px"><p class="sd" style="max-width:100%">Three plans designed for different stages of regulatory maturity. Annual service agreements per country. Contact the team for multi-country or regional arrangements. Pricing provided on request.</p></div>
+  </div>
+  <div class="plans-grid reveal">
+    <div class="plan">
+      <div class="plan-hd">
+        <div class="p-tier pt-d">Entry Level</div>
+        <div class="p-name pn-d">Basic</div>
+        <div class="p-sub ps-d">Entry E2E for regulatory baseline</div>
+      </div>
+      <div class="plan-body">
+        <div class="p-ideal">Ideal for regulators establishing a first quality baseline who need End-to-End measurement only.</div>
+        <div class="p-fl">Included</div>
+        <div class="p-feats">
+          <div class="pf"><span class="pf-c">✓</span>End-to-End Measurement (E2E)</div>
+          <div class="pf"><span class="pf-c">✓</span>API Access to Data DB</div>
+          <div class="pf"><span class="pf-c">✓</span>1 Annual Allocation Plan</div>
+          <div class="pf"><span class="pf-c">✓</span>20 Agent Licences</div>
+        </div>
+        <div class="p-adds">+ Extra licences &amp; additional reports: quoted on request</div>
+        <a href="#contact" class="p-cta cta-o">Request Information</a>
+      </div>
+    </div>
+    <div class="plan feat">
+      <div class="plan-hd blue">
+        <div class="p-badge">Most Popular</div>
+        <div class="p-tier pt-l">Full Regulatory Programme</div>
+        <div class="p-name pn-w">Standard</div>
+        <div class="p-sub ps-l">Full E2E &amp; Diagnostic baseline</div>
+      </div>
+      <div class="plan-body">
+        <div class="p-ideal">Ideal for regulators overseeing multiple operators and requiring network diagnostic capabilities.</div>
+        <div class="p-fl">All Basic features, plus</div>
+        <div class="p-feats">
+          <div class="pf"><span class="pf-c">✓</span>E2E + Network Diagnostic</div>
+          <div class="pf"><span class="pf-c">✓</span>Multiple Annual Allocation Plans</div>
+          <div class="pf"><span class="pf-c">✓</span>Multi-Carrier Capability</div>
+          <div class="pf"><span class="pf-c">✓</span>40 Agent Licences</div>
+        </div>
+        <div class="p-adds">+ Extra licences, RFID tags, additional reports, DO API: quoted on request</div>
+        <a href="#contact" class="p-cta cta-f">Schedule a Meeting</a>
+      </div>
+    </div>
+    <div class="plan">
+      <div class="plan-hd">
+        <div class="p-tier pt-d">Large-Scale Programme</div>
+        <div class="p-name pn-d">Services</div>
+        <div class="p-sub ps-d">Full plan with added-value UPU services</div>
+      </div>
+      <div class="plan-body">
+        <div class="p-ideal">Ideal for large-scale programmes needing full integration, seasonal campaigns, and unlimited licences.</div>
+        <div class="p-fl">All Standard features, plus</div>
+        <div class="p-feats">
+          <div class="pf"><span class="pf-c">✓</span>Full DO API Integration gateway</div>
+          <div class="pf"><span class="pf-c">✓</span>Unlimited Agent Licences</div>
+          <div class="pf"><span class="pf-c">✓</span>Campaigns Allocation Plan</div>
+          <div class="pf"><span class="pf-c">✓</span>Allocation Plan implementation service</div>
+          <div class="pf"><span class="pf-c">✓</span>2 Annual Quality Reviews by UPU team</div>
+          <div class="pf"><span class="pf-c">✓</span>Flexible RFID positioning support</div>
+        </div>
+        <div class="p-adds">+ RFID tags &amp; additional reports: quoted on request (lowest rate)</div>
+        <a href="#contact" class="p-cta cta-o">Request Information</a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ROADMAP -->
+<section class="sec-sm bg-off">
+<div class="wrap">
+  <div class="reveal" style="text-align:center">
+    <div class="eye" style="justify-content:center">Getting Started</div>
+    <h2 class="sh" style="text-align:center">From decision to data-driven oversight</h2>
+  </div>
+  <div class="roadmap reveal">
+    <div class="rs"><div class="rs-dot rd1">1</div><div class="rs-t">Analyse Requirements</div><div class="rs-d">Review national priorities, infrastructure, operators, and budget. We scope the right solution before any commitment.</div></div>
+    <div class="rs"><div class="rs-dot rd2">2</div><div class="rs-t">ONE-to-ONE Meeting</div><div class="rs-d">Country-specific demonstration. Define initial scope (Phase 0). Align with postal operators on quality goals.</div></div>
+    <div class="rs"><div class="rs-dot rd3">3</div><div class="rs-t">Act &amp; Achieve Results</div><div class="rs-d">Implement data-driven oversight. Generate compliance reports. Strengthen the overall postal system.</div></div>
+  </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section class="sec" id="contact">
+<div class="wrap">
+  <div class="reveal">
+    <div class="eye">Schedule a Meeting</div>
+    <h2 class="sh">You see the need.<br>Take action.</h2>
+    <p class="sd">Contact the ONE Solutions team for a country-specific demonstration tailored to your regulatory mandate.</p>
+  </div>
+  <div class="contact-layout reveal">
+    <div class="form-wrap">
+      <form id="cForm" onsubmit="handleSub(event)">
+        <div class="fgrid">
+          <div class="ff"><label class="fl">First Name *</label><input type="text" class="fi" placeholder="First name" required></div>
+          <div class="ff"><label class="fl">Last Name *</label><input type="text" class="fi" placeholder="Last name" required></div>
+          <div class="ff full"><label class="fl">Institutional Email *</label><input type="email" class="fi" placeholder="name@regulator.gov" required></div>
+          <div class="ff"><label class="fl">Organisation *</label><input type="text" class="fi" placeholder="Regulatory authority" required></div>
+          <div class="ff"><label class="fl">Country *</label><input type="text" class="fi" placeholder="Country" required></div>
+          <div class="ff full"><label class="fl">Primary Interest</label>
+            <select class="fi">
+              <option value="" disabled selected>Select your main area of interest</option>
+              <option>Quality of Service Control</option>
+              <option>Tariff Regulation</option>
+              <option>Licence Management</option>
+              <option>Consumer Protection</option>
+              <option>System Quality Improvement</option>
+              <option>General enquiry</option>
+            </select>
+          </div>
+          <div class="ff full"><label class="fl">Message (optional)</label><textarea class="fi" rows="3" placeholder="Describe your regulatory context, number of operators, or specific priorities..."></textarea></div>
+          <div class="ff full"><button type="submit" class="f-submit">Request a Country-Specific Demonstration →</button></div>
+        </div>
+        <p class="f-note">The ONE Solutions team will contact you within 48 hours. This is a UPU member state service — not a commercial sales process.</p>
+      </form>
+      <div class="success-state" id="sState">
+        <div class="ss-icon">✓</div>
+        <div class="ss-t">Request received.</div>
+        <p class="ss-d">The ONE Solutions team will contact you within 48 hours.<br><br>We look forward to supporting your regulatory mission.</p>
+      </div>
+    </div>
+    <div>
+      <p class="team-intro">The ONE Solutions team is ready to discuss your country's specific needs — from initial scoping through to full implementation.</p>
+      <div class="person">
+        <img class="person-photo" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAGHAXsDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDS8MaRpsunWpk0+0cmJSS0CnPA9q7O10DRiBnSbA8d7ZP8K5jwr/yDbT/rkv8AIV3Np0H0rfocV3zDP+Ee0TP/ACB9P/8AAZP8KX/hHtEz/wAgfT//AAGT/CtEc06pNLmb/wAI7omf+QPp/wD4Cp/hSjw9on/QH0//AMBU/wAK0c0CgauZ3/CPaJ/0B9P/APAVP8KT/hHtE/6A+n/+Aqf4Vpmk7UAZ3/CPaJ/0B9P/APAVP8KX/hHdE/6A+n/+Aqf4Voil70AZo8O6J/0B9P8A/AVP8KX/AIR3RP8AoDaf/wCAqf4Vp0lAGcPDuh/9AbT/APwFT/Cnf8I7of8A0BtP/wDAVP8ACr4606kxoz/+Ed0PH/IG0/8A8BU/wpf+Ec0P/oDad/4Cp/hWhmlBqQM7/hHNDz/yBtO/8BU/wo/4RzQ/+gNp3/gKn+FaWaKAMz/hHdD/AOgNp3/gKn+FH/CO6H/0BtP/APAVP8K08ijNAjM/4RzQ/wDoDaf/AOAqf4Uf8I7of/QG07/wFT/CtOigZmf8I5of/QG07/wFT/Ck/wCEc0P/AKA2n/8AgKn+FalJnmgZlnw7of8A0BtP/wDAVP8ACk/4R7RP+gNp/wD4Cp/hWmeabTAzT4d0T/oD6f8A+Aqf4Un/AAjuif8AQH0//wABU/wrUopiMs+HtEx/yBtP/wDAVP8ACqNxoGigHGkWA/7dk/wroGrPuTwaaJkcDr+j6WkTbNNs147QKP6VzFjplietlbH6xL/hXa+IP9S/0rmNPHFUzONywNJ07aP+Jfa/9+V/wqKTStO28WFr/wB+V/wrSx8tQyfdqTUxpNMsN3/Hjbf9+l/wrT0XSdNd/n0+1bnvCp/pVeT71a+hD5h9aUdxS+E6az0HRyBnSbA8d7ZP8K1U8PaJt/5A+n/+Aqf4VFZ9B9K1k+7VSJi2Uf8AhHtD/wCgNp//AICp/hQfD2if9AfT/wDwFT/CtEUE0izM/wCEd0T/AKA+n/8AgKn+FH/CO6J/0BtP/wDAVP8ACtKg9KAuZEnh/RNv/IH0/wD8Bk/wqjPoOjAf8gmwHH/Psn+Fb8vSs+46GmjOTZyt9oulLnGmWQ+lun+FYUuk6aGP/EvtP+/K/wCFdVqB4NYMn3jW0Voc7buZp0rTv+fC1/78r/hTf7K07/nwtf8Avyv+FXTTaqyFdmj4V/5B1p/1yX+QruLToK4jwr/yD7X/AK5L/IV3Nr0FYdDo+0Xe1KKAKXFSaCUtAHtS4pjG0U7FGPakA2nUmKdigAooxRQAd6WkpaADNGab9RS4oAdmlBptFJjQ7NGaaaKVgHZozTaa8ioMsQB7mkBJSVQfVrRDjz1J9BzVWbxJYxDHmhm9AaYzYJormZPFlquT0A7k0z/hNLFV7sfReaLruFmdRRXIjxtAzf8AHvIFz16mrMHjCxkxvWVM/wB5aLoVmdG1Z9z3qSHUra4UFJV5HHNRXDAgkEGmiJHJa/8A6p/pXM6f0rpdeJMTY9K5zTx8tWyIGnjioJelWP4RUEvSpNTPlHNbGh9R9ayZeWrX0PqKI7ky2O1s+g+laqdKyrP7orVX7tNiiOzRmkwaMUix2c0nako5xQBDJ0qhcfdNX5elZ9x0NNGcjDv+hrBk+8a3b88GsJ/vGtonO9yE0lKaKsk0fCo/4l1p/wBcl/kK7m1HAriPCv8AyDrT/rkv8hXcWv3RXN0OpfEXQKUClpRUXNbCU7FLiii7AbRTqbQmFhKKKKdwsJRiloJouIKSjtS07gHakBpaDSuAU00p471QuNVs4Y5CbiPKjn5xQMu7qq3WpWlkm64nRB7mvKL/AMZ3b38rwXIjjXOTvzn8M1GhutR2yXBkJkPA3HJ9OetQ5W2KjFvc7+fxhCdwtomYDo78Cub1PXJ7p1E0jnv5Q4Gff2+tZt6BZWw4CKOh9OK4671Kee4MUUxcDliegqHJlqCN2/1O55BmVF7IrfzPSssyyzsXm1AQwjoi5JNUTM+wIpDM3JLDk/QdqVbeRyHd9hA/icD+eagtKxswRWpK+VHJKT0LuDn8Kml8yHkRBcDONgP54rLab7PEFYxADqdxyaqTanGRtjJOBydvFAWNX7fdrwNrA9AnymkW/XeY5i8bjsxP/wBasKO7klfkBce2K043E67ZHV8qQAxFAWNVL9otpS5HH3cMa07TxXeQMFkuTJH/AHWXNcv9jG3KjAxjaTn+dIloNxxM8bewx+vSqUmS4o7i81m21C2bY2HxyKoaePkrCSK8iUNHKJFH8JGSa0tO1BWk8uVRG47E8VopvqZOnbVG7jioJRxVkEMmRUEo4qyTPkHOa2NDH3aypBWxoY4FNbky2Ows+grWTpWVZ9BWrHRIIDsUUtJUliUUtBoCxBL0NZ1x0rRk6Gs646H6VaMpGDf9DWG45Nbl/wBDWI/etonO9yE0n4040lWI0vCv/IOtP+uS/wAhXc2vQVw/hbjTrT/rin8hXbWp4Fc3Q6upo0opoNLWZqOBopBS0AFIaCaaTQAGimlqaXFMVx9FR76TeaeoE1FRb6N9AXJM0hYDqaZ5lcp4r16S0iNta4MjD5jnoKQDPEfjW0sma0t2aWbkMVxhfzrzC41eG6kkmcuPMbaMuAD74NSXs8k0hgjXLFTucjHPpx707TdCRWQ3EoKr/EV5/Xis3K5rGFiLTNIW/lX7FDvJO555Bx+HSuzgFtpMC7v3kp+VSepY0lu9va2qxRkLCF2gAfM/0rnr2R9RuWAfZAOCynkjvj6/yqblpEGs3b6nI0fmH7PHwzLyZG7hazI9PYqFMLRQDnanf6sa3oBaxKpfEcaj92g5Zh7f/W/OqeqTyRw5aNYx/CpY5/p/SpKSKyzwWqGPzhGvdVYkn2PU1HJfpEmY0Ccf3eTWQw1VzuSJAhPQ5Jqxa28k3+sgO/PJ2nFFwaKM9wMk4ZmJyQR/Wq5njdSjKijPCg5Jral0x3O4jIHXDDpVF7K0hbIjKN3JHH/16LCK0dtFJwNyepbvUn2I4JEj4HGNx/pTjeeSmxZUYeipimfbTtBLgHp3FAieBngcKZSAe24n+la0EpcHhsfw8cVipdBuX7dx0qz9oDJgZBB7jAoGbMcksb5KjaOoXk0+OaOaTPG72OcfnisEXcsZKlB833X3Yq9FcW7lfNPzj+IHNNEnT2eoiMiKXGOzA1pOQy5BBB6YrkAXL7onJU/iD7GtC11B4lVZDlGbB/2TWkZGcoo0Ze4rZ0QcLWM54z6itvRei1pHcylsddadBWpH0rLtOgrTU/LTkKJJSU3cKaXqbFkmaQng1H5lIZKdguNkNZ1yeDVuV+Kz7h+DVozkY1/0NYr9TWvfHINZD/erWJzMj4ptONJgVYi94ZbGn2n/AFyT+Qrs7WTgVwugPssLT/rkn8hXXWkuQOa5ktDpb1NxX4qVWzVGNx61YV6lo0TLIozUQegvSHccWxUbPTGeoJJPemkJskaT3qPzh61Ukm96rmcZ61aRm5Gn5w9aPOHrWX9o96PtHvRYXMavnD1pPOFZn2n3o+0e9Fh8xcubvy4WIIzjivNdVmmn1nKt8i8H/arr76RpWChsKASeetc0bYpG1xIPmLEj1xmsps2pq+pTTT1QySKil2/hK5H61I0UkpVpyxVeQMYFSbZEi81znHJFLbxzXQyXbb2HY1zSlY64RuZtxLJv2x4bPccAf401bckfvG2rg5wvWuih0sIc4GfWpv7OB/h/Ss+c39kjlJZpomH2aJQx48x15A/2arx2Fxcys3mybyckyZINdg2ms3Hb3qB9PlU9WPtT5xOn2MMWBXAkQhgvDo+B+VULu5ht2ZGlDEf3cgmuguLabHVv++qyZ7IM2ZFBz1LDJFUpIl02YNzewSpuBkwfU1nSKr8iTcRwATWzdW0Snaygg9CDWeEjDgYByeeKdyOUzJVORkH6mmw28c+SkxX2x0rS+yBj8oyAalFhsZnAIOeKVyuQrR2UsacTEjv8oqF4GyAzHjoR1q48ciP8smPYU6OBnIBcZ7DHBppmbiQwZA5JZRzsPQ1LNGki/KyoR/D/AJ/z/UY+VlHxjvigwM7B4/mAHPrVJkNEUE80S7BllHoela9lcrMTHOuGI4OeG/8Ar1QjhAmDxMyyfxJj+VPllaKVUZQVbqfQ1SJ3OktptymFuqdD6ium0botcElw0Ekbkkqe/Wu40aUOiMp4IraDMKi0OytGG0VoK/FZFs3Aq8JML1q2jNMnaQCo2mFV5JaqvcAd6dgci8Z6aZqzGuvem/avenYnmL8svFZ88uc1HJc571TlnznmmkS2Q3T5zWeetTzPmq5rRGbGGkzTjSVQg0c/8S+1/wCuKfyFdNZScVzGjZ/s+1/64p/IV0doMYrnjsdM1qbMb1YSSqKmplaiwky+HoL+9UxJikaalYrmJ3k4qpLJTHm96qyze9NIlsJZarFjmmPLk0zfk1SIZNn3oyfWot/vSh6YiXJ9aOaZvpGkVFLN2FJj3J7eFZ3y3QcD3qjfWwknCAfInJwKntrnFurDA3Et9KtJFvtd7dWGCK5Z6ndBWRy+qZEsdrGM4wZR7kZH6VsWFuqQL8ozVGS1km1RpQPlLZrahAVMe9c0zspIlSJfSpVgB7U2Mg8irAY0kau5G1ug7CoWiXHQVYd85qu3XrTsgVypcW0ci4IHtWRLpyk42/nW5LgdKiTDEn0HNSy0crd6bEyFWTHpx0rl7+xmjYlCy4Odyng16Dc7SSDWfLbKVzjrQnYcqaZxFvcRKcSDYeuccZq8s8Eg2jaK07nSLaR8+Xz7VRbR442JUH8eaG7kcjRUmgRvmHWqgGxiDxWqYCgxVWa3JNCZMoorywvJGHQBs9aq73QZQDn73HWr9vL9lZlkGY26+3vVC5ilabdANw7ba2TOaUSaEoy71f7w5zkEU8iO4zG5IcDr0NEMLqoLqFB6juakltlYB0cq4+6ff0q0ZMSAsuYZBgofTqK7Hw7KMmE8FOnuK5MZubcYAE0ZwwxW3oMwjv4wSfnUjHoRWkdzKa0PRLd/lFWi/FZkD8CrRfitzmuJLLis+e4681LM9Zsx5PNUkSwe4bPWm/aGx1quTzRmqJJzOTUbSk0zNNNCEwJzTTTqbVEjDSUtJQAuiD/iX2v/AFyT+QrprUDArmtE/wCQfa/9cU/kK6S2Nc8WdUty9inZxTM00vTuSSGSo2kqNmqCSTFMBZZqqSS5pJJKrM9AEhekD1AZKN9FxWLO+nB6rhqUNTuFixu96ZKBKhUnjvUW6lZ8QOc9BUSehUVqMEuQUH8JwMelayTMLOFM8nIP0rBs1LjcSeTn3rWVwwVccAVzNnWtx2z96rIPlHGTVhVzVRHQMVDA+gzVuI4GT3rnqbnbS2J1GBUo5qNfWnikmaMaxGOlQtyOKsEcd6ryAjJFDbGiFgM4zUaKAHGetDyc0tuQ7sPQVNzS2hTnh5qFositCVMnPWq7kKDUsaZlTxhBkd6oyqc8VpTuuDWbI24mi4MoyjLHiqzhSMHrVt85zVSXrmqTMZFWeJWWs/7KyNlSQpPUdq1Gxt5qvvw1aowkLZqZGMT8nFSkCGQLISIn6H0qWIKkscg4ORmrNxHG8bKR1PHtWyOaTMwxGNmlU4bowHQj1q/pE3nXkJ4DA/N7+9VfmjRo3+8BkH1FWNIj230IHQsSCK0W5nPY7+2fgVbZvlqhApFW9pK10HGRSNVCbqauujc1UkiJz1piZUNFSGE0eQ1UhXIqKf5LCmlSKCRD0ptL3pMUxDaKcRScUwI9HONPtf8Arin8hXRWr8VzWknGnWv/AFxT+QragkIrnSOqW5rbh601mqr5po82qsRcmLGoH5o300tmiw7kMgquymrbfSoyPaiwrlTZTwhqbbTgtMLkOyl2VNtpcCiwXIQlL5e4FT0NSgUoHNS1cpPUq2iiPeSenSql3fSB9i8DuamuZRbtIpHv+FZcymWQFXBBOSfT1rklsdkFrqbOmkylpD07cVsxLkVm2qiKFVApl/rUdnESCvHHvXNa7O/ZG90FMaTFeezeN7pJSPL+UnAOKs2/jddo80D8RV8ouY7Y3IXqRTftCkNmuR/4Sq3kbJCqpOMg55q/FqcMkRKMOmTUtM0iky9LKMtg1HY3Ia8KZ6qazEvVnmManJNMtHaPUDjnIxmo6m6SsdHNKgbGetYd7ebGbmo7q98u52scGszUJU5dmwP5UWuLSJIbhpO9N+buM1gyeI7e3IVQrbTg801vFsZ3bVVSB+dVyMwlVibzY9CMVVkj3Hiual8USs2Nwwfyq1a66pwHOCapQsZ86ZpyR8YrHu98b5HSthbuO5XKEEiq1zAJEYAdaqxm9WRWGoqV8t+QentWkxLHcGypHOa5IxtDdbVPSuhtLlfseHYbv51tDVHNUVmWLsB3Ug8gYNW9HhP2uNeDg5FZjTg4I5J5rY0LMt4jKOMmrW5lJ6HbWy5FXhH8vSoLZOBWgqZWtzmSKTw+1RNb5rT8ummL2ouHKZP2XnpT/sox0rT8ml8njpT5g5THktuOlU5YMDpW7JFxVCePFNMlxMV0wab3qzOMGq9WZjDTaeetNqhFbS/+Qda/9ck/kK14egrI0r/kHWv/AFyT+QrbgXgVhE6ZbktKBT9tOC1RA0LS7akAFOxQBAUFN8urO2k2UAVxHRsqyFpNuelFwK22jFWNlHlUAV8UhYKCx7c1OYzUZTqKT1RUXZpmPql5byaPc3ceHMcbE/h2rzO38UXWyd7QxK24kpM5J4GeB7135gNnq8kW1THOcFWGR+VYXjTw1YWUUN7aWsUTM2yVUXCkHocDgHj9a4aLv7rPWxUUrSXUu6JPqurW/m3N99nG0NsjXnn3zgU5NPNzO4kndwDjJ6/mBWtbWcaWUEsA27olLe5xVKeZNOt5JnO1c5olLlYoRvuNl8N2zJnMufaQ1gX3hplJKSP7Zc1HL4w1G8m8iwtiinjzJBxWTqV7r3zpJcTeaG4CABcUk5Mp8qJG0meEkJLIufTkfrTTdavZDcm24UDBwCrD8O9U4n1MAmVpWGM5ORWnplvc3rrl34P8S/1pXfUaS6Gx4V1ezkZjPNsmbqr9q6dr7SYX3/b7fI7GQA5ryvW7S4i8SrptmhM85GwAcgkZq/qXw/1a2tvOe8RpcZKih0473KjVnrZbGn4i162N2r286Phv4DnNZF1qVxcKQ8ojXsCMk/l0rndJDPqckcwIaLOQfUcVbupdrsQMYOM1XKoaIzdSU9xsllLMcqHYk+tXLPw5cS4LDA+pqtaXE8zhE3En1OAKlm1HVLEhUkkD7iGXHAFF5EWitzUOgLCMOrf99GqslkkedocEdw1QDXNUALy7ZUAyasWmsW17JtIZHPY0ryW4/dexTUXsAL2tw6sP4TTP+Eh1WJNzyQOuMnO3PUjoD7VttEnm4BHNZWnaHBealctKm6KI4A9Tn/61aJpq7M2mnoaGhzxapMZL0FVzglDgVFqLoNRkFoCYlOAVOcCtUW0EM8UaRIidgqgVp3VnB9lZti898d6pNOOhm01LU562uJZBEXBG0c/XNbFhqi6beRKs2JCfuetUEjAkOOmOKraFaNqevwg5OHyx9hWPO76HUqcVF3Pc7Q7kU+orTUDbWRavgD6VorJxXaeVcsDFGBUQel30DuSbRQQMVH5lNMvFId0MlwKz7jGKtyP71QuH4qkQzMuetVDVqc5NVq0RixhpKU0mKpCKukc6fa/9ck/kK3oB0rD0b/kH2v8A1xT+QroLdelYxN5bk+OKSptnFMK1RI3NKKAppwSgLBS04LxS7eaAGhealWLNORasJHSuOxCIacYauLGDUnlClcfKZbQ1C0JFarxVC8VFwaOa1Gy3zRTY5Vhms3xLCL7R5415bYSB7rz/AErrpoQyEEVz7WzpqBwfk6kdjXHU9ypddT06H76jaW8Sr4al+2+HrVzyQuxgPUcVDqWmJcyKJT+7U5K9c1U0mZNA1q40eY7ILlvNtnPTn+H/AD6V0ZjEgwBhf51z1NzppJWMUaRbKo8obQPQYqO5toUjx9oIPptFastiM8M659DUH9mR5y0jkfhUqTNORHJ3Fn50nG5h6tWxpOnyxIC3yp6VuxWUCdEBPvWX4n1VNI0l5R/rj8sKDqzHpVJNktIy/D9gmofEHUNUYAxWaCKM/wC2Rg/oD+dbuuMMPn0qLwbYSWPh+ETf6+bMsp75PP8ALFR638yv2NVUZdKNkeTaiBZeJfM6LPnt3/zirj2pkbelN8Q2rzIXQfvI23KasaJcrdWyseHXgj0Nabq5y8vvtFqwtY0cFhz61qTWCTLn92/puXpToYEmUHBB9qm+wNnCyEfUVk5M1UDLbSsKRsjC57DFULnSrPljgSDps4rpBpk2f9eAPXFAsFTl2Zz6k0udi9mYFvbOE3k52c7s9ql0HJsmmKf66Rn6/h/SpdWAht2jhX97cHylA9+p/AVZtYI4IY0jGPLUAe4rVP3TJx970JJY8yqccmk1fUFt7WNAcsT0q/EA5wec1h+IrfASUD7p2/gf/wBVVe0TNRvO41LpHVTtAPetnwXZCCae5I/iKrXH27tJIqr0zXpOlR+RbxoB25+tFFXkVinywsup1NvJ0rQWTisa2bFX1c4613HlbF0SUvme9U/MIpDIaVguXPNphkqtvppc0WC5JLLx1qjNL70+RiRVOVjVJEtkcrZNQmlJ5pKpGbG5ooxScVQFfRP+PC1/65J/IV0tqvArndCH/Evtf+uS/wAhXT2w4FYo3luWdvFRleasY4pu2mBCEpwSpQKdjigRFt4oC1JijFAxVHNWYxUC1MjYqWNFlafUQYU7dSLAionAp5ao2agTIHWsm7TY+71rWc8Gsu/OSnpWGIasjqwqd21sZGpaLa6zaiG5UgqdySIcMh9jVGOHxBpK7EaHUoRwu47JMe/b9a6GLA4qU4biuVM71G5y7+JLxBi50S6UjqUww/Q1VbxYg4/s2+H1jxXUXEMbDkA1jXcEC9QOKbcexpGL7mUviu6kbZb6a6/7UrhR/j+lV7PTbjWtaS71FxIsfKqB8o9gKdLNCsuxEBbPpXRaTDti3sMZo5uxXs0tWaSLsjCj0rD1Nd+4dua6JYxtJFYd+g3Nx9KJFQepwuoW/wA544NYMtiYJvOtZDHIevofqK6/UIgytisCaAmMyDtVJ6GE4q5Ha61qFt8stkJB/ejb+hrYTxOSPm0u7JHXCZrOspo2IEi8etbkNpBIMr1NS2nuhxjLoyq3iKY/6vSrrPbcAtQm91m8JVbaG2U/xSvuP5CtU2S468VCbcoevH1pJocoytqypHZNG3myymecjBduAB6AdhU6LgHn3pcke+KX+IEVZi3ZWLMJwQayPELmR47YHBkwa1gQMCs/U4Fa7ilPULgVUvhM4fEU9O0g217AJDuyQRgV3FqvIrBsNslwrZ5SPGK6K1HIragrI58XK7NW3X61fCHFVrVea0QvFdJwvUr7DS+Was7aNtAJFbYaQx8dKtbaawoCxQkQiqcorSl6VRkHWmS0UnGKYalkqKrRAlJS0maBEWhsBp9rn/niv8hXTWzjArktHfFha/8AXJP5Cugt5enNZI3lubYPFKKqRy571OH96YXJaOPWmFuKiaTFAE2aTePWqj3GO9Qm6GetFhXNISCniSssXOe9SpNmiwXNISU7zaprJnvUm7jrSsO5MZKjMlRM1QNLiiwXLEsn7tvpWXcSiTbz0qV7jHeqRRBJvXPzdRniufEU21zHXhayXuPqWEbA60ySXGTmmK2M5qheXGwHDYrhPUgMvNRKA5Ncxf6s8j+XDlnY4AFVtW1B2uPIiy8jHgA1Z0PTSkxlmOZD+lOxrzdi/pWknHmTkmQ8k+lb4ultAkT8eh7GnwQ/IcEYHSnXMSSRBXAxTQm9AfUdkZ2kVh3uojazE96bqnmW0ZKZxXJ314zJy3TrTs2RzcpPPqALsSflqhNqEO1huGD6VlvM87MoGF7Z706G2UNuOWb3qrGXNd3LEX3R2yelaVlfNEwSQ8HoapImWGO3Wl+XGD6UraFp2OnS6V14OaZJMNvvXOxXj255JMfr6Vd+0l13A5B6YqGi+e5b80ZoLiqBm5/xqffkCtFsc89zSQho81UvHxPD6FTUsDkpj0ol0ifUyjxTLF5fBBGc5rSza0MU1F3Y7TuLtcd+tdPakcVjWenJYpy5eQ9WP9K1bd8d63pKyOXETUndG/anpWircVjW0mMVopJxW5y3LY5oJqNWpSfekMCaid+KbI+KqyTcdadhNjpZBVORxTZZveqrS+9NIhsc5yaj7Um7JpapEsQ9KTilptMRn6YcWFt/1yT+QrYgl6Vi6d/x4W3/AFyT+QrSiJzWMTombMMuauxvmsm3JrShNWyEWSeKqyvirDdKpT96QMqTT4NUnuuetLcE81mSsc9apEmpHc5PWtCGXOOawYM5Fa1tQ0BrxNzVjPFU4eatjpUlIjkaqU0mKty1nXFNAyrNcEd6bBOGfaT1qtcZ5qCJirA+hpTjeLQ4S5ZJmtIfp0rF1ZZPJbBwcdq2A24A+1Vp035BFePY9+OpyOi2yLJNczfNITgFuwrdsZYPMIZ13Zz1rNu7RVZgCwDHnBqaDw1bS7ZiJDk55c00yne50cd3CuQD14oM4IyTuXt7VnS6RJGoa2mZSv8AC3IqqU1GM8xow+tWmNRLOqXEUluQF3fjWJHYwyRsrKoJOckVbl+1KCZbSTHqoz/KqEmqRQKd0UikHgFDVCkmzLvtKWOQsnQVTEW3qOamu9ZaZmVYpP8Avg1ly3kxPywyZ9xTVyHEvllQZzg/SoJZ0VQKzTcXkhwIse7Gh7WSfhmYk+hxSehnqabPEY+FAz71f0i3M9tIzDhWwOKy9P00C4RG3Ek9zmuyWBLO02qOvNTJ6FwVzEnj2HGe9MBwevNLcShpcd6YpH404mctWaMBwma39KH+iuxHU1zqthQK6ewXZYR+rDJrenuctZ6DZetLC2GpJetEXLV0Lc5Xsatu3FacJ4rMthmtOEccVqYltDTm6U1BTm6UhlSY9azppMVoT1lXFNCZUmn96hEhJqObrSR9aokuoeKf25qNMYFSUyGJRRRQBmab/wAeFt/1yT+QrRirN03/AJB9t/1yT+QrSirGJ0T3NG36VpQ9qzYK0oatmaJ26VSn6GrjdKpz96SGZE/U1nyL81aVwOTWfJ96rIJYRyK07es2HqK0rftQJGnDVvtVSCrVQzREMnes+fvWhLVGYcU0DMm4HWq8Y5q1cd6qx/fqiC6nCimOx5zU8Sh12nvVWYNGzJJ19fWvPxFLlfMj1cJW5o8r3Rm3i7zx61rWny26jrgVlvktWpZkBAOP8a5bHcpXLo+5z+FQPcLGcnH41IcEHmqV0gMZoTKI7rU1U7QhJNZdxfxHrCPy5p06ED93n3JrLutxydpzjirTKTaEmaGT5vJC+2Kz55YFOAi/lUkqyMuC2OKpSW4V+c7jRcznJvQY8fmvgAD6VIsSQL05qzFFx07dailATczH6Um7kLQfpkeb7cef6Vo6reBUKA/NWPZ3HlzlyarXl0ZrgjPBNCVxOVhsbEyksepq3D8zdOKpouDx1q0vAx3PWtEZtmjbK09wka9ScCl0fxQ6anNo2pALNE5VHHRh2/SrOhxZmMzfwjArj/HUP2XxJHdRnBlQE49RXXSh7tziqzvLlPS35NOiHzVz/hzWV1KxVJG/fxjB56+9dDD1qupnLY1LatOLoKy7fqK04jxWpgW16UrdKYhpWPFIZUmrMuK05jWbMODTJZly/epEHNPmHNNTrVIksr2qSo1PFSUyWIeaKWkoAy9O/wCQfbf9ck/kK04RWdpgzp9t/wBck/kK1YU6VlE6Km5dh4rQi4AqlCvIq/EKozRI3Sqk1XD0qvIuaSGZM4NZ0inNbUsWe1U2g5qkTYrwqc5rStxzUEcOKuxJincLFqHqKtdqrxirA+7UFIhk6VTl6VeccVUkWmDMqdCc1WSM7q05I6hEXNUTYkgXGKmurIXcGBxIPun+lESVcjHFRJJqzKg3F3Rx8m5JCpBDKcFT2q5ayLuUA8e1aOs6aLiJpoMeegywHVgP61zENy0MnzDpXn1Kbi7HrUqykrnUIoOOOtO2Keo6VSt71JFBUj3qWS4wMg4rFqx2QaaHTrGV2lQR9Kz2tIDnMY56CpZZ2xkZP41XkutqZI59KRd+hSnhhVv9UM1XeGPOTGvXtU7zbkZ2wMdKybm9VeFbk+9NCfKT3DIi/KoDDise5YEYHapHud45ORVCeTamc4/GrUTmqS7FWaUIxxUacHOOtQu29yfyqaAFjz0qjItxDC7j+FWYF3sB1J6VAoHAFbemWmNsrj6CrhBzdiJzUFdmtYwi3tlU9T1rz7x/Nv1a3QfwpXoTyBEJ9K8k8R3f2zXpWByFO0V3vRWOGOrbZPpt7LZSJNC21lNenaBrUOqwjBAmUfOteSRthKuabqMthdrNE5VlP50mrjaPdYOtaUfSuV8N+IbbV4VG4JcAfMhPX3FdTGeKZiWVNDHimhqCeKQEEvOaz5qvyVSm5FMTMyZTupijBqy45pgUZq0IVKlplOzQQKabRmigZR0oZsLX/rkn8hW1AnSsjRx/xL7X/rkn8hW9brWUTae5ZiSrSDmo0Wpl60xIcRxUTLxU1NNAFRkqExZPSrxApmBmncRWWL2qVUwelS4ozQFhy1KOlQg1IGpDBhUDjiluLqC2jLzSqijqSa5PVvHum2e5ID9okH93pTSA6Jl9qp3F7aWoLTTogHqa811Px1qN5lYm8lD2XrXNT3txctulldyfU5qrDUGz1G98eaZZgiEmZh0x0rBuPHeqXZPkBLeM9MDJri44edz8n0rQjG1d57U0h8qR6F8Pr2fUNdu1upnlYQcbj0yatazp4t7qTb90MaxvhY2fEN8/pAM/nXba7B/peCPllGVPuKwxEbxub4d2lY5GJHj5RutNm1J4vlcYxV8wFGJAqnPbq+WK1wncpNbFb+11AyW/I1XfVC5YluO1Rz2K5JUYrOltWXI3Glyor2kiS71Fm+VeV7kVnyySyYPaldJF/iOKi2E8t+tUoozlUkxDIIxknNV5nZuTU7hVFRbdx5psnchijZmq4MYCr+dIflAVOprRsbEcPJ+VOMHJ2QpTUVdkmn2RYiRxwOgrdjwFGBjFV4wAPl6U9pAikntXbCKgtDhnNzd2Z3iHUhY6fK2fmxgV5WGMkpduSxya6PxdqX2i5FspyFOWrnYxRe7LirIslsLimCQikZqZmm2Bo2N/Jbyq6OyMOjA4IrudI+Id7alY7vbcxjueG/OvNlPNSGQgjB70KQnC59A6V4r0vVAojnEcp/5ZycH/AOvW1uGMg183wXkkZBDGus0jxvqGn7V80yx/3JOfyNMzcGj192zVSbpxWDpvjXTr8Ksx+zyHs/T863PNSVNyMGU9CDkU7GbKrgk0AVKaQYFUQxm00bTUlJQFhm00bafS4oAz9H/5B9r/ANck/kK6G3HSue0c/wCgWv8A1yT+QrobdhxWUTeb1NBFqQLUaOMU/wAwUyR2KaaQyComk96LAx5+tMJAPWoXnRB8zgfU1k6h4k0/TwfMnUt/dB5p2Yjb3VFNcwwIWlkVQPU157qXj+VgUtI9g/vNXJ32u3d4xM07N7Z4p8pSiz0zUfG+nWeVibzXH92uUv8A4g38xIt9sQ/M1xUkzOetRZJp2RSgaOoa1f6gxNxcyOPQnis7JJ5NKBSjrgc0F2QhyTxU0abeTyaVECDnrTxknFFgZIgy2aklkwm0UwHatV3csCe1UyVqd58JH361qX/XJf5mvVL+1+22hQcSLyp968k+EGRr+oYzt8lc/ma9lIxyKmST0BOzucYwJYhhhgcEHsarTRAjgV0Os2Lf8fkCkkf6xR3Hr9aw8hlDg5BrzqlNxZ305qaMma3x1FZlzDxkflW9cc1kXIPIFQW0Yc0eSfaq7IFUn0q9OrKTVGX73t2A71ZmVSrFuRxTlUu3lxrlv5Vow6Pd3OC6mCL3+8f8K1bfTI7dQI0x71rCg3qzKdZLRGZa2AjG5/mar6IemKu/ZwB0phUCupQUUczk2NA2isnWtQW0s5HJ6CtGaUIpzXAeJr83Fz5Cn5U5bHrSY4owZpGnmeVzlmOTQtIKdUmjA0mKWgUCHAcUjdV+tOUUOuCp/wBqnYZIvFShiKYBzUgFUInimZehrb0zxDe6ewMMpC91PIP4Vz46U7NMlxTPVNM8X2l4Alx+5kPf+E10CSK6hkIZT0INeJRzMmCDWvYa9d2ZBhlYDuvY/hTMpU+x6vml3Vyum+MIJwEu18tv7y8iuiguIbmPfDKrqe6mmZ2sWNwpNwpmKMUg0M/S5Atha/8AXJf5CtmG4A71z9j/AMg+2x/zyT+Qq2sjCsos3lG50K3Yx1pftnvWGJX7U7dJV3MrGwb33rnPEfi+PSYjHFh5yOAD0qHWNTOnWTyE/Nj5RXl1xcy3180srFmJyc00VGFzYuNe1C9YyT3D/NyFU4ArPknZzksST3NRZpKq5aihGck03HelI5pe3AoKsIBRjijmjmkMTt0pyMA2PWk7U0r3HamBYzTl4H1qFJOOnPenE56mgkczZ6dKikbbGadUFw3QDvQB6d8HrXbHe3Z/5aNtH0FesLyK4H4Y2v2fwxC2OZMsfxNd4hpSJQrx5Fc3qeltHKZLdevJT1/+vXTO6rGXdgqgZJJrlNd8VR2kD/YrGe+kA+XYNqf99H+lTJJqzLi3F3RhXhwpbkY65rJlcP7Vq6Xet4ht3n1HTzYTqcY89RvH0NXLbRdKur5IGvBvPPlrKrFvyFczw76HR9YjbU5WKxutTnMFpHvI+854VB7mt6x8ORWC7m/fXHeRh0+g7V2q2NvawiG3iWKMdlGKha3UGuinSjA56lVy0OcNkc8imPahFyRW7LGB2rOuBuyK3MTDm4yAKpyCteaEBScVQKZzxUMpHO61dC0sZJj1AwB6ntXnL7pHZ2OWY5JrqfF16Jr4WkZ+SH72O7Vzm3npUtGsStjtRip2jzzTNtTYZFTlFBFPjFA7jlWmz8p/u81OV46VGwypB7jFMQ9eVBqQA1FbHMS5qwBTBiCgDnpTsDFFMQU4E0mKO1AiZZCGzmr9pqc9o4eKVlI9DissU4HFAmkzvNM8ahiI75M9t69fxFdNHq1hLGrrdRYIyMsBXj+72qQSsBgMaLoh00eo2C50+2/65L/IVdjjzVPT/wDkH23/AFyT+QrRiIzWUUVNkyQ1KIeKdGaWeURW0kh4CqTWiRjdnmfjS+82/aBT8kY/WuUtedz+pq7q9wbi6uJifvMSKp2a4gX3pm8dEWMUU4CmnigYlHFFFMYd6O1AooAQUtA9aCaBCY5oo9KWgAHWoseZM3+ypqViFUn0p2mwmYStj7zBaBHvPhS2+yaBZRgYxEv8q25rmK1geaZwkaDLEmqelrssLdfSMD9K87+I3iR5pP7Js5PkH+tIP6U7XZGyN+LXm8Q3Ly5zZqxWKMdGx3PrWg6ggZAx6f5/zzXCeC3khgELhlw3ynH416EqB4fmHGOSf8/X9KwqaSNYbFN7aGbJ2/iByf8AP/s1Y1zpdra3H2ohTJHyrAAFT65/An8K25WEXHQn/P8AifwFcxruo+VAyr95uAB2zjj8sD8TUFHT6V4rtboiC6mjSUnapLdT6Edq2Xevn7UL3yZ0jwHkPzNnnFegeEvFNytvDa3waWMjCSAZZB7+oreF3uZSSO2lyaqNGC3NWSwYblOVPcVHgA1qTYoXMY2EVzurXS6bp09yeqDCj1PYV1NwMqa8w8b6j512tgh+SH5n92P+A/nS8wWuhx8jNK7SOSWc5JPqajIA96kIxTKg0G8GgpxxTwOKUDtSsMqOnOafGMVI4+bCjJqntuJnK/6pQce9S9B7k8txHGRubr2HWo909wfkURp6nrU0VnHFyBlvU1ZVeKdm9wuiKGIRIFz+dTcYoxS4wKpIkTFAHNOo4oAaaKMUYNAwFLmkxScDrQA7PpS7zUYJpd30oEetacf+Jfbf9cl/kK0YutZun/8AHhbf9cl/kK0I6ziRMuoayvFF4bbRZADhpBtFaKNXI+Nbsl4YAegya1RilqcDeNiJqdbD9wv0qK+P7o1Nb/6pfpS6nT0Jqa3NOx3pppgJiiijmgYUhpcj8aTvQIXtikpTRQAlLSdaWgRHcNtiPvW74btTIluCPvNuNc7eN8qqOpOK7/wzZ4niUdFUCgbPQL+/uILGKy0+PzL6WMAAdEHqaw7PwEiFp7yTzp3O5j711+nWMUDPOB+8kADMfQdquMR0puXYzt1ZyN5pUen28UkS42SAHA7GthG/drj73GM+vH9cU7Vo91i+cffXHPuKqSSKkHySLnGBtPc8D+Y/Ksam5rDYydYuvKzg/KB+JGP/AIkf+PVwl5dNNO5k5VMsf8/XP5CtzW7vfI2GG3rjPbrz+AX865q6XbZynPzEbc+vaoWrKeiIdD09dT1Bpp03KPmbP8q9I07ToLOJSsQ8wjriuZ8L24jsZHI+8QP1xXeW0O9/pXStEYvViWcdwjEjlD1Wp3BU8D61qxRBFxioL9444SSAD60XCxzutX6adps122MRrkA9z2H514tczPNM80rbndizE9ya7Xx7rAuHi0+I8J+8l+vYf1/GuDciiT6Diuow9aSjpSjrUlhg+9LS80nOaBAo55pHjz7H1qQdaCKAI1OOD+dSKO9Mx60xZdsqx5zuHHtSGT4FL3paTHNUA3vxR2p/tSYGcUANxR2p1J39qAExSbeM040dqQEZ6UmfehyQfak8snkkg+lID1uw40+2/wCuS/yFXUaqFkf+Jfbf9cl/kKso1ZxImi6rV5/4qm8zVn5+6MV3StxXnGuv5mqTH3rZGcVqYF8T5Rqe3P7pfpVe/OIzVi15jX6Uupv0J88U3FOPtTDTFYWkNFHagAoUZNHagUABODRRSE0AKetLjjNN705shKBIqovnalAnUbxmvW/ClvvkDY715XpCebqm49EBNe0eEYMRK2O1CFI7GNQsVMC5bJqXHy4pOlSMz9VmENsqlVbzHCkMO3X+lYF7ptiY9ywKjZ5KkjvjsPetTWnLS2yAZ+YnofT/AOvVK8OYiOevQg+q+p96ynuVE4LVbQRgbJHQehBI4A9T9KxLmRhCsTDkkHcDkNW/qKiRuSM44+76D61k6hAY4Y3YEgSYzz0+tEdynsdV4ftW/s+BSPvMCf513dlAFUcc1zugRCVI8dFUfmf8iuviUIMCt29LGKXUXhVNcr4k1Jbe2klY/JGpY+9dHeTCGIn2ryXx1qhdo7JG+8d8n07D+tJDZx13cPc3Es8hy8jFjVButSyPzUOcmgsSnjHUGgc9aULzQA1wSvHSlBzgGpO3NNMfGV/KgBwFHGOaSMnoc/jQ5XbnNAiKaVYkZmPAplnESGnk++3Qf3RVZM3t1u/5ZIePc1pjoQKla6lbBS0UuaskT2NFHJNJ0PNAxSabmmF/npC3v3pAOzml7UwdOaY7dACcnpQAq5kkJ/hWnNINxpGAiiwPxqoZOTSYHsdmP+Jfbf8AXJf5CrCioLEZ0+2/65L/ACFXI05rKJMhspMdvI/oprzS9k8y4d8/eJNei62/2fSJmHBIxXmkxyc1vHYzitTMv/uMat2XMCn2qpfcoat2Yxaofal1NXsSseab7Up5pvOaoELRijvS0gExSdeKXrQO5pgHSkPNJ1NLSAUfepJjiM0q9aiu2xGRQCLnh2PdM7Y+8wWvc/DcPl2anFeOeFYciHjl3zXuWlQ+VaRj2qUJ7mj2qGaTAwKfI+1azLq4EUbyseAOKAZn3sglv1HB8sY5x1P1NU5NpT+HPtt/2fY+lLbklHdj8znd1/8ArVMUbYR83Qj+L0Ye3tWMndlxWhzFzauHPB6c/e9CPQelZmtwgaeM8ESDPTP8811t1DGz5+Tls849fqezVzXiEFNPC4I3Edj7ew9KI7jex2PhFcaWkpHzMM106jC5Nc74Xx/ZsKDsorfnfy4Wb0FbvcyRg69fJDE7O2EUEsfQCvEdTvXvLya5frI2ceg7Cu48c6qRELRG+eXlvZR/if5V5zM1N6KwLuQsee1A5NNpw5pFkmMU6kUetPPIoAb17Ucj6UuBjApRnFMQzOPfNULqRpGFtH95vvH0FWLm4EMRYgE/wj1NR2VuyqZX5kfk1D10KWmpYhiWGIKo6CpR+tJ70v4VQhcd6XH60DkUvOaYgGKjkJp+DmoJCaAIiTuxmnL1qFsk06MnNSMlc7VpsA3NvPQdKjlJZwoPWrDkQwhR1oAr3EoyRVMtzT33Ox4pvlmpeo0e26aP9Btv+uS/yFakaVm6Z/x423/XJf5CtaDtUxMpmD4xlEWmJH0LmvOpeeldr45mzcQxA/dGa4luc1v0FDYoXg+Q/SrtsMWcWf7tU7vkGrsXFtGPQUluaAaSnGm+9MQo560e1JS0hiYpBSmkoEH4Ud6XPPSk60APXpVO9PGAauDgVn3B3yhfU0mM7nwVbGa8gQDhVBr2qBQkYHoK80+HFluD3JHfivSnbbHS6CvqV55NzECsLVZi8iwJ0Bwcc1pyTBA7dwOPrWC2JLrLEH6//XFTN20BK+peiT5ADkZ9T7e5p+FDZwvXPGD6H0PvQoIGVBz7D8ey05uDhjweOSfp3I7GsTQhmRguDnAGOc+hHt/dFcf4rKmeCMY4BbjHrkfzrsyCRlQCRzwPoew9Qe9cH4pkJ1nygSSAFwSff39MVUdwex3XhLJ05D7cVf1u7WC1bLYAGSfSo/DsP2fSo89lrj/iBrHl2v2ZG+ec7foo6/4V0dTE8+1i/a+v5rk52scID2UdKxnbnrVidsDiqmeaTZaAAk1KB7dKYvWpk6Uhi0oGB1oxzTs4FMBpHGKYzBFJPA708nGT3NZ9yzXM32ePp/y0I7e1JuwJDIh9suPOYYiThR61fGO1JGiogRRhRTh1oSsDY4Cl9qb/ABU7k0wHduKUdOlIM4pe3pTEIeOoNVZW61OzGqkrc0mNERanKePwqBm+bFJJIAhAqbjLNqPMnLnovAqWc5pbWPyrUZ4Y81BM/PWn0EQswWozIc0j0yobGe5aZ/x423/XJf5Ctq3HIrF0v/jxtv8Arkv8hWyjhImb0XNKJnM878W3HnazIAeE4rnCa0NWm87UJ3znLmstzit2EVZEE+DV7GI1HoKotgsPrV40imM+tHalpMUxC0E9hR2pPwoATvRSj603vQAvejmj8aXrSGGfl+lUFw10v1q85AQ1TsU82+VQM5akxnu/gWz+z6DExGGfmuhupAoxmq2iQ/Z9JgTGMIKivpvm6/WjqSU7mXcNuCe54qrBkSZIYY+o/rUp2sCWxzz1H+FMhUBsgD3wB/Rawk7s0Ssi4NvcjI65x2+pPal2kcDIzwSAR7dgPakyRgEsB3zkex9KOGH8JJ9MHn9e4FSMjkkGctg9+SD79yf9rtXCaiPtHiby8E4kAHH4eg9K7qZ9kbOSQvXuOOvqOxNcZ4Vt/wC1PGJJG6ODMjn+X61cNyZbHojn7HpiqeDt5rxHxDqZ1PVppw2Ywdkf+6O/49a9J+IOr/Y9MMEbYkm+Rcenc/0/GvHpWwMVv0IS1IZGyah605qFHapLHKCamUU1FFSe1MQlBPr2petQzyLEpZj8ooAhupyihUGZG4Uf1otoBBHjOWPLH3pIIm3G4lHzt0B/hFTMe2aXmPyDPFOFM7U9eaYhwFOA/CkFL070wHAZo7ZxTQT600tgH/GgCNzgdaqSN1qaRxnFVJTipbGkRFsnNEK+dcomMjOTURbirumR5DykdTgVmtWUXLhwqhc9qzpHBziprmTMh7CqjHJqpMlDSc0UAE0/FSM9w0z/AI8bb/rkn8hV6/l8jSp5PRaKKcDKR5PO+5yx7mq78rRRWrGir0mUeprSbiiihDZHRRRTAWg+lFFAg6Cm9aKKAClNFFADJf8AVk0/w5D5+tQL6yD+dFFQyj6Kj/c2SD/ZrGuWy/Xqcc0UUPYnqDHjgk/if8RSiF+pQn8v8TRRWBoIGUHBIXP/AOrsKk+ZxlcnP/6+59RRRSGUdVlW306dwQpCHAHH8h6N69qofDm08nSLzU5OZLqZsHuFUkD9c0UVpT3JkcP4x1U6nrkxBPlwExoPoeT+dcpIxJoorVkoi68mnqOaKKSKJ1GKXvRRTEB4GKpr/pVzk/6uI9PVqKKXUZM7dqhY80UUCHD/ADzUqdM5oopgSAUnWiimA0nmonbiiikwKsj1UlbOaKKzkykQEkgAd620UW9oq+gooop9QZnO2WNMCljRRRuBLtC0mR6UUUxH/9k=" alt="Ignacio Fernández">
+        <div>
+          <div class="person-name">Ignacio Fernández</div>
+          <div class="person-role">ONE Solutions Manager · Universal Postal Union</div>
+          <div class="plinks">
+            <a href="mailto:ignacio.fernandez@upu.int" class="plink">
+              <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><rect x="1" y="2.5" width="13" height="10" rx="1.5" stroke="#003087" stroke-width="1.3"/><path d="M1 5l6.5 4.5L14 5" stroke="#003087" stroke-width="1.3"/></svg>
+              ignacio.fernandez@upu.int
+            </a>
+            <a href="https://teams.microsoft.com/l/call/0/0?users=ignacio.fernandez@upu.int" class="pteams" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="3" width="9" height="8" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M10 5.5l3-2v7l-3-2" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+              Call on Microsoft Teams
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="person">
+        <img class="person-photo" src="data:image/jpeg;base64,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" alt="Houssem Gharbi">
+        <div>
+          <div class="person-name">Houssem Gharbi</div>
+          <div class="person-role">Technical Account Manager · Universal Postal Union</div>
+          <div class="plinks">
+            <a href="mailto:gharbiho@upu.int" class="plink">
+              <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><rect x="1" y="2.5" width="13" height="10" rx="1.5" stroke="#003087" stroke-width="1.3"/><path d="M1 5l6.5 4.5L14 5" stroke="#003087" stroke-width="1.3"/></svg>
+              gharbiho@upu.int
+            </a>
+            <a href="https://teams.microsoft.com/l/call/0/0?users=gharbiho@upu.int" class="pteams" target="_blank">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="3" width="9" height="8" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M10 5.5l3-2v7l-3-2" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+              Call on Microsoft Teams
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<footer>
+  <div>
+    <div class="ft-brand">UPU · ONE Solutions</div>
+    <div class="ft-sub">Weltpoststrasse 4 · 3015 Berne · Switzerland · A Specialised Agency of the United Nations</div>
+  </div>
+  <div class="ft-copy">© 2026 Universal Postal Union · All Rights Reserved</div>
+</footer>
+
+<script>
+function switchR(id,el){
+  document.querySelectorAll('.rtab').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.rc').forEach(c=>c.classList.remove('on'));
+  el.classList.add('on');
+  document.getElementById('r-'+id).classList.add('on');
+}
+function switchH(id,el){
+  document.querySelectorAll('.htab').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.hp').forEach(p=>p.classList.remove('on'));
+  el.classList.add('on');
+  document.getElementById('h-'+id).classList.add('on');
+}
+function handleSub(e){
+  e.preventDefault();
+  document.getElementById('cForm').style.display='none';
+  document.getElementById('sState').style.display='block';
+}
+// Reveal on scroll
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);}});
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+// Nav shadow on scroll
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('up',window.scrollY>4);
+});
+// ── E2E INTERACTION ──────────────────────
+function selectE2E(target) {
+  ['a','b','box'].forEach(t => {
+    const el = t === 'box'
+      ? document.querySelector('.e2e-blackbox')
+      : document.getElementById(`e2e-city-${t}`);
+    if (el) el.classList.remove('active');
+  });
+  if (target === 'box') {
+    document.querySelector('.e2e-blackbox').classList.add('active');
+  } else {
+    document.getElementById(`e2e-city-${target}`).classList.add('active');
+  }
+  document.querySelectorAll('#e2e-detail .ij-panel').forEach(p => p.classList.remove('active'));
+  const panel = document.getElementById(`e2e-panel-${target}`);
+  if (panel) panel.classList.add('active');
+}
+
+function animateE2E() {
+  const fill = document.getElementById('e2e-fill');
+  const env  = document.getElementById('e2e-envelope');
+  const tfill = document.getElementById('e2e-timer-fill');
+  if (!fill) return;
+  setTimeout(() => {
+    fill.style.width  = '100%';
+    env.style.left    = '100%';
+    tfill.style.width = '72%'; // ~J+3 on a J+5 scale
+  }, 300);
+  // activate destination after animation
+  setTimeout(() => selectE2E('b'), 1500);
+}
+
+// ── DIAGNOSTIC INTERACTION ───────────────
+const diagData = {
+  0: { time:'2.4h', entry:55, proc:70, exit:40, entryV:'0.8h', procV:'1.1h', exitV:'0.5h', title:'Origin Sorting Centre' },
+  1: { time:'3.1h', entry:40, proc:85, exit:45, entryV:'0.6h', procV:'1.7h', exitV:'0.8h', title:'Intermediate Sorting Centre ⚠ bottleneck' },
+  2: { time:'1.9h', entry:35, proc:55, exit:30, entryV:'0.5h', procV:'0.9h', exitV:'0.5h', title:'Destination Sorting Centre' },
+  t0:{ time:'4.2h' },
+  t1:{ time:'3.8h' }
+};
+
+function selectSeg(id) {
+  // Clear all
+  document.querySelectorAll('.diag-seg,.diag-connector').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('#diag-detail .ij-panel').forEach(p => p.classList.remove('active'));
+  const centreOps = document.getElementById('diag-centre-ops');
+
+  const isTransport = String(id).startsWith('t');
+  const data = diagData[id];
+
+  // Activate clicked element
+  if (isTransport) {
+    const idx = id === 't0' ? 0 : 1;
+    document.querySelectorAll('.diag-connector')[idx].classList.add('active');
+  } else {
+    document.getElementById(`dseg-${id}`).classList.add('active');
+  }
+
+  // Show panel
+  const panel = document.getElementById(`diag-panel-${id}`);
+  if (panel) panel.classList.add('active');
+
+  // Show/hide centre ops drill-down
+  if (!isTransport && data) {
+    centreOps.style.display = 'block';
+    document.getElementById('dco-title').textContent = data.title;
+    // animate bars
+    ['entry','proc','exit'].forEach(k => {
+      const bar = document.getElementById(`dco-${k}`);
+      const val = document.getElementById(`dco-${k}-val`);
+      if (bar) { bar.style.width = '0%'; setTimeout(() => { bar.style.width = data[k] + '%'; }, 80); }
+      if (val) val.textContent = data[k + 'V'];
+    });
+  } else {
+    centreOps.style.display = 'none';
+  }
+
+  // Update time badges
+  if (data && data.time) {
+    if (isTransport) {
+      const idx = id === 't0' ? 0 : 1;
+      document.querySelectorAll('.diag-conn-time')[idx].textContent = data.time;
+    } else {
+      document.getElementById(`dseg-time-${id}`).textContent = data.time;
+    }
+  }
+}
+
+// ── SCROLL-TRIGGERED ANIMATIONS ──────────
+let e2eAnimated = false, diagAnimated = false;
+const sectObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    if (e.target.id === 'e2e-box' && !e2eAnimated) {
+      e2eAnimated = true;
+      setTimeout(() => { selectE2E('a'); animateE2E(); }, 300);
+    }
+    if (e.target.id === 'diag-box' && !diagAnimated) {
+      diagAnimated = true;
+      // step through segments automatically
+      const seq = [0,'t0',1,'t1',2];
+      seq.forEach((id, i) => setTimeout(() => selectSeg(id), 400 + i * 500));
+    }
+  });
+}, { threshold: 0.35 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const e2eBox  = document.getElementById('e2e-box');
+  const diagBox = document.getElementById('diag-box');
+  if (e2eBox)  sectObs.observe(e2eBox);
+  if (diagBox) sectObs.observe(diagBox);
+  selectE2E('a');
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+</script>
+</body>
+</html>
