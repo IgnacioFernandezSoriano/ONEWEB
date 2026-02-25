@@ -252,6 +252,31 @@ h1.hero-h em{font-style:italic;color:rgba(255,255,255,.7);font-weight:400}
 }
 .callout p{font-size:14px;line-height:1.75;color:rgba(255,255,255,.8)}
 .callout p strong{color:white}
+/* keyword highlight in mission text */
+.kw-highlight{
+  display:inline;
+  font-style:italic;
+  font-weight:700;
+  color:var(--blue);
+  background:linear-gradient(120deg,rgba(0,48,135,.08) 0%,rgba(0,48,135,.08) 100%);
+  border-bottom:2.5px solid var(--blue);
+  padding:0 2px;
+  border-radius:2px;
+}
+.mission-data-pill{
+  display:flex;align-items:center;gap:10px;
+  margin-top:28px;padding:14px 18px;
+  background:white;border:1.5px solid var(--blue-mid);
+  border-radius:var(--r);box-shadow:0 2px 12px rgba(0,48,135,.07);
+}
+.mission-data-pill .pill-icon{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--blue);display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.mission-data-pill .pill-icon svg{color:white}
+.mission-data-pill .pill-text{font-size:13px;color:var(--text2);line-height:1.5}
+.mission-data-pill .pill-text strong{color:var(--blue);font-size:14px}
 .objectives{display:flex;flex-direction:column}
 .obj{
   display:grid;grid-template-columns:36px 1fr;
@@ -1032,18 +1057,21 @@ footer{
   <div class="mission-grid">
     <div class="reveal">
       <div class="eye">Your Regulatory Mission</div>
-      <h2 class="sh">Five objectives.<br>One foundation.</h2>
-      <p class="sd">Every postal regulator shares the same mandate. Meeting it requires one thing: <em>objective, independent, credible data</em> that every stakeholder accepts without dispute.</p>
+      <h2 class="sh">Four objectives.<br>One foundation.</h2>
+      <p class="sd">Every postal regulator shares the same mandate. Meeting it requires one thing: <span class="kw-highlight">objective</span>, <span class="kw-highlight">independent</span>, <span class="kw-highlight">credible data</span> that every stakeholder accepts without dispute.</p>
       <div class="callout">
-        <p>A single foundation underpins all five objectives: <strong>objective, independent, and credible data</strong> — a methodology accepted by governments, operators, and consumers worldwide.</p>
+        <p>A single foundation underpins all four objectives: <strong>objective, independent, and credible data</strong> — a methodology accepted by governments, operators, and consumers worldwide.</p>
+      </div>
+      <div class="mission-data-pill">
+        <div class="pill-icon"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="white" stroke-width="1.6"/><path d="M7 10l2 2 4-4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="pill-text"><strong>Objective · Independent · Credible</strong><br>The three pillars of data that regulators, operators and consumers all accept.</div>
       </div>
     </div>
     <div class="objectives reveal reveal-d1">
       <div class="obj"><div class="obj-n">01</div><div><div class="obj-t">Quality of Service Control</div><div class="obj-d">Verify operator compliance with service standards and take corrective action when they fall short.</div></div></div>
-      <div class="obj"><div class="obj-n">02</div><div><div class="obj-t">Tariff Regulation</div><div class="obj-d">Make informed pricing decisions based on verified performance data — with clear incentives and penalties.</div></div></div>
-      <div class="obj"><div class="obj-n">03</div><div><div class="obj-t">Licence Management</div><div class="obj-d">Evaluate operators objectively for licence renewals and set clear, enforceable operating conditions.</div></div></div>
-      <div class="obj"><div class="obj-n">04</div><div><div class="obj-t">Consumer Protection</div><div class="obj-d">Resolve complaints with credible evidence. Ensure transparent public reporting and nationwide coverage.</div></div></div>
-      <div class="obj"><div class="obj-n">05</div><div><div class="obj-t">System Quality Improvement</div><div class="obj-d">Support Designated Operators in identifying performance gaps and driving improvements across the system.</div></div></div>
+      <div class="obj"><div class="obj-n">02</div><div><div class="obj-t">System Quality Improvement</div><div class="obj-d">Support Designated Operators in identifying performance gaps and driving improvements across the system.</div></div></div>
+      <div class="obj"><div class="obj-n">03</div><div><div class="obj-t">Consumer Protection</div><div class="obj-d">Resolve complaints with credible evidence. Ensure transparent public reporting and nationwide coverage.</div></div></div>
+      <div class="obj"><div class="obj-n">04</div><div><div class="obj-t">Licence Management</div><div class="obj-d">Evaluate operators objectively for licence renewals and set clear, enforceable operating conditions.</div></div></div>
     </div>
   </div>
 </div>
