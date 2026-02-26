@@ -1555,6 +1555,257 @@ footer{
 <!-- ═══════════════════════════════════════════════════════════════ -->
 <!-- DIAGNOSTIC DATA CAPTURE TECHNOLOGIES -->
 <!-- ═══════════════════════════════════════════════════════════════ -->
+<section class="sec" id="how">
+<div class="wrap">
+  <div class="reveal" style="text-align:center;max-width:720px;margin:0 auto 56px">
+    <div class="eye" style="justify-content:center">Two Measurement Modes</div>
+    <h2 class="sh" style="text-align:center">From opacity to transparency<br>through independent measurement</h2>
+    <p class="sd" style="text-align:center">ONE MS offers two complementary measurement modes. They can be deployed independently or combined — each designed for a specific regulatory objective.</p>
+  </div>
+  <!-- Comparison cards -->
+  <div class="how-compare reveal">
+    <div class="how-cmp-card e2e">
+      <div class="how-cmp-badge e2e">E2E</div>
+      <h3 class="how-cmp-title">End-to-End Measurement</h3>
+      <p class="how-cmp-sub">The core regulatory layer</p>
+      <p class="how-cmp-desc">Measures total transit time between two cities for a specific carrier and product. Independent panelists dispatch and receive real test items — the postal network is treated as a black box and the total time is what counts.</p>
+      <div class="how-cmp-use">
+        <div class="how-cmp-use-lbl">Regulatory use cases</div>
+        <div class="how-cmp-use-items">
+          <span>Quality of Service compliance</span>
+          <span>Licence management</span>
+          <span>Consumer protection</span>
+          <span>Tariff decisions</span>
+        </div>
+      </div>
+      <div class="how-cmp-arrow">↓ See full detail below</div>
+    </div>
+    <div class="how-cmp-vs">
+      <div class="how-cmp-vs-circle">+</div>
+      <div class="how-cmp-vs-lbl">Can be combined</div>
+    </div>
+    <div class="how-cmp-card diag">
+      <div class="how-cmp-badge diag">Diagnostic</div>
+      <h3 class="how-cmp-title">Network Diagnostic</h3>
+      <p class="how-cmp-sub">The operational intelligence layer</p>
+      <p class="how-cmp-desc">Extends E2E by instrumenting every intermediate point — sorting centres, transport legs, post offices. Identifies <em>where</em> delays occur, not just that they occur. Powered by RFID readers integrated with carrier systems.</p>
+      <div class="how-cmp-use">
+        <div class="how-cmp-use-lbl">Regulatory use cases</div>
+        <div class="how-cmp-use-items">
+          <span>Root cause analysis</span>
+          <span>Corrective action evidence</span>
+          <span>Network black spots</span>
+          <span>Operator benchmarking</span>
+        </div>
+      </div>
+      <div class="how-cmp-arrow">↓ See full detail below</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="sec bg-off" id="how-e2e">
+<div class="wrap">
+  <div class="how-mode-header reveal">
+    <div class="how-mode-badge e2e">E2E — End-to-End Measurement</div>
+    <h2 class="sh">The black box approach:<br>what matters is the total time</h2>
+    <p class="sd">Independent panelists dispatch and receive real postal items. The postal network between origin and destination is not instrumented — the E2E transit time is compared directly against the J+K standard to determine compliance.</p>
+  </div>
+  <div class="how-mode-grid reveal">
+    <div>
+      <div class="how-def-block">
+        <div class="how-def-row"><div class="how-def-lbl">Definition</div><div class="how-def-val">Total transit time between two cities for a specific carrier and product.</div></div>
+        <div class="how-def-row"><div class="how-def-lbl">Method</div><div class="how-def-val">Independent panelists or barcode scanning register dispatch and receipt times. Multi-carrier, multi-product: letters, parcels, express, registered mail.</div></div>
+        <div class="how-def-row"><div class="how-def-lbl">Outcome</div><div class="how-def-val">Verified compliance with delivery standards. Evidence base for regulatory action, tariff decisions, and licence management.</div></div>
+      </div>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="how-step-num">01</div>
+          <div class="how-step-body">
+            <div class="how-step-title">Origin panelist — City A</div>
+            <div class="how-step-desc">An independent panelist dispatches a real test item from City A using the operator's normal service. The injection timestamp (T inject) is recorded automatically via the ONE Agent App. The panelist is fully independent — not affiliated with the operator.</div>
+            <div class="how-step-ref">→ Panelist Management · Agent App · Allocation Plan</div>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">02</div>
+          <div class="how-step-body">
+            <div class="how-step-title">The postal network — a measured black box</div>
+            <div class="how-step-desc">E2E does not instrument the internal network. The sorting centres, transport legs, and delivery offices between City A and City B are not individually tracked. What matters is the total transit time. If performance fails, Network Diagnostic opens this box to find exactly where.</div>
+            <div class="how-step-ref">→ E2E Events DB · Compliance Report · Territory Equity Report</div>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">03</div>
+          <div class="how-step-body">
+            <div class="how-step-title">Destination panelist — City B</div>
+            <div class="how-step-desc">A second independent panelist in City B receives the item and confirms delivery via the app. The delivery timestamp (T delivery) is recorded. The system calculates: <strong>T delivery − T inject = E2E transit time</strong>. This is compared against the J+K target to determine compliance.</div>
+            <div class="how-step-ref">→ J+K Performance Report · Regulatory Compliance Report</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <!-- E2E visual diagram -->
+      <div class="how-diagram e2e-diag">
+        <div class="how-diag-bar">
+          <div class="how-diag-dot"></div>
+          <div class="how-diag-dot"></div>
+          <div class="how-diag-dot"></div>
+          <span>END-TO-END: CITY-TO-CITY MEASUREMENT</span>
+        </div>
+        <div class="e2e-flow">
+          <div class="e2e-node origin">
+            <div class="e2e-node-icon">
+              <svg width="28" height="28" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="4" fill="#003087" opacity=".12"/><path d="M16 8C12 8 9 11 9 15c0 5.5 7 13 7 13s7-7.5 7-13c0-4-3-7-7-7z" fill="#003087"/><circle cx="16" cy="15" r="3" fill="white"/></svg>
+            </div>
+            <div class="e2e-node-title">City A</div>
+            <div class="e2e-node-sub">ORIGIN</div>
+            <div class="e2e-node-role">Panelist</div>
+          </div>
+          <div class="e2e-arrow-zone">
+            <div class="e2e-arrow-label">J+K target</div>
+            <div class="e2e-arrow-line">
+              <div class="e2e-arrow-fill"></div>
+            </div>
+            <div class="e2e-arrow-sublabel">Postal Network<br><small>Sorting · Transport · Delivery</small></div>
+          </div>
+          <div class="e2e-node dest">
+            <div class="e2e-node-icon">
+              <svg width="28" height="28" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="4" fill="#003087" opacity=".12"/><path d="M16 8C12 8 9 11 9 15c0 5.5 7 13 7 13s7-7.5 7-13c0-4-3-7-7-7z" fill="#003087"/><circle cx="16" cy="15" r="3" fill="white"/></svg>
+            </div>
+            <div class="e2e-node-title">City B</div>
+            <div class="e2e-node-sub">DESTINATION</div>
+            <div class="e2e-node-role">Panelist</div>
+          </div>
+        </div>
+        <div class="e2e-timeline">
+          <span class="e2e-t">T inject</span>
+          <div class="e2e-tbar"><div class="e2e-tbar-fill"></div></div>
+          <span class="e2e-t">T delivery</span>
+        </div>
+        <div class="hp-box-lbl" style="margin-top:20px">ONE MS Modules included</div>
+        <div class="mods">
+          <div class="mod"><span class="mod-ck">✓</span>Country Topology, Carriers &amp; Products</div>
+          <div class="mod"><span class="mod-ck">✓</span>Panelist Management with SLA &amp; delivery standards</div>
+          <div class="mod"><span class="mod-ck">✓</span>Dynamic Allocation Plan Management</div>
+          <div class="mod"><span class="mod-ck">✓</span>Panelist Materials Management</div>
+          <div class="mod"><span class="mod-ck">✓</span>E2E Events Database &amp; API</div>
+          <div class="mod"><span class="mod-ck">✓</span>Panelist Agent App (AI-assisted via Telegram)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="sec" id="how-diag">
+<div class="wrap">
+  <div class="how-mode-header reveal">
+    <div class="how-mode-badge diag">Diagnostic — Network Measurement</div>
+    <h2 class="sh">Inside the black box:<br>pinpoint where delays occur</h2>
+    <p class="sd">Network Diagnostic extends E2E by instrumenting every node in the postal chain. RFID readers at sorting centres and transport checkpoints capture exact timestamps at each stage — turning the black box into a transparent, measurable system.</p>
+  </div>
+  <div class="how-mode-grid reveal">
+    <div>
+      <div class="how-def-block">
+        <div class="how-def-row"><div class="how-def-lbl">Definition</div><div class="how-def-val">Extends E2E by measuring intermediate points — sorting centres, transport legs, and post offices.</div></div>
+        <div class="how-def-row"><div class="how-def-lbl">Method</div><div class="how-def-val">RFID readers at facility entry/exit gates capture exact timestamps. Integrated with carrier systems via API. No manual intervention required.</div></div>
+        <div class="how-def-row"><div class="how-def-lbl">Outcome</div><div class="how-def-val">Identifies root causes of E2E failures. Enables targeted corrective action. Supports network black spot detection and centre efficiency benchmarking.</div></div>
+      </div>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="how-step-num">01</div>
+          <div class="how-step-body">
+            <div class="how-step-title">Origin Sorting Centre</div>
+            <div class="how-step-desc">RFID readers at entry and exit gates capture the exact time each item spends inside this facility. The system measures: time from arrival → processing → departure. Compared across all routes and centres to identify operational outliers.</div>
+            <div class="how-step-ref">→ Postal Centre Diagnostic · Centre Efficiency Ranking</div>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">02</div>
+          <div class="how-step-body">
+            <div class="how-step-title">Transport Legs</div>
+            <div class="how-step-desc">The time between departure from one centre and arrival at the next. RFID captures exact loading/unloading timestamps. The system builds a reliability profile for every transport link: on-time rate, average delay, variance. Green Lanes and Black Spots are ranked automatically.</div>
+            <div class="how-step-ref">→ Transport Reliability Analysis · Network Black Spots</div>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">03</div>
+          <div class="how-step-body">
+            <div class="how-step-title">Intermediate &amp; Destination Centres</div>
+            <div class="how-step-desc">Intermediate centres are often hidden bottlenecks — items may arrive on time but accumulate delays before onward transport. Destination centre delays directly cause consumer-facing failures. Diagnostic isolates each contribution to the total E2E time.</div>
+            <div class="how-step-ref">→ Postal Centre Diagnostic · Territory Equity Report</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <!-- Diagnostic visual -->
+      <div class="how-diagram diag-diag">
+        <div class="how-diag-bar">
+          <div class="how-diag-dot"></div>
+          <div class="how-diag-dot"></div>
+          <div class="how-diag-dot"></div>
+          <span>NETWORK DIAGNOSTIC: FULL CHAIN</span>
+        </div>
+        <div class="diag-chain">
+          <div class="diag-chain-node panelist">
+            <div class="dcn-icon">P</div>
+            <div class="dcn-lbl">Origin<br>Panelist</div>
+          </div>
+          <div class="diag-chain-seg">
+            <div class="dcs-time green">1.2h</div>
+            <div class="dcs-line"></div>
+          </div>
+          <div class="diag-chain-node centre">
+            <div class="dcn-icon">SC</div>
+            <div class="dcn-lbl">Origin<br>Centre</div>
+          </div>
+          <div class="diag-chain-seg">
+            <div class="dcs-time warn">3.8h</div>
+            <div class="dcs-line warn"></div>
+          </div>
+          <div class="diag-chain-node centre">
+            <div class="dcn-icon">SC</div>
+            <div class="dcn-lbl">Intermediate<br>Centre</div>
+          </div>
+          <div class="diag-chain-seg">
+            <div class="dcs-time red">6.1h ⚠</div>
+            <div class="dcs-line red"></div>
+          </div>
+          <div class="diag-chain-node centre">
+            <div class="dcn-icon">SC</div>
+            <div class="dcn-lbl">Destination<br>Centre</div>
+          </div>
+          <div class="diag-chain-seg">
+            <div class="dcs-time green">0.8h</div>
+            <div class="dcs-line"></div>
+          </div>
+          <div class="diag-chain-node panelist">
+            <div class="dcn-icon">P</div>
+            <div class="dcn-lbl">Destination<br>Panelist</div>
+          </div>
+        </div>
+        <div class="diag-legend">
+          <span class="dl green">On target</span>
+          <span class="dl warn">Delayed</span>
+          <span class="dl red">Black spot</span>
+        </div>
+        <div class="hp-box-lbl" style="margin-top:20px">ONE MS Modules included</div>
+        <div class="mods">
+          <div class="mod"><span class="mod-ck">✓</span>Carrier Network Topology &amp; Facility Standards (SLA)</div>
+          <div class="mod"><span class="mod-ck">✓</span>Facility Allocation Plan Generator</div>
+          <div class="mod"><span class="mod-ck">✓</span>RFID / Barcode API Integration with carrier</div>
+          <div class="mod"><span class="mod-ck">✓</span>Diagnosis Database &amp; API</div>
+          <div class="mod"><span class="mod-ck">✓</span>Network Diagnostic Reporting Suite</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
 <section class="sec bg-off" id="diag-tech">
 <div class="wrap">
   <div class="reveal" style="text-align:center;margin-bottom:56px">
@@ -1847,260 +2098,6 @@ footer{
 
 
 <!-- HOW: INTRO -->
-<section class="sec" id="how">
-<div class="wrap">
-  <div class="reveal" style="text-align:center;max-width:720px;margin:0 auto 56px">
-    <div class="eye" style="justify-content:center">Two Measurement Modes</div>
-    <h2 class="sh" style="text-align:center">From opacity to transparency<br>through independent measurement</h2>
-    <p class="sd" style="text-align:center">ONE MS offers two complementary measurement modes. They can be deployed independently or combined — each designed for a specific regulatory objective.</p>
-  </div>
-  <!-- Comparison cards -->
-  <div class="how-compare reveal">
-    <div class="how-cmp-card e2e">
-      <div class="how-cmp-badge e2e">E2E</div>
-      <h3 class="how-cmp-title">End-to-End Measurement</h3>
-      <p class="how-cmp-sub">The core regulatory layer</p>
-      <p class="how-cmp-desc">Measures total transit time between two cities for a specific carrier and product. Independent panelists dispatch and receive real test items — the postal network is treated as a black box and the total time is what counts.</p>
-      <div class="how-cmp-use">
-        <div class="how-cmp-use-lbl">Regulatory use cases</div>
-        <div class="how-cmp-use-items">
-          <span>Quality of Service compliance</span>
-          <span>Licence management</span>
-          <span>Consumer protection</span>
-          <span>Tariff decisions</span>
-        </div>
-      </div>
-      <div class="how-cmp-arrow">↓ See full detail below</div>
-    </div>
-    <div class="how-cmp-vs">
-      <div class="how-cmp-vs-circle">+</div>
-      <div class="how-cmp-vs-lbl">Can be combined</div>
-    </div>
-    <div class="how-cmp-card diag">
-      <div class="how-cmp-badge diag">Diagnostic</div>
-      <h3 class="how-cmp-title">Network Diagnostic</h3>
-      <p class="how-cmp-sub">The operational intelligence layer</p>
-      <p class="how-cmp-desc">Extends E2E by instrumenting every intermediate point — sorting centres, transport legs, post offices. Identifies <em>where</em> delays occur, not just that they occur. Powered by RFID readers integrated with carrier systems.</p>
-      <div class="how-cmp-use">
-        <div class="how-cmp-use-lbl">Regulatory use cases</div>
-        <div class="how-cmp-use-items">
-          <span>Root cause analysis</span>
-          <span>Corrective action evidence</span>
-          <span>Network black spots</span>
-          <span>Operator benchmarking</span>
-        </div>
-      </div>
-      <div class="how-cmp-arrow">↓ See full detail below</div>
-    </div>
-  </div>
-</div>
-</section>
-<div class="divider"></div>
-
-<!-- HOW: E2E DETAIL -->
-<section class="sec bg-off" id="how-e2e">
-<div class="wrap">
-  <div class="how-mode-header reveal">
-    <div class="how-mode-badge e2e">E2E — End-to-End Measurement</div>
-    <h2 class="sh">The black box approach:<br>what matters is the total time</h2>
-    <p class="sd">Independent panelists dispatch and receive real postal items. The postal network between origin and destination is not instrumented — the E2E transit time is compared directly against the J+K standard to determine compliance.</p>
-  </div>
-  <div class="how-mode-grid reveal">
-    <div>
-      <div class="how-def-block">
-        <div class="how-def-row"><div class="how-def-lbl">Definition</div><div class="how-def-val">Total transit time between two cities for a specific carrier and product.</div></div>
-        <div class="how-def-row"><div class="how-def-lbl">Method</div><div class="how-def-val">Independent panelists or barcode scanning register dispatch and receipt times. Multi-carrier, multi-product: letters, parcels, express, registered mail.</div></div>
-        <div class="how-def-row"><div class="how-def-lbl">Outcome</div><div class="how-def-val">Verified compliance with delivery standards. Evidence base for regulatory action, tariff decisions, and licence management.</div></div>
-      </div>
-      <div class="how-steps">
-        <div class="how-step">
-          <div class="how-step-num">01</div>
-          <div class="how-step-body">
-            <div class="how-step-title">Origin panelist — City A</div>
-            <div class="how-step-desc">An independent panelist dispatches a real test item from City A using the operator's normal service. The injection timestamp (T inject) is recorded automatically via the ONE Agent App. The panelist is fully independent — not affiliated with the operator.</div>
-            <div class="how-step-ref">→ Panelist Management · Agent App · Allocation Plan</div>
-          </div>
-        </div>
-        <div class="how-step">
-          <div class="how-step-num">02</div>
-          <div class="how-step-body">
-            <div class="how-step-title">The postal network — a measured black box</div>
-            <div class="how-step-desc">E2E does not instrument the internal network. The sorting centres, transport legs, and delivery offices between City A and City B are not individually tracked. What matters is the total transit time. If performance fails, Network Diagnostic opens this box to find exactly where.</div>
-            <div class="how-step-ref">→ E2E Events DB · Compliance Report · Territory Equity Report</div>
-          </div>
-        </div>
-        <div class="how-step">
-          <div class="how-step-num">03</div>
-          <div class="how-step-body">
-            <div class="how-step-title">Destination panelist — City B</div>
-            <div class="how-step-desc">A second independent panelist in City B receives the item and confirms delivery via the app. The delivery timestamp (T delivery) is recorded. The system calculates: <strong>T delivery − T inject = E2E transit time</strong>. This is compared against the J+K target to determine compliance.</div>
-            <div class="how-step-ref">→ J+K Performance Report · Regulatory Compliance Report</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <!-- E2E visual diagram -->
-      <div class="how-diagram e2e-diag">
-        <div class="how-diag-bar">
-          <div class="how-diag-dot"></div>
-          <div class="how-diag-dot"></div>
-          <div class="how-diag-dot"></div>
-          <span>END-TO-END: CITY-TO-CITY MEASUREMENT</span>
-        </div>
-        <div class="e2e-flow">
-          <div class="e2e-node origin">
-            <div class="e2e-node-icon">
-              <svg width="28" height="28" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="4" fill="#003087" opacity=".12"/><path d="M16 8C12 8 9 11 9 15c0 5.5 7 13 7 13s7-7.5 7-13c0-4-3-7-7-7z" fill="#003087"/><circle cx="16" cy="15" r="3" fill="white"/></svg>
-            </div>
-            <div class="e2e-node-title">City A</div>
-            <div class="e2e-node-sub">ORIGIN</div>
-            <div class="e2e-node-role">Panelist</div>
-          </div>
-          <div class="e2e-arrow-zone">
-            <div class="e2e-arrow-label">J+K target</div>
-            <div class="e2e-arrow-line">
-              <div class="e2e-arrow-fill"></div>
-            </div>
-            <div class="e2e-arrow-sublabel">Postal Network<br><small>Sorting · Transport · Delivery</small></div>
-          </div>
-          <div class="e2e-node dest">
-            <div class="e2e-node-icon">
-              <svg width="28" height="28" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="4" fill="#003087" opacity=".12"/><path d="M16 8C12 8 9 11 9 15c0 5.5 7 13 7 13s7-7.5 7-13c0-4-3-7-7-7z" fill="#003087"/><circle cx="16" cy="15" r="3" fill="white"/></svg>
-            </div>
-            <div class="e2e-node-title">City B</div>
-            <div class="e2e-node-sub">DESTINATION</div>
-            <div class="e2e-node-role">Panelist</div>
-          </div>
-        </div>
-        <div class="e2e-timeline">
-          <span class="e2e-t">T inject</span>
-          <div class="e2e-tbar"><div class="e2e-tbar-fill"></div></div>
-          <span class="e2e-t">T delivery</span>
-        </div>
-        <div class="hp-box-lbl" style="margin-top:20px">ONE MS Modules included</div>
-        <div class="mods">
-          <div class="mod"><span class="mod-ck">✓</span>Country Topology, Carriers &amp; Products</div>
-          <div class="mod"><span class="mod-ck">✓</span>Panelist Management with SLA &amp; delivery standards</div>
-          <div class="mod"><span class="mod-ck">✓</span>Dynamic Allocation Plan Management</div>
-          <div class="mod"><span class="mod-ck">✓</span>Panelist Materials Management</div>
-          <div class="mod"><span class="mod-ck">✓</span>E2E Events Database &amp; API</div>
-          <div class="mod"><span class="mod-ck">✓</span>Panelist Agent App (AI-assisted via Telegram)</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</section>
-<div class="divider"></div>
-
-<!-- HOW: DIAGNOSTIC DETAIL -->
-<section class="sec" id="how-diag">
-<div class="wrap">
-  <div class="how-mode-header reveal">
-    <div class="how-mode-badge diag">Diagnostic — Network Measurement</div>
-    <h2 class="sh">Inside the black box:<br>pinpoint where delays occur</h2>
-    <p class="sd">Network Diagnostic extends E2E by instrumenting every node in the postal chain. RFID readers at sorting centres and transport checkpoints capture exact timestamps at each stage — turning the black box into a transparent, measurable system.</p>
-  </div>
-  <div class="how-mode-grid reveal">
-    <div>
-      <div class="how-def-block">
-        <div class="how-def-row"><div class="how-def-lbl">Definition</div><div class="how-def-val">Extends E2E by measuring intermediate points — sorting centres, transport legs, and post offices.</div></div>
-        <div class="how-def-row"><div class="how-def-lbl">Method</div><div class="how-def-val">RFID readers at facility entry/exit gates capture exact timestamps. Integrated with carrier systems via API. No manual intervention required.</div></div>
-        <div class="how-def-row"><div class="how-def-lbl">Outcome</div><div class="how-def-val">Identifies root causes of E2E failures. Enables targeted corrective action. Supports network black spot detection and centre efficiency benchmarking.</div></div>
-      </div>
-      <div class="how-steps">
-        <div class="how-step">
-          <div class="how-step-num">01</div>
-          <div class="how-step-body">
-            <div class="how-step-title">Origin Sorting Centre</div>
-            <div class="how-step-desc">RFID readers at entry and exit gates capture the exact time each item spends inside this facility. The system measures: time from arrival → processing → departure. Compared across all routes and centres to identify operational outliers.</div>
-            <div class="how-step-ref">→ Postal Centre Diagnostic · Centre Efficiency Ranking</div>
-          </div>
-        </div>
-        <div class="how-step">
-          <div class="how-step-num">02</div>
-          <div class="how-step-body">
-            <div class="how-step-title">Transport Legs</div>
-            <div class="how-step-desc">The time between departure from one centre and arrival at the next. RFID captures exact loading/unloading timestamps. The system builds a reliability profile for every transport link: on-time rate, average delay, variance. Green Lanes and Black Spots are ranked automatically.</div>
-            <div class="how-step-ref">→ Transport Reliability Analysis · Network Black Spots</div>
-          </div>
-        </div>
-        <div class="how-step">
-          <div class="how-step-num">03</div>
-          <div class="how-step-body">
-            <div class="how-step-title">Intermediate &amp; Destination Centres</div>
-            <div class="how-step-desc">Intermediate centres are often hidden bottlenecks — items may arrive on time but accumulate delays before onward transport. Destination centre delays directly cause consumer-facing failures. Diagnostic isolates each contribution to the total E2E time.</div>
-            <div class="how-step-ref">→ Postal Centre Diagnostic · Territory Equity Report</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <!-- Diagnostic visual -->
-      <div class="how-diagram diag-diag">
-        <div class="how-diag-bar">
-          <div class="how-diag-dot"></div>
-          <div class="how-diag-dot"></div>
-          <div class="how-diag-dot"></div>
-          <span>NETWORK DIAGNOSTIC: FULL CHAIN</span>
-        </div>
-        <div class="diag-chain">
-          <div class="diag-chain-node panelist">
-            <div class="dcn-icon">P</div>
-            <div class="dcn-lbl">Origin<br>Panelist</div>
-          </div>
-          <div class="diag-chain-seg">
-            <div class="dcs-time green">1.2h</div>
-            <div class="dcs-line"></div>
-          </div>
-          <div class="diag-chain-node centre">
-            <div class="dcn-icon">SC</div>
-            <div class="dcn-lbl">Origin<br>Centre</div>
-          </div>
-          <div class="diag-chain-seg">
-            <div class="dcs-time warn">3.8h</div>
-            <div class="dcs-line warn"></div>
-          </div>
-          <div class="diag-chain-node centre">
-            <div class="dcn-icon">SC</div>
-            <div class="dcn-lbl">Intermediate<br>Centre</div>
-          </div>
-          <div class="diag-chain-seg">
-            <div class="dcs-time red">6.1h ⚠</div>
-            <div class="dcs-line red"></div>
-          </div>
-          <div class="diag-chain-node centre">
-            <div class="dcn-icon">SC</div>
-            <div class="dcn-lbl">Destination<br>Centre</div>
-          </div>
-          <div class="diag-chain-seg">
-            <div class="dcs-time green">0.8h</div>
-            <div class="dcs-line"></div>
-          </div>
-          <div class="diag-chain-node panelist">
-            <div class="dcn-icon">P</div>
-            <div class="dcn-lbl">Destination<br>Panelist</div>
-          </div>
-        </div>
-        <div class="diag-legend">
-          <span class="dl green">On target</span>
-          <span class="dl warn">Delayed</span>
-          <span class="dl red">Black spot</span>
-        </div>
-        <div class="hp-box-lbl" style="margin-top:20px">ONE MS Modules included</div>
-        <div class="mods">
-          <div class="mod"><span class="mod-ck">✓</span>Carrier Network Topology &amp; Facility Standards (SLA)</div>
-          <div class="mod"><span class="mod-ck">✓</span>Facility Allocation Plan Generator</div>
-          <div class="mod"><span class="mod-ck">✓</span>RFID / Barcode API Integration with carrier</div>
-          <div class="mod"><span class="mod-ck">✓</span>Diagnosis Database &amp; API</div>
-          <div class="mod"><span class="mod-ck">✓</span>Network Diagnostic Reporting Suite</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</section>
 html>
 <html lang="en">
 <head>
