@@ -2510,13 +2510,14 @@ function applyLang(lang) {
   document.documentElement.setAttribute('lang', lang);
 
   // Update lang button label
-  const labels = {en:'🌐 EN', fr:'🌐 FR', es:'🌐 ES', ar:'🌐 AR'};
-  const btn = document.getElementById('langBtn');
-  if (btn) btn.innerHTML = labels[lang] || '🌐 EN';
+  const span = document.getElementById('currentLang');
+  if (span) span.textContent = lang.toUpperCase();
 
-  // Mark active option
-  document.querySelectorAll('.lang-opt').forEach(opt => {
-    opt.classList.toggle('active', opt.getAttribute('data-lang') === lang);
+  // Mark active option in dropdown
+  document.querySelectorAll('#langMenu button').forEach(function(b) {
+    const isActive = b.getAttribute('onclick') && b.getAttribute('onclick').indexOf("'" + lang + "'") !== -1;
+    b.style.fontWeight = isActive ? '700' : '400';
+    b.style.color = isActive ? '#003087' : '';
   });
 }
 
