@@ -570,14 +570,24 @@ select.fi{appearance:none;cursor:pointer}
 .pteams:hover{background:var(--blue);color:white;border-color:var(--blue)}
 
 /* ── FOOTER ────────────────────────────── */
-footer{
-  background:var(--blue-dark);
-  padding:26px var(--gutter);
-  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;
-}
+footer{background:var(--blue-dark);padding:0}
+.ft-main{padding:32px var(--gutter) 20px;display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:20px;border-bottom:1px solid rgba(255,255,255,.1)}
 .ft-brand{font-family:'Open Sans',sans-serif;font-size:15px;font-weight:700;color:white}
 .ft-sub{font-size:11px;color:rgba(255,255,255,.33);margin-top:3px}
+.ft-links{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.ft-link{font-size:12px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s}
+.ft-link:hover{color:rgba(255,255,255,.8)}
 .ft-copy{font-size:10px;color:rgba(255,255,255,.22);letter-spacing:.06em;text-transform:uppercase}
+.ft-bottom{padding:14px var(--gutter);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+/* Legal modals */
+.legal-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9999;align-items:center;justify-content:center;padding:20px}
+.legal-modal.open{display:flex}
+.legal-box{background:#fff;border-radius:12px;max-width:680px;width:100%;max-height:80vh;overflow-y:auto;padding:40px 44px;position:relative}
+.legal-box h2{font-size:22px;font-weight:700;color:var(--blue);margin-bottom:20px}
+.legal-box p,.legal-box li{font-size:14px;color:#374151;line-height:1.7;margin-bottom:12px}
+.legal-box ol,.legal-box ul{padding-left:20px}
+.legal-close{position:absolute;top:16px;right:20px;background:none;border:none;font-size:22px;cursor:pointer;color:#6b7280;line-height:1}
+.legal-close:hover{color:var(--text)}
 
 /* ── MULTI-CARRIER CHAIN ───────────────── */
 .mc-chain{display:flex;flex-direction:column;gap:0}
@@ -2326,12 +2336,53 @@ footer{
 </section>
 
 <footer>
-  <div>
-    <div class="ft-brand">UPU · ONE Solutions</div>
-    <div class="ft-sub" data-i18n="footer_sub">Weltpoststrasse 4 · 3015 Berne · Switzerland · A Specialised Agency of the United Nations</div>
+  <div class="ft-main">
+    <div>
+      <div class="ft-brand">UPU · ONE Solutions</div>
+      <div class="ft-sub" data-i18n="footer_sub">Weltpoststrasse 4 · 3015 Berne · Switzerland · A Specialised Agency of the United Nations</div>
+    </div>
+    <div class="ft-links">
+      <a href="#" class="ft-link" onclick="openLegal('disclaimer');return false;" data-i18n="footer_disclaimer">Disclaimer</a>
+      <span style="color:rgba(255,255,255,.2);font-size:11px">·</span>
+      <a href="#" class="ft-link" onclick="openLegal('copyright');return false;" data-i18n="footer_copyright">Copyright</a>
+      <span style="color:rgba(255,255,255,.2);font-size:11px">·</span>
+      <a href="https://www.upu.int/en/Disclaimer" target="_blank" class="ft-link" style="font-size:11px;opacity:.6">upu.int</a>
+    </div>
   </div>
-  <div class="ft-copy">© 2026 Universal Postal Union · All Rights Reserved</div>
+  <div class="ft-bottom">
+    <div class="ft-copy">© 2026 Universal Postal Union · All Rights Reserved</div>
+  </div>
 </footer>
+
+<!-- DISCLAIMER MODAL -->
+<div class="legal-modal" id="modal-disclaimer">
+  <div class="legal-box">
+    <button class="legal-close" onclick="closeLegal('disclaimer')">×</button>
+    <h2>Disclaimer</h2>
+    <ul>
+      <li>Anyone may use or reproduce any information presented on this website, subject to any specific terms of use that might appear with such information, provided that the use of such information is accompanied by an acknowledgement that the UPU is the source.</li>
+      <li>The UPU makes every effort to ensure, but cannot and does not guarantee, and makes no warranties as to, the accuracy, accessibility, integrity and timeliness of any information presented on this website. The UPU assumes no liability or responsibility for any errors or omissions in the content of this website and further disclaims any liability of any nature for any loss howsoever caused in connection with using this website, including failure of performance, computer virus or communication line failure, regardless of cause, or for any damages resulting therefrom. The UPU may make changes to these materials at any time without notice.</li>
+      <li>Hyperlinks to other websites are provided as a convenience only, and imply neither responsibility for, nor approval of, the information contained in those other web sites on the part of the UPU. The UPU makes no warranty, either express or implied, as to the accuracy, availability, reliability or content of such information, text, graphics and hyperlinks. The UPU has not tested any software located on other sites and does not make any representations as to the quality, safety, reliability or suitability of such software.</li>
+      <li>As the case may be, the collection and retention of personal information by the UPU through its website may be subject to the terms of a UPU privacy policy.</li>
+      <li>Nothing in or relating to this disclaimer or the UPU website shall be deemed a waiver, explicit or implied, of any of the privileges and immunities of the UPU.</li>
+    </ul>
+    <p style="margin-top:16px;font-size:12px;color:#9ca3af">Source: <a href="https://www.upu.int/en/Disclaimer" target="_blank" style="color:var(--blue)">upu.int/en/Disclaimer</a></p>
+  </div>
+</div>
+
+<!-- COPYRIGHT MODAL -->
+<div class="legal-modal" id="modal-copyright">
+  <div class="legal-box">
+    <button class="legal-close" onclick="closeLegal('copyright')">×</button>
+    <h2>Copyright</h2>
+    <p><strong>©2020 Universal Postal Union — All rights reserved.</strong></p>
+    <ol>
+      <li>None of the materials provided on this website may be used, reproduced or transmitted, in whole or in part, in any form or by any means, electronic or mechanical, including photocopying, recording or the use of any information storage and retrieval system, except as provided for in this website (see the "Disclaimer" section), without permission in writing from the UPU or the publisher concerned.</li>
+      <li>Access to databases of the UPU for consultation of documents and/or information retrieval is permitted by the UPU subject to the user's acceptance of UPU's provisions and conditions of copyright contained within each document which obliges the user not to duplicate the document or parts thereof for distribution or sale external to the user's organization. Without prejudice to the foregoing obligations, such information may be utilized in the receiving organization, as required, to further the work of the UPU, to provide guidance for product or service development and implementation and to serve as support documentation associated with a product or service.</li>
+    </ol>
+    <p style="margin-top:16px;font-size:12px;color:#9ca3af">Source: <a href="https://www.upu.int/en/Copyright" target="_blank" style="color:var(--blue)">upu.int/en/Copyright</a></p>
+  </div>
+</div>
 
 <script>
 function switchR(id,el){
@@ -2523,6 +2574,7 @@ const TRANSLATIONS = {
     contact_h2:'You see the need.<br>Take action.',
     contact_sd:'Contact the ONE Solutions team for a country-specific demonstration tailored to your regulatory mandate.',
     footer_sub:'Weltpoststrasse 4 · 3015 Berne · Switzerland · A Specialised Agency of the United Nations',
+    footer_disclaimer:'Disclaimer', footer_copyright:'Copyright',
   },
   fr: {
     nav_mission:'Mission', nav_platform:'Plateforme', nav_how:'Fonctionnement',
@@ -2562,6 +2614,7 @@ const TRANSLATIONS = {
     contact_h2:'Vous voyez le besoin.<br>Passez à l'action.',
     contact_sd:'Contactez l'équipe ONE Solutions pour une démonstration adaptée à votre mandat réglementaire.',
     footer_sub:'Weltpoststrasse 4 · 3015 Berne · Suisse · Agence spécialisée des Nations Unies',
+    footer_disclaimer:'Avertissement', footer_copyright:'Droits d\'auteur',
   },
   es: {
     nav_mission:'Misión', nav_platform:'Plataforma', nav_how:'Cómo funciona',
@@ -2601,6 +2654,7 @@ const TRANSLATIONS = {
     contact_h2:'Usted ve la necesidad.<br>Tome acción.',
     contact_sd:'Contacte al equipo ONE Solutions para una demostración específica adaptada a su mandato regulatorio.',
     footer_sub:'Weltpoststrasse 4 · 3015 Berna · Suiza · Organismo especializado de las Naciones Unidas',
+    footer_disclaimer:'Aviso legal', footer_copyright:'Derechos de autor',
   },
   ar: {
     nav_mission:'المهمة', nav_platform:'المنصة', nav_how:'كيف يعمل',
@@ -2640,6 +2694,7 @@ const TRANSLATIONS = {
     contact_h2:'ترون الحاجة.<br>اتخذوا الإجراء.',
     contact_sd:'تواصلوا مع فريق ONE Solutions للحصول على عرض توضيحي خاص بدولتكم ومتوافق مع ولايتكم التنظيمية.',
     footer_sub:'Weltpoststrasse 4 · 3015 بيرن · سويسرا · وكالة متخصصة تابعة للأمم المتحدة',
+    footer_disclaimer:'إخلاء المسؤولية', footer_copyright:'حقوق النشر',
   }
 };
 
@@ -2682,7 +2737,33 @@ document.addEventListener('click', e => {
   }
 });
 
-// Auto-detect language on load
+// ── LEGAL MODALS ─────────────────────────────────────────────────────────────
+function openLegal(type) {
+  const modal = document.getElementById('modal-' + type);
+  if (modal) { modal.classList.add('open'); document.body.style.overflow = 'hidden'; }
+}
+function closeLegal(type) {
+  const modal = document.getElementById('modal-' + type);
+  if (modal) { modal.classList.remove('open'); document.body.style.overflow = ''; }
+}
+// Close modal on backdrop click
+document.addEventListener('click', e => {
+  if (e.target.classList.contains('legal-modal')) {
+    e.target.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+// Close modal on Escape key
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.legal-modal.open').forEach(m => {
+      m.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  }
+});
+
+// Auto-detect language on load — selector always remains interactive
 (function() {
   const saved = localStorage.getItem('oneLang');
   if (saved && TRANSLATIONS[saved]) { applyLang(saved); return; }
