@@ -1137,6 +1137,18 @@ footer{
 .do-xv-ok{color:#5bf5a0;font-weight:700}
 .do-xv-warn{color:#f5a05b;font-weight:700}
 @media(max-width:768px){.dtech-layout,.dtech-layout-rev{grid-template-columns:1fr;direction:ltr}}
+
+/* ── LANGUAGE SELECTOR ── */
+.lang-sel{position:relative;margin-right:8px}
+.lang-btn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;padding:6px 12px;border-radius:6px;cursor:pointer;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px;transition:background .2s}
+.lang-btn:hover{background:rgba(255,255,255,.22)}
+.lang-menu{display:none;position:absolute;top:calc(100% + 8px);right:0;background:#fff;border:1px solid #e5e7eb;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.12);min-width:150px;z-index:200;overflow:hidden}
+.lang-menu.open{display:block}
+.lang-menu button{display:block;width:100%;text-align:left;padding:10px 16px;background:none;border:none;cursor:pointer;font-size:14px;color:var(--text);transition:background .15s}
+.lang-menu button:hover{background:#f3f4f6}
+[dir="rtl"] .nav-links,[dir="rtl"] .hero-inner,[dir="rtl"] .wrap{direction:rtl}
+[dir="rtl"] .lang-menu{right:auto;left:0}
+
 </style>
 </head>
 <body>
@@ -1148,15 +1160,27 @@ footer{
     <img src="assets/one-for-regulators-white-crop.png" alt="ONE for Regulators" style="height:44px;max-width:220px;object-fit:contain">
   </a>
   <div class="nav-links">
-    <a href="#mission">Mission</a>
+    <a href="#mission" data-i18n="nav_mission">Mission</a>
 
-    <a href="#platform">Platform</a>
-    <a href="#how">How It Works</a>
-    <a href="#reports">Reports</a>
-    <a href="#plans">Plans</a>
-    <a href="#contact">Contact</a>
+    <a href="#platform" data-i18n="nav_platform">Platform</a>
+    <a href="#how" data-i18n="nav_how">How It Works</a>
+    <a href="#reports" data-i18n="nav_reports">Reports</a>
+    <a href="#plans" data-i18n="nav_plans">Plans</a>
+    <a href="#contact" data-i18n="nav_contact">Contact</a>
   </div>
-  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Schedule a Meeting</button>
+  <div class="lang-sel" id="langSel">
+    <button class="lang-btn" onclick="toggleLangMenu()" aria-label="Select language">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="rgba(255,255,255,.7)" stroke-width="1.2"/><path d="M8 1C8 1 5.5 4.5 5.5 8s2.5 7 2.5 7 2.5-3.5 2.5-7S8 1 8 1z" stroke="rgba(255,255,255,.7)" stroke-width="1.2" fill="none"/><line x1="1" y1="8" x2="15" y2="8" stroke="rgba(255,255,255,.7)" stroke-width="1.2"/></svg>
+      <span id="currentLang">EN</span>
+    </button>
+    <div class="lang-menu" id="langMenu">
+      <button onclick="setLang('en')">🇬🇧 English</button>
+      <button onclick="setLang('fr')">🇫🇷 Français</button>
+      <button onclick="setLang('es')">🇪🇸 Español</button>
+      <button onclick="setLang('ar')">🇸🇦 العربية</button>
+    </div>
+  </div>
+  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" data-i18n="nav_cta">Schedule a Meeting</button>
 </nav>
 
 <!-- HERO -->
@@ -1170,12 +1194,12 @@ footer{
         <div style="width:1px;height:50px;background:rgba(255,255,255,.2)"></div>
         <img src="assets/one-for-regulators-white-crop.png" alt="ONE for Regulators" style="height:72px;max-width:320px;object-fit:contain">
       </div>
-      <div class="hero-kicker"><div class="kicker-dot"></div>UPU DOMESTIC SOLUTIONS</div>
-      <h1 class="hero-h">Regulatory oversight<br>powered by <em>objective,<br>reliable &amp; independent data</em></h1>
-      <p class="hero-sub"><strong>ONE for Regulators</strong> is the Universal Postal Union's domestic postal quality measurement solution— giving regulators verified data to enforce standards, support licences, and protect consumers.</p>
+      <div class="hero-kicker"><div class="kicker-dot"></div><span data-i18n="hero_kicker">UPU DOMESTIC SOLUTIONS</span></div>
+      <h1 class="hero-h" data-i18n-html="hero_h1">Regulatory oversight<br>powered by <em>objective,<br>reliable &amp; independent data</em></h1>
+      <p class="hero-sub" data-i18n-html="hero_sub"><strong>ONE for Regulators</strong> is the Universal Postal Union's domestic postal quality measurement solution— giving regulators verified data to enforce standards, support licences, and protect consumers.</p>
       <div class="hero-btns">
-        <a href="#contact" class="btn-red">Schedule a Demonstration →</a>
-        <a href="#how" class="btn-outline">How it works <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="#contact" class="btn-red" data-i18n="hero_btn1">Schedule a Demonstration →</a>
+        <a href="#how" class="btn-outline" data-i18n="hero_btn2">How it works <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
       <div class="hero-trust">
         <svg width="26" height="26" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/><path d="M14 2C14 2 9 8 9 14s5 12 5 12 5-6 5-12S14 2 14 2z" stroke="rgba(255,255,255,.3)" stroke-width="1.2" fill="none"/><line x1="2" y1="14" x2="26" y2="14" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/><line x1="4" y1="9" x2="24" y2="9" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/><line x1="4" y1="19" x2="24" y2="19" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/></svg>
@@ -1225,10 +1249,10 @@ footer{
 <!-- STATS -->
 <div class="stats-bar">
   <div class="stats-inner">
-    <div class="stat reveal"><div class="stat-n"><span>+</span>80</div><div class="stat-l">Countries with UPU measurement experience</div></div>
-    <div class="stat reveal reveal-d1"><div class="stat-n"><span>+</span>2000</div><div class="stat-l">Data capture points deployed globally</div></div>
-    <div class="stat reveal reveal-d2"><div class="stat-n">15<span>+</span></div><div class="stat-l">Years measuring postal quality</div></div>
-    <div class="stat reveal reveal-d3"><div class="stat-n"><span>1</span></div><div class="stat-l">UN-endorsed global methodology</div></div>
+    <div class="stat reveal"><div class="stat-n"><span>+</span>80</div><div class="stat-l" data-i18n="stat1">Countries with UPU measurement experience</div></div>
+    <div class="stat reveal reveal-d1"><div class="stat-n"><span>+</span>2000</div><div class="stat-l" data-i18n="stat2">Data capture points deployed globally</div></div>
+    <div class="stat reveal reveal-d2"><div class="stat-n">15<span>+</span></div><div class="stat-l" data-i18n="stat3">Years measuring postal quality</div></div>
+    <div class="stat reveal reveal-d3"><div class="stat-n"><span>1</span></div><div class="stat-l" data-i18n="stat4">UN-endorsed global methodology</div></div>
   </div>
 </div>
 
@@ -1237,8 +1261,8 @@ footer{
 <div class="wrap">
   <div class="mission-grid">
     <div class="reveal">
-      <div class="eye">Your Regulatory Mission</div>
-      <h2 class="sh">Four objectives.<br>One foundation.</h2>
+      <div class="eye" data-i18n="mission_eye">Your Regulatory Mission</div>
+      <h2 class="sh" data-i18n-html="mission_h2">Four objectives.<br>One foundation.</h2>
       <p class="sd">Every postal regulator shares the same mandate. Meeting it requires one thing: <span class="kw-highlight">objective</span>, <span class="kw-highlight">independent</span>, <span class="kw-highlight">credible data</span> that every stakeholder accepts without dispute.</p>
 
     </div>
@@ -1295,8 +1319,8 @@ footer{
 <div class="wrap">
   <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
     <div>
-      <div class="eye">Introducing ONE MS</div>
-      <h2 class="sh">One Management System.<br>Built for regulators.</h2>
+      <div class="eye" data-i18n="onems_eye">Introducing ONE MS</div>
+      <h2 class="sh" data-i18n-html="onems_h2">One Management System.<br>Built for regulators.</h2>
       <p class="p-body">ONE MS — One Management System — is the UPU's dedicated platform for domestic postal quality measurement. Designed exclusively for national postal regulators, it gives authorities the independent, objective, and credible data they need to enforce service standards, protect consumers, and drive systemic improvement.</p>
       <p class="p-body" style="margin-top:20px">Unlike generic analytics tools, ONE MS is purpose-built for the regulatory context: it integrates E2E measurement, network diagnostics, and operational oversight into a single, unified system — eliminating the need for multiple disconnected tools and manual data reconciliation.</p>
     </div>
@@ -1329,9 +1353,9 @@ footer{
 <!-- CTA 1: After ONE MS intro -->
 <section class="sec" style="padding:48px 0;background:var(--blue)">
 <div class="wrap" style="text-align:center">
-  <p style="font-size:15px;color:rgba(255,255,255,.75);margin-bottom:12px;font-weight:500;letter-spacing:.04em;text-transform:uppercase">Curious how ONE MS fits your regulatory context?</p>
-  <h3 style="font-size:clamp(22px,2.2vw,30px);font-weight:700;color:#fff;margin-bottom:24px;line-height:1.2">See the platform in action.<br>Talk to the ONE team.</h3>
-  <a href="#contact" style="display:inline-block;background:#fff;color:var(--blue);font-weight:700;font-size:15px;padding:14px 36px;border-radius:6px;text-decoration:none;letter-spacing:.02em">Schedule a demo →</a>
+  <p style="font-size:15px;color:rgba(255,255,255,.75);margin-bottom:12px;font-weight:500;letter-spacing:.04em;text-transform:uppercase" data-i18n="cta1_sub">How ONE MS fits your regulatory context</p>
+  <h3 style="font-size:clamp(22px,2.2vw,30px);font-weight:700;color:#fff;margin-bottom:24px;line-height:1.2" data-i18n-html="cta1_h3">See the platform in action.<br>Talk to the ONE team.</h3>
+  <a href="#contact" style="display:inline-block;background:#fff;color:var(--blue);font-weight:700;font-size:15px;padding:14px 36px;border-radius:6px;text-decoration:none;letter-spacing:.02em" data-i18n="cta1_btn">Schedule a demo →</a>
 </div>
 </section>
 
@@ -1341,8 +1365,8 @@ footer{
 <section class="sec" id="platform" style="padding-bottom:0">
 <div class="wrap">
   <div class="reveal" style="text-align:center">
-    <div class="eye" style="justify-content:center">Platform Capabilities</div>
-    <h2 class="sh" style="text-align:center">Six capabilities.<br>One integrated platform.</h2>
+    <div class="eye" style="justify-content:center" data-i18n="platform_eye">Platform Capabilities</div>
+    <h2 class="sh" style="text-align:center" data-i18n-html="platform_h2">Six capabilities.<br>One integrated platform.</h2>
     <p class="sd" style="margin:0 auto;text-align:center">ONE is built around six core modules — each addressing a specific operational need of the modern postal regulator. Together, they form a complete, end-to-end measurement and oversight system.</p>
   </div>
   <!-- Platform nav pills -->
@@ -1595,12 +1619,12 @@ footer{
 <section class="sec" style="padding:56px 0;background:var(--off);border-top:1px solid #e5e7eb;border-bottom:1px solid #e5e7eb">
 <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px">
   <div>
-    <p style="font-size:13px;font-weight:700;color:var(--red);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">Ready to launch a measurement programme?</p>
-    <h3 style="font-size:clamp(20px,2vw,28px);font-weight:700;color:var(--text);margin:0;line-height:1.2">ONE MS can be operational in your country<br>within weeks. Let’s talk.</h3>
+    <p style="font-size:13px;font-weight:700;color:var(--red);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px" data-i18n="cta2_sub">Ready to launch a measurement programme?</p>
+    <h3 style="font-size:clamp(20px,2vw,28px);font-weight:700;color:var(--text);margin:0;line-height:1.2" data-i18n="cta2_h3">ONE MS can be operational in your country. Let's talk.</h3>
   </div>
   <div style="display:flex;gap:12px;flex-shrink:0">
-    <a href="#contact" style="display:inline-block;background:var(--blue);color:#fff;font-weight:700;font-size:14px;padding:13px 28px;border-radius:6px;text-decoration:none">Contact the team →</a>
-    <a href="#plans" style="display:inline-block;background:transparent;color:var(--blue);font-weight:700;font-size:14px;padding:13px 28px;border-radius:6px;text-decoration:none;border:1.5px solid var(--blue)">View plan options</a>
+    <a href="#contact" style="display:inline-block;background:var(--blue);color:#fff;font-weight:700;font-size:14px;padding:13px 28px;border-radius:6px;text-decoration:none" data-i18n="cta2_btn1">Contact the team →</a>
+    <a href="#plans" style="display:inline-block;background:transparent;color:var(--blue);font-weight:700;font-size:14px;padding:13px 28px;border-radius:6px;text-decoration:none;border:1.5px solid var(--blue)" data-i18n="cta2_btn2">View plan options</a>
   </div>
 </div>
 </section>
@@ -1608,8 +1632,8 @@ footer{
 <section class="sec" id="how">
 <div class="wrap">
   <div class="reveal" style="text-align:center;max-width:720px;margin:0 auto 56px">
-    <div class="eye" style="justify-content:center">Two Measurement Modes</div>
-    <h2 class="sh" style="text-align:center">From opacity to transparency<br>through independent measurement</h2>
+    <div class="eye" style="justify-content:center" data-i18n="how_eye">Two Measurement Modes</div>
+    <h2 class="sh" style="text-align:center" data-i18n-html="how_h2">From opacity to transparency<br>through independent measurement</h2>
     <p class="sd" style="text-align:center">ONE MS offers two complementary measurement modes. They can be deployed independently or combined — each designed for a specific regulatory objective.</p>
   </div>
   <!-- Comparison cards -->
@@ -1904,8 +1928,8 @@ footer{
 <section class="sec" style="padding:48px 0;background:var(--blue-dark)">
 <div class="wrap" style="text-align:center">
   <p style="font-size:13px;font-weight:700;color:rgba(255,255,255,.55);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px">You’ve seen how E2E and Diagnostic work together</p>
-  <h3 style="font-size:clamp(20px,2vw,28px);font-weight:700;color:#fff;margin-bottom:24px;line-height:1.2">Seen enough to know this is what<br>your regulator needs?</h3>
-  <a href="#contact" style="display:inline-block;background:#fff;color:var(--blue-dark);font-weight:700;font-size:14px;padding:13px 32px;border-radius:6px;text-decoration:none">Talk to the ONE team →</a>
+  <h3 style="font-size:clamp(20px,2vw,28px);font-weight:700;color:#fff;margin-bottom:24px;line-height:1.2" data-i18n-html="cta3_h3">Seen enough to know this is what<br>your regulator needs?</h3>
+  <a href="#contact" style="display:inline-block;background:#fff;color:var(--blue-dark);font-weight:700;font-size:14px;padding:13px 32px;border-radius:6px;text-decoration:none" data-i18n="cta3_btn">Talk to the ONE team →</a>
 </div>
 </section>
 
@@ -2162,8 +2186,8 @@ footer{
 <div class="wrap">
   <div class="plans-intro reveal">
     <div>
-      <div class="eye">Plan Options</div>
-      <h2 class="sh">Choose the scope that fits your mandate</h2>
+      <div class="eye" data-i18n="plans_eye">Plan Options</div>
+      <h2 class="sh" data-i18n="plans_h2">Choose the scope that fits your mandate</h2>
     </div>
     <div style="padding-top:6px"><p class="sd" style="max-width:100%">Three plans designed for different stages of regulatory maturity. Annual service agreements per country. Contact the team for multi-country or regional arrangements. Pricing provided on request.</p></div>
   </div>
@@ -2238,13 +2262,13 @@ footer{
 <section class="sec-sm bg-off">
 <div class="wrap">
   <div class="reveal" style="text-align:center">
-    <div class="eye" style="justify-content:center">Getting Started</div>
-    <h2 class="sh" style="text-align:center">From decision to data-driven oversight</h2>
+    <div class="eye" style="justify-content:center" data-i18n="roadmap_eye">Getting Started</div>
+    <h2 class="sh" style="text-align:center" data-i18n="roadmap_h2">From decision to data-driven oversight</h2>
   </div>
   <div class="roadmap reveal">
-    <div class="rs"><div class="rs-dot rd1">1</div><div class="rs-t">Analyse Requirements</div><div class="rs-d">Review national priorities, infrastructure, operators, and budget. We scope the right solution before any commitment.</div></div>
-    <div class="rs"><div class="rs-dot rd2">2</div><div class="rs-t">ONE-to-ONE Meeting</div><div class="rs-d">Country-specific demonstration. Define initial scope (Phase 0). Align with postal operators on quality goals.</div></div>
-    <div class="rs"><div class="rs-dot rd3">3</div><div class="rs-t">Act &amp; Achieve Results</div><div class="rs-d">Implement data-driven oversight. Generate compliance reports. Strengthen the overall postal system.</div></div>
+    <div class="rs"><div class="rs-dot rd1">1</div><div class="rs-t" data-i18n="roadmap_s1t">Analyse Requirements</div><div class="rs-d">Review national priorities, infrastructure, operators, and budget. We scope the right solution before any commitment.</div></div>
+    <div class="rs"><div class="rs-dot rd2">2</div><div class="rs-t" data-i18n="roadmap_s2t">ONE-to-ONE Meeting</div><div class="rs-d">Country-specific demonstration. Define initial scope (Phase 0). Align with postal operators on quality goals.</div></div>
+    <div class="rs"><div class="rs-dot rd3">3</div><div class="rs-t" data-i18n="roadmap_s3t">Act &amp; Achieve Results</div><div class="rs-d">Implement data-driven oversight. Generate compliance reports. Strengthen the overall postal system.</div></div>
   </div>
 </div>
 </section>
@@ -2255,9 +2279,9 @@ footer{
 <section class="sec" id="contact">
 <div class="wrap">
   <div class="reveal">
-    <div class="eye">Schedule a Meeting</div>
-    <h2 class="sh">You see the need.<br>Take action.</h2>
-    <p class="sd">Contact the ONE Solutions team for a country-specific demonstration tailored to your regulatory mandate.</p>
+    <div class="eye" data-i18n="contact_eye">Schedule a Meeting</div>
+    <h2 class="sh" data-i18n-html="contact_h2">You see the need.<br>Take action.</h2>
+    <p class="sd" data-i18n="contact_sd">Contact the ONE Solutions team for a country-specific demonstration tailored to your regulatory mandate.</p>
   </div>
   <div class="contact-layout reveal">
     <div>
@@ -2304,7 +2328,7 @@ footer{
 <footer>
   <div>
     <div class="ft-brand">UPU · ONE Solutions</div>
-    <div class="ft-sub">Weltpoststrasse 4 · 3015 Berne · Switzerland · A Specialised Agency of the United Nations</div>
+    <div class="ft-sub" data-i18n="footer_sub">Weltpoststrasse 4 · 3015 Berne · Switzerland · A Specialised Agency of the United Nations</div>
   </div>
   <div class="ft-copy">© 2026 Universal Postal Union · All Rights Reserved</div>
 </footer>
@@ -2457,5 +2481,216 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   });
 });
 </script>
+
+<script>
+// ── i18n TRANSLATIONS ────────────────────────────────────────────────────────
+const TRANSLATIONS = {
+  en: {
+    nav_mission:'Mission', nav_platform:'Platform', nav_how:'How It Works',
+    nav_reports:'Reports', nav_plans:'Plans', nav_contact:'Contact',
+    nav_cta:'Schedule a Meeting',
+    hero_kicker:'UPU DOMESTIC SOLUTIONS',
+    hero_h1:'Regulatory oversight<br>powered by <em>objective,<br>reliable &amp; independent data</em>',
+    hero_sub:'<strong>ONE for Regulators</strong> is the Universal Postal Union's domestic postal quality measurement solution— giving regulators verified data to enforce standards, support licences, and protect consumers.',
+    hero_btn1:'Schedule a Demonstration →', hero_btn2:'How it works',
+    stat1:'Countries with UPU measurement experience',
+    stat2:'Data capture points deployed globally',
+    stat3:'Years measuring postal quality',
+    stat4:'UN-endorsed global methodology',
+    mission_eye:'Your Regulatory Mission',
+    mission_h2:'Four objectives.<br>One foundation.',
+    onems_eye:'Introducing ONE MS',
+    onems_h2:'One Management System.<br>Built for regulators.',
+    cta1_sub:'How ONE MS fits your regulatory context',
+    cta1_h3:'See the platform in action.<br>Talk to the ONE team.',
+    cta1_btn:'Schedule a demo →',
+    platform_eye:'Platform Capabilities',
+    platform_h2:'Six capabilities.<br>One integrated platform.',
+    cta2_sub:'Ready to launch a measurement programme?',
+    cta2_h3:'ONE MS can be operational in your country. Let's talk.',
+    cta2_btn1:'Contact the team →', cta2_btn2:'View plan options',
+    how_eye:'Two Measurement Modes',
+    how_h2:'From opacity to transparency<br>through independent measurement',
+    cta3_sub:'You've seen how E2E and Diagnostic work together',
+    cta3_h3:'Seen enough to know this is what<br>your regulator needs?',
+    cta3_btn:'Talk to the ONE team →',
+    plans_eye:'Plan Options',
+    plans_h2:'Choose the scope that fits your mandate',
+    roadmap_eye:'Getting Started',
+    roadmap_h2:'From decision to data-driven oversight',
+    roadmap_s1t:'Analyse Requirements', roadmap_s2t:'ONE-to-ONE Meeting', roadmap_s3t:'Act & Achieve Results',
+    contact_eye:'Schedule a Meeting',
+    contact_h2:'You see the need.<br>Take action.',
+    contact_sd:'Contact the ONE Solutions team for a country-specific demonstration tailored to your regulatory mandate.',
+    footer_sub:'Weltpoststrasse 4 · 3015 Berne · Switzerland · A Specialised Agency of the United Nations',
+  },
+  fr: {
+    nav_mission:'Mission', nav_platform:'Plateforme', nav_how:'Fonctionnement',
+    nav_reports:'Rapports', nav_plans:'Offres', nav_contact:'Contact',
+    nav_cta:'Prendre rendez-vous',
+    hero_kicker:'SOLUTIONS DOMESTIQUES UPU',
+    hero_h1:'Supervision réglementaire<br>fondée sur des données <em>objectives,<br>fiables &amp; indépendantes</em>',
+    hero_sub:'<strong>ONE for Regulators</strong> est la solution de mesure de qualité postale domestique de l'Union postale universelle — fournissant aux régulateurs des données vérifiées pour faire respecter les normes, soutenir les licences et protéger les consommateurs.',
+    hero_btn1:'Demander une démonstration →', hero_btn2:'Comment ça fonctionne',
+    stat1:'Pays avec expérience de mesure UPU',
+    stat2:'Points de collecte de données déployés',
+    stat3:'Années de mesure de la qualité postale',
+    stat4:'Méthodologie mondiale approuvée par l'ONU',
+    mission_eye:'Votre mission réglementaire',
+    mission_h2:'Quatre objectifs.<br>Une seule base.',
+    onems_eye:'Présentation de ONE MS',
+    onems_h2:'Un système de gestion.<br>Conçu pour les régulateurs.',
+    cta1_sub:'Comment ONE MS s'adapte à votre contexte réglementaire',
+    cta1_h3:'Découvrez la plateforme en action.<br>Parlez à l'équipe ONE.',
+    cta1_btn:'Planifier une démo →',
+    platform_eye:'Capacités de la plateforme',
+    platform_h2:'Six capacités.<br>Une plateforme intégrée.',
+    cta2_sub:'Prêt à lancer un programme de mesure ?',
+    cta2_h3:'ONE MS peut être opérationnel dans votre pays. Parlons-en.',
+    cta2_btn1:'Contacter l'équipe →', cta2_btn2:'Voir les offres',
+    how_eye:'Deux modes de mesure',
+    how_h2:'De l'opacité à la transparence<br>par une mesure indépendante',
+    cta3_sub:'Vous avez vu comment E2E et Diagnostic fonctionnent ensemble',
+    cta3_h3:'Convaincu que c'est ce dont<br>votre régulateur a besoin ?',
+    cta3_btn:'Parler à l'équipe ONE →',
+    plans_eye:'Options de plan',
+    plans_h2:'Choisissez la portée adaptée à votre mandat',
+    roadmap_eye:'Pour commencer',
+    roadmap_h2:'De la décision à la supervision basée sur les données',
+    roadmap_s1t:'Analyser les besoins', roadmap_s2t:'Réunion ONE-to-ONE', roadmap_s3t:'Agir & Obtenir des résultats',
+    contact_eye:'Prendre rendez-vous',
+    contact_h2:'Vous voyez le besoin.<br>Passez à l'action.',
+    contact_sd:'Contactez l'équipe ONE Solutions pour une démonstration adaptée à votre mandat réglementaire.',
+    footer_sub:'Weltpoststrasse 4 · 3015 Berne · Suisse · Agence spécialisée des Nations Unies',
+  },
+  es: {
+    nav_mission:'Misión', nav_platform:'Plataforma', nav_how:'Cómo funciona',
+    nav_reports:'Informes', nav_plans:'Planes', nav_contact:'Contacto',
+    nav_cta:'Solicitar reunión',
+    hero_kicker:'SOLUCIONES DOMÉSTICAS UPU',
+    hero_h1:'Supervisión regulatoria<br>impulsada por datos <em>objetivos,<br>fiables e independientes</em>',
+    hero_sub:'<strong>ONE for Regulators</strong> es la solución de medición de calidad postal doméstica de la Unión Postal Universal — proporcionando a los reguladores datos verificados para hacer cumplir normas, gestionar licencias y proteger a los consumidores.',
+    hero_btn1:'Solicitar una demostración →', hero_btn2:'Cómo funciona',
+    stat1:'Países con experiencia de medición UPU',
+    stat2:'Puntos de captura de datos desplegados',
+    stat3:'Años midiendo la calidad postal',
+    stat4:'Metodología global avalada por la ONU',
+    mission_eye:'Su misión regulatoria',
+    mission_h2:'Cuatro objetivos.<br>Una sola base.',
+    onems_eye:'Presentamos ONE MS',
+    onems_h2:'Un sistema de gestión.<br>Diseñado para reguladores.',
+    cta1_sub:'Cómo ONE MS se adapta a su contexto regulatorio',
+    cta1_h3:'Vea la plataforma en acción.<br>Hable con el equipo ONE.',
+    cta1_btn:'Solicitar una demo →',
+    platform_eye:'Capacidades de la plataforma',
+    platform_h2:'Seis capacidades.<br>Una plataforma integrada.',
+    cta2_sub:'¿Listo para lanzar un programa de medición?',
+    cta2_h3:'ONE MS puede estar operativo en su país. Hablemos.',
+    cta2_btn1:'Contactar al equipo →', cta2_btn2:'Ver opciones de plan',
+    how_eye:'Dos modos de medición',
+    how_h2:'De la opacidad a la transparencia<br>mediante medición independiente',
+    cta3_sub:'Ha visto cómo E2E y Diagnóstico trabajan juntos',
+    cta3_h3:'¿Ha visto suficiente para saber que esto es<br>lo que su regulador necesita?',
+    cta3_btn:'Hablar con el equipo ONE →',
+    plans_eye:'Opciones de plan',
+    plans_h2:'Elija el alcance que se adapta a su mandato',
+    roadmap_eye:'Cómo empezar',
+    roadmap_h2:'De la decisión a la supervisión basada en datos',
+    roadmap_s1t:'Analizar requisitos', roadmap_s2t:'Reunión ONE-to-ONE', roadmap_s3t:'Actuar y obtener resultados',
+    contact_eye:'Solicitar reunión',
+    contact_h2:'Usted ve la necesidad.<br>Tome acción.',
+    contact_sd:'Contacte al equipo ONE Solutions para una demostración específica adaptada a su mandato regulatorio.',
+    footer_sub:'Weltpoststrasse 4 · 3015 Berna · Suiza · Organismo especializado de las Naciones Unidas',
+  },
+  ar: {
+    nav_mission:'المهمة', nav_platform:'المنصة', nav_how:'كيف يعمل',
+    nav_reports:'التقارير', nav_plans:'الخطط', nav_contact:'اتصل بنا',
+    nav_cta:'جدولة اجتماع',
+    hero_kicker:'حلول البريد المحلي — الاتحاد البريدي العالمي',
+    hero_h1:'رقابة تنظيمية<br>مدعومة ببيانات <em>موضوعية<br>وموثوقة ومستقلة</em>',
+    hero_sub:'<strong>ONE for Regulators</strong> هو حل قياس جودة البريد المحلي التابع للاتحاد البريدي العالمي — يمنح الجهات التنظيمية بيانات موثقة لتطبيق المعايير ودعم التراخيص وحماية المستهلكين.',
+    hero_btn1:'جدولة عرض توضيحي →', hero_btn2:'كيف يعمل',
+    stat1:'دولة تتمتع بخبرة قياس UPU',
+    stat2:'نقطة التقاط بيانات منتشرة عالمياً',
+    stat3:'سنوات في قياس جودة البريد',
+    stat4:'منهجية عالمية معتمدة من الأمم المتحدة',
+    mission_eye:'مهمتكم التنظيمية',
+    mission_h2:'أربعة أهداف.<br>أساس واحد.',
+    onems_eye:'نقدم ONE MS',
+    onems_h2:'نظام إدارة واحد.<br>مصمم للجهات التنظيمية.',
+    cta1_sub:'كيف يتناسب ONE MS مع سياقكم التنظيمي',
+    cta1_h3:'شاهدوا المنصة في العمل.<br>تحدثوا مع فريق ONE.',
+    cta1_btn:'جدولة عرض توضيحي →',
+    platform_eye:'قدرات المنصة',
+    platform_h2:'ست قدرات.<br>منصة متكاملة واحدة.',
+    cta2_sub:'هل أنتم مستعدون لإطلاق برنامج قياس؟',
+    cta2_h3:'يمكن تشغيل ONE MS في بلدكم. لنتحدث.',
+    cta2_btn1:'تواصل مع الفريق →', cta2_btn2:'عرض خيارات الخطة',
+    how_eye:'نمطا قياس',
+    how_h2:'من الغموض إلى الشفافية<br>من خلال القياس المستقل',
+    cta3_sub:'لقد رأيتم كيف يعمل E2E والتشخيص معاً',
+    cta3_h3:'هل رأيتم ما يكفي لتعلموا أن هذا<br>ما تحتاجه جهتكم التنظيمية؟',
+    cta3_btn:'تحدث مع فريق ONE →',
+    plans_eye:'خيارات الخطة',
+    plans_h2:'اختاروا النطاق المناسب لولايتكم',
+    roadmap_eye:'البدء',
+    roadmap_h2:'من القرار إلى الرقابة المبنية على البيانات',
+    roadmap_s1t:'تحليل المتطلبات', roadmap_s2t:'اجتماع ONE-to-ONE', roadmap_s3t:'التصرف وتحقيق النتائج',
+    contact_eye:'جدولة اجتماع',
+    contact_h2:'ترون الحاجة.<br>اتخذوا الإجراء.',
+    contact_sd:'تواصلوا مع فريق ONE Solutions للحصول على عرض توضيحي خاص بدولتكم ومتوافق مع ولايتكم التنظيمية.',
+    footer_sub:'Weltpoststrasse 4 · 3015 بيرن · سويسرا · وكالة متخصصة تابعة للأمم المتحدة',
+  }
+};
+
+// ── LANGUAGE ENGINE ───────────────────────────────────────────────────────────
+function applyLang(lang) {
+  const t = TRANSLATIONS[lang] || TRANSLATIONS['en'];
+  const isRTL = lang === 'ar';
+  document.documentElement.setAttribute('lang', lang);
+  document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.textContent = t[key];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+  const lbl = document.getElementById('currentLang');
+  if (lbl) lbl.textContent = lang.toUpperCase();
+  localStorage.setItem('oneLang', lang);
+}
+
+function setLang(lang) {
+  applyLang(lang);
+  const menu = document.getElementById('langMenu');
+  if (menu) menu.classList.remove('open');
+}
+
+function toggleLangMenu() {
+  const menu = document.getElementById('langMenu');
+  if (menu) menu.classList.toggle('open');
+}
+
+// Close menu on outside click
+document.addEventListener('click', e => {
+  const sel = document.getElementById('langSel');
+  if (sel && !sel.contains(e.target)) {
+    const menu = document.getElementById('langMenu');
+    if (menu) menu.classList.remove('open');
+  }
+});
+
+// Auto-detect language on load
+(function() {
+  const saved = localStorage.getItem('oneLang');
+  if (saved && TRANSLATIONS[saved]) { applyLang(saved); return; }
+  const browserLang = (navigator.language || navigator.userLanguage || 'en').substring(0, 2).toLowerCase();
+  const supported = ['en', 'fr', 'es', 'ar'];
+  applyLang(supported.includes(browserLang) ? browserLang : 'en');
+})();
+</script>
+
 </body>
 </html>
