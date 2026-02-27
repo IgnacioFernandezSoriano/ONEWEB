@@ -100,7 +100,8 @@ img{display:block;max-width:100%}
   padding:8px 13px;border-radius:var(--r);
   transition:all .2s;
 }
-.nav-links a:hover{color:white;background:rgba(255,255,255,.1)}
+.nav-links a:hover{color:white;background:rgba(255,255,255,.15)}
+.nav-links a.active{color:white;background:rgba(255,255,255,.18);border-bottom:2px solid var(--red);padding-bottom:6px}
 .nav-cta{
   background:var(--red);color:white;
   font-size:12.5px;font-weight:700;letter-spacing:.03em;
@@ -2473,6 +2474,43 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
     if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
   });
 });
+
+// ── SCROLL SPY ────────────────────────────
+(function(){
+  const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+  const sectionIds = Array.from(navLinks).map(a => a.getAttribute('href').slice(1));
+  // Map each nav link href to its target section (may differ from id)
+  const sectionMap = {};
+  navLinks.forEach(a => { sectionMap[a.getAttribute('href').slice(1)] = a; });
+
+  // Group sections: each nav link covers from its section to the next nav section
+  function getActiveSectionId() {
+    const scrollY = window.scrollY + 80; // offset for fixed nav height
+    let active = null;
+    for (let i = 0; i < sectionIds.length; i++) {
+      const el = document.getElementById(sectionIds[i]);
+      if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) {
+        active = sectionIds[i];
+      }
+    }
+    return active;
+  }
+
+  function updateNav() {
+    const active = getActiveSectionId();
+    navLinks.forEach(a => {
+      const id = a.getAttribute('href').slice(1);
+      if (id === active) {
+        a.classList.add('active');
+      } else {
+        a.classList.remove('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+})();
 </script>
 <script>
 // ── i18n: CSV-based translation system ───────────────────────────────────────
